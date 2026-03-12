@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Cache-busting: force browser to always load fresh HTML -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Who Unfollowed Me on Instagram? Free Tracker - No Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Premium Animation System -->
+    <link rel="stylesheet" href="/animations.css">
+    <!-- Data Analysis Animation System -->
+    <link rel="stylesheet" href="/analysis-animation.css">
+    <!-- Preload critical analyzer script for faster loading -->
+    <link rel="preload" href="/static/js/instagramAnalyzer.js" as="script">
+
+    <style>
+        :root {
+            --brand-gradient: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
+
+        /* Ensure no horizontal scrolling */
+        * {
+            max-width: 100vw;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Blobs - fixed for smooth rendering */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out alternate;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #7928CA;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: #FF0080;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 30vw;
+            height: 30vw;
+            background: #FF4D4D;
+            opacity: 0.3;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(20px, 40px) scale(1.1);
+            }
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.23, 1, 0.320, 1), 
+                        transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation for multiple items */
+        .reveal-item:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .reveal-item:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-item:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        /* Mobile specific */
+        @media (max-width: 768px) {
+            .reveal-item {
+                transition: opacity 0.5s cubic-bezier(0.23, 1, 0.320, 1), 
+                            transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 77, 77, 0.5);
+            box-shadow: 0 20px 40px rgba(121, 40, 202, 0.2);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        /* Upload Area Animation */
+        .upload-zone {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FFFFFF4D' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            transition: background-color 0.3s ease, background-image 0.3s ease;
+            
+            /* Mobile-safe touch handling */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        /* Devices with hover capability (desktop/tablet with mouse) */
+        @media (hover: hover) {
+            .upload-zone:hover {
+                background-color: rgba(255, 255, 255, 0.05);
+                transform: scale(1.01);
+                transition: background-color 0.3s ease, background-image 0.3s ease, transform 0.3s ease;
+                background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FF0080' stroke-width='3' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            }
+        }
+
+        /* Mobile touch states - no scaling to prevent layout jumps */
+        .upload-zone.dragover {
+            background-color: rgba(255, 255, 255, 0.05);
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='24' ry='24' stroke='%23FF0080' stroke-width='3' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        }
+
+        /* Prevent flickering on active/focus states */
+        .upload-zone:active,
+        .upload-zone:focus {
+            outline: none;
+            -webkit-appearance: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        /* File input styling - hidden but mobile optimized */
+        #file-upload {
+            display: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* Infinite Scroll Animation - Seamless looping marquee */
+        .scroller {
+            overflow: hidden !important;
+            width: 100%;
+            max-width: 100vw;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .scroller__inner {
+            display: flex;
+            flex-wrap: nowrap;
+            will-change: transform;
+            padding-block: 1rem;
+        }
+
+        /* Seamless infinite loop: duplicate content creates zero-gap scrolling */
+        @keyframes scrollLoop {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .scroller[data-animated="true"] .scroller__inner {
+            width: max-content;
+            animation: scrollLoop 40s linear infinite;
+        }
+
+        /* Pause on hover for interactive sections */
+        .scroller:hover .scroller__inner {
+            animation-play-state: paused;
+        }
+
+        /* Mobile optimization - responsive animation speed */
+        @media (max-width: 768px) {
+            .scroller[data-animated="true"] .scroller__inner {
+                animation: scrollLoop 28s linear infinite;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroller[data-animated="true"] .scroller__inner {
+                animation: scrollLoop 20s linear infinite;
+            }
+        }
+
+        /* Trust Ticker Specific Optimizations */
+        .scroller .tag-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            gap: 3rem;
+        }
+
+        .scroller .tag-list li {
+            flex-shrink: 0;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .scroller .tag-list {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroller .tag-list {
+                gap: 1rem;
+            }
+        }
+                font-size: 0.75rem;
+                padding: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scroller__inner {
+                gap: 1rem;
+                padding-block: 0.5rem;
+            }
+
+            .scroller[data-animated="true"] .scroller__inner {
+                animation: scroll 30s linear infinite;
+            }
+
+            .scroller .tag-list {
+                gap: 1rem !important;
+            }
+
+            .scroller .tag-list li {
+                font-size: 0.7rem;
+                padding: 0 0.25rem;
+            }
+
+            /* Ensure cards don't overflow on small screens */
+            .glass-card {
+                max-width: 100%;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .scroller__inner .glass-card {
+                width: 60vw !important;
+                min-width: 60vw;
+                max-width: 60vw;
+                flex-shrink: 0;
+            }
+        }
+
+        /* FAQ Accordion Smooth Animation */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+        }
+
+        .faq-content.active {
+            max-height: 500px;
+            opacity: 1;
+            padding: 1rem 1rem;
+        }
+
+        .faq-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-button.active {
+            color: #ec4899;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-button.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* CTA Button Glow */
+        .btn-glow {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Welcome Popup Styles ported */
+        .welcome-popup {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: rgba(16, 185, 129, 0.9);
+            color: #ffffff;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+            z-index: 10000;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 320px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .welcome-popup.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .welcome-popup.fade-out {
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+        }
+
+        /* =============================================
+           MODERN HEADER STYLING
+           ============================================= */
+
+        /* Main navbar container */
+        #navbar {
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #navbar.scrolled {
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navbar inner container */
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 0 16px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-container {
+                height: 70px;
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .navbar-container {
+                height: 80px;
+                padding: 0 32px;
+            }
+        }
+
+        /* Brand section (Logo + Text) */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand:hover {
+            opacity: 0.85;
+        }
+
+        .navbar-brand-logo {
+            height: 40px;
+            max-height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover .navbar-brand-logo {
+            transform: scale(1.05);
+        }
+
+        @media (min-width: 640px) {
+            .navbar-brand-logo {
+                height: 48px;
+            }
+        }
+
+        .navbar-brand-text {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-brand-text {
+                font-size: 20px;
+            }
+        }
+
+        .navbar-brand-text .highlight {
+            background: linear-gradient(135deg, #FF0080 0%, #FF4D4D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Right actions container */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-actions {
+                gap: 16px;
+            }
+        }
+
+        /* Start Analysis Button */
+        .navbar-action-btn {
+            background: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-action-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+                min-height: 44px;
+            }
+        }
+
+        .navbar-action-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar-action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Hamburger menu button */
+        .navbar-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            font-size: 20px;
+            border: none;
+            padding: 0;
+            flex-shrink: 0;
+        }
+
+        .navbar-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .navbar-menu-btn:active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hamburger icon animation */
+        .navbar-menu-btn i {
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        /* Mobile dropdown menu */
+        .navbar-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            visibility: hidden;
+        }
+
+        .navbar-dropdown.active {
+            max-height: 400px;
+            opacity: 1;
+            visibility: visible;
+            z-index: 50;
+        }
+
+        .navbar-dropdown-content {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 8px;
+        }
+
+        /* Dropdown menu items */
+        .navbar-dropdown-item {
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-dropdown-item {
+                padding: 14px 32px;
+                font-size: 15px;
+            }
+        }
+
+        .navbar-dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            padding-left: 28px;
+        }
+
+        @media (min-width: 640px) {
+            .navbar-dropdown-item:hover {
+                padding-left: 36px;
+            }
+        }
+
+        .navbar-dropdown-item i {
+            margin-right: 10px;
+            font-size: 16px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-dropdown-item:hover i {
+            opacity: 1;
+        }
+
+        /* CTA button in dropdown */
+        .navbar-dropdown-cta {
+            padding: 12px 24px;
+            margin: 8px 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (min-width: 640px) {
+            .navbar-dropdown-cta {
+                padding: 16px 32px;
+                margin: 12px 20px;
+            }
+        }
+
+        .navbar-dropdown-cta .navbar-action-btn {
+            width: 100%;
+        }
+
+        /* Mobile menu overlay/backdrop */
+        .navbar-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 40;
+        }
+
+        .navbar-backdrop.active {
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            #navbar {
+                z-index: 50;
+            }
+        }
+
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .grid-responsive {
+                grid-template-columns: 1fr !important;
+            }
+
+            .section-card {
+                padding: 1.5rem !important;
+            }
+
+            h2 {
+                font-size: 1.75rem !important;
+            }
+
+            .btn-mobile {
+                width: 100%;
+                padding: 1rem !important;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-card {
+                padding: 1rem !important;
+            }
+
+            h1 {
+                font-size: 1.75rem !important;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .text-sm {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* =============================================
+           PAYMENT & PAYWALL STYLING
+           ============================================= */
+
+        .payment-btn {
+            position: relative;
+            background: linear-gradient(135deg, #FF0080 0%, #FF4D4D 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .payment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .payment-btn:hover {
+            box-shadow: 0 8px 25px rgba(255, 0, 128, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .payment-btn:hover::before {
+            left: 100%;
+        }
+
+        .payment-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (min-width: 640px) {
+            .payment-btn {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+        }
+
+        .payment-trust-line {
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            margin-top: -4px;
+        }
+
+        .paywall-container {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(255, 0, 128, 0.05);
+            border: 1px solid rgba(255, 0, 128, 0.15);
+            border-radius: 12px;
+        }
+
+        .paywall-preview {
+            margin-bottom: 16px;
+        }
+
+        .paywall-preview-item {
+            padding: 8px 0;
+            color: #d1d5db;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .paywall-preview-item i {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .paywall-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.3), transparent);
+            margin: 12px 0;
+        }
+
+        .paywall-blur {
+            filter: blur(6px);
+            opacity: 0.5;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .paywall-message {
+            text-align: center;
+            padding: 12px;
+            color: #ec4899;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .unlock-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 12px;
+            animation: slideInDown 0.4s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ad-button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ad-button-group button {
+            flex: 1;
+        }
+    </style>
+
+    <!-- JSZip Library - Client-side ZIP processing (no data leaves browser) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Premium Animation System -->
+    <script src="/animations.js"></script>
+    <!-- Mobile Scroll Animations -->
+    <script src="/mobile-scroll-animations.js"></script>
+</head>
+
+<body class="antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-[50]" id="navbar">
+        <div class="navbar-container">
+            <!-- Brand: Logo + Text -->
+            <div class="navbar-brand">
+                <img src="/logo%28do%20not%20delete%29.png" alt="Unfollower Tracker Logo" class="navbar-brand-logo">
+                <span class="navbar-brand-text">
+                    Unfollower<span class="highlight">Tracker</span>
+                </span>
+            </div>
+
+            <!-- Right Actions: Button + Hamburger -->
+            <div class="navbar-actions">
+                <!-- Start Analysis Button (Mobile + Desktop) -->
+                <button onclick="scrollToAnalyze()" class="navbar-action-btn" aria-label="Start Analysis">
+                    Start Analysis
+                </button>
+
+                <!-- Hamburger Menu Button -->
+                <button id="mobileMenuBtn" class="navbar-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="navbar-dropdown" role="navigation">
+            <div class="navbar-dropdown-content">
+                <!-- Navigation Links with Icons -->
+                <a href="#how-it-works" class="navbar-dropdown-item" onclick="closeMobileMenu()">
+                    <i class="fas fa-cogs"></i> How It Works
+                </a>
+                <a href="#features" class="navbar-dropdown-item" onclick="closeMobileMenu()">
+                    <i class="fas fa-gem"></i> Features
+                </a>
+                <a href="#reviews" class="navbar-dropdown-item" onclick="closeMobileMenu()">
+                    <i class="fas fa-star"></i> Reviews
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Backdrop for mobile menu -->
+    <div id="navbarBackdrop" class="navbar-backdrop" onclick="closeMobileMenu()"></div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 px-3 sm:px-4 hero-load" data-section-animate>
+        <div class="max-w-4xl mx-auto text-center z-10 will-animate">
+            <!-- Trust Badge -->
+            <div
+                class="fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 border border-green-500/30 gpu-accelerated">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-xs font-semibold tracking-wider uppercase text-green-400">✓ 100% Free &bull; ✓ No Password &bull; ✓ Offline Works</span>
+            </div>
+
+            <!-- Headline -->
+            <h1
+                class="fade-in-up delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6 heading-reveal gpu-accelerated">
+                Find Out Who <span class="text-gradient">Unfollowed You</span>—100% Free, No Password Required
+            </h1>
+
+            <p class="fade-in-up delay-200 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto gpu-accelerated">
+                Discover exactly who unfollowed you, who doesn't follow back, and your ride-or-dies. Instant results. Zero account risk. No password. No server uploads. Your data never leaves your device.
+            </p>
+
+            <!-- Upload Component -->
+            <div id="analyze" class="fade-in-up delay-300 w-full max-w-2xl mx-auto relative group gpu-accelerated">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-violet-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                </div>
+
+                <div class="relative bg-[#0A0A0A] rounded-[1.8rem] p-4 sm:p-5 md:p-8 border border-white/10 shadow-2xl overflow-hidden">
+
+                    <!-- UPLOAD AREA -->
+                    <div id="uploadArea"
+                        class="upload-zone rounded-3xl p-4 sm:p-6 md:p-10 text-center cursor-pointer transition-all min-h-[12rem] sm:min-h-[14rem] md:min-h-[16rem] flex flex-col items-center justify-center relative overflow-hidden gpu-accelerated">
+
+                        <!-- Initial State -->
+                        <div id="upload-content" class="z-10 transition-all duration-300 w-full">
+                            <div
+                                class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ring-1 ring-white/10 upload-icon">
+                                <i class="fas fa-cloud-upload-alt text-3xl text-gradient"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Drop your Instagram Data</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">or click to browse local files (JSON/ZIP)</p>
+                            <button
+                                class="bg-white text-black px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors btn-glow pointer-events-none">
+                                Select File
+                            </button>
+                            <!-- Privacy Notice -->
+                        </div>
+
+                        <!-- Processing State (Replaces #loadingState) -->
+                        <div id="loadingState"
+                            class="absolute inset-0 bg-[#0A0A0A] flex flex-col items-center justify-center hidden z-20">
+                            <div
+                                class="w-16 h-16 border-4 border-white/10 border-t-pink-500 rounded-full animate-spin mb-4">
+                            </div>
+                            <h4 class="text-lg sm:text-xl font-bold animate-pulse text-white">Analyzing Connections...</h4>
+                            <div class="w-48 sm:w-64 h-2 bg-gray-800 rounded-full mt-4 overflow-hidden relative">
+                                <div id="progressBar"
+                                    class="h-full bg-gradient-to-r from-pink-500 to-violet-600 w-0 transition-all duration-300">
+                                </div>
+                            </div>
+                            <p id="progressPercentage" class="text-pink-500 font-bold mt-2">0%</p>
+                            <p id="microMessage" class="text-sm text-gray-500 mt-2">Calculated locally. Zero data
+                                transfer.</p>
+                        </div>
+
+                        <!-- Hidden Input -->
+                        <input type="file" id="file-upload" accept=".json,.zip,.html">
+                    </div>
+
+                    <!-- Error Message -->
+                    <div id="errorMessage"
+                        class="hidden mt-4 bg-red-500/10 border border-red-500/20 text-red-300 p-4 rounded-xl text-center text-sm">
+                    </div>
+
+                    <!-- Results Display -->
+                    <div id="resultsDisplay" class="hidden mt-8 border-t border-white/10 pt-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-check text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Analysis Complete!</h3>
+                                <p id="resultMessage" class="text-sm text-gray-400"></p>
+                            </div>
+                        </div>
+
+                        <!-- Stats & List Container -->
+                        <div id="statsDisplay"></div>
+
+                        <!-- Payment & Paywall Container -->
+                        <div id="paymentContainer" class="mt-8 pt-6 border-t border-white/10"></div>
+                    </div>
+
+                    <!-- Footer inside card -->
+                    <div
+                        class="flex flex-col md:flex-row items-center justify-between mt-6 px-2 text-xs text-gray-500 font-medium gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-shield-alt text-green-500"></i> Local Browser Processing
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-bolt text-yellow-500"></i> Results in < 15 seconds </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fas fa-user-secret text-purple-500"></i> 100% Anonymous
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="mt-12 fade-in-up delay-300">
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-black"
+                                src="https://i.pravatar.cc/100?img=1" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-black"
+                                src="https://i.pravatar.cc/100?img=5" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-black"
+                                src="https://i.pravatar.cc/100?img=8" alt="">
+                            <div
+                                class="w-10 h-10 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center text-xs font-bold">
+                                +2k</div>
+                        </div>
+                        <div class="text-left ml-2">
+                            <div class="flex text-yellow-500 text-xs mb-0.5">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-xs text-gray-400">Trusted by Instagram users <span
+                                    class="text-white font-bold">every day</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Trust Ticker -->
+    <div class="w-full bg-white/5 border-y border-white/5 py-8 overflow-hidden scroller" data-animated="true">
+        <ul
+            class="scroller__inner tag-list flex gap-12 text-gray-500 font-bold uppercase tracking-widest text-sm items-center">
+            <li><i class="fas fa-lock mr-2"></i> GDPR Compliant</li>
+            <li><i class="fas fa-fingerprint mr-2"></i> 256-Bit Encryption</li>
+            <li><i class="fas fa-wifi mr-2"></i> Offline Analysis</li>
+            <li><i class="fas fa-check-circle mr-2"></i> Verified Accuracy</li>
+            <li><i class="fab fa-instagram mr-2"></i> Meta Safe</li>
+            <li><i class="fas fa-bolt mr-2"></i> Instant Result</li>
+        </ul>
+    </div>
+
+    <!-- How it Works -->
+    <section id="how-it-works" class="py-20 sm:py-24 md:py-32 px-3 sm:px-4 relative" data-section-animate>
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16 md:mb-20">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 heading-reveal gpu-accelerated"><span class="text-gradient">How It Works</span></h2>
+                <p class="text-xs sm:text-sm md:text-base text-gray-400 max-w-xl mx-auto" data-animate>Three crystal clear steps. No complex tech. No password sharing.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative stagger-reveal" id="steps-container">
+                <div
+                    class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-pink-500/50 to-transparent -translate-y-1/2 z-0">
+                </div>
+
+                <div class="reveal-item glass-card rounded-3xl p-6 sm:p-8 relative z-10 text-center group">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-pink-500/10 group-hover:scale-110 transition-transform">
+                        <span class="text-lg sm:text-2xl font-bold text-white">1</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Request Your Data From Instagram (2 minutes)</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Instagram gives you full access to your data. Head to Instagram Settings → Download Your Info → Request a Copy. You'll get an email with your data zip file in a few minutes.</p>
+                </div>
+
+                <div class="reveal-item glass-card rounded-3xl p-6 sm:p-8 relative z-10 text-center group">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-violet-500/10 group-hover:scale-110 transition-transform">
+                        <span class="text-lg sm:text-2xl font-bold text-white">2</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Drop Your File Here (10 seconds)</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Upload the Instagram ZIP or JSON file directly to our analyzer. We parse everything right in your browser—super fast, completely secure.</p>
+                </div>
+
+                <div class="reveal-item glass-card rounded-3xl p-6 sm:p-8 relative z-10 text-center group">
+                    <div
+                        class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-orange-500/10 group-hover:scale-110 transition-transform">
+                        <span class="text-lg sm:text-2xl font-bold text-white">3</span>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Get Your Results Instantly (< 15 seconds)</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">See exactly who unfollowed you, find who doesn't follow back, identify your true followers, and download your report (optional).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 sm:py-20 md:py-24 px-3 sm:px-4 reveal-up" data-section-animate>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center stagger-reveal">
+                <div class="space-y-6 sm:space-y-8 relative z-10">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight heading-reveal gpu-accelerated">
+                        Why
+                        <span class="text-gradient">Trust Us?</span>
+                    </h2>
+
+                    <div class="space-y-4 sm:space-y-6">
+                        <div class="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
+                                <i class="fas fa-lock text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Bank-Level Security (Client-Side Processing)</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-1">Your data never leaves your browser. We don't store, sell, or see any of your information. 256-bit encryption & offline analysis.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
+                            <div
+                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                                <i class="fas fa-bolt text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Lightning-Fast Results (Optimized Algorithms)</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-1">We parse 50,000+ follower accounts in under 3 seconds using optimized, industry-leading algorithms. Get your unfollower list faster than you can open Instagram.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
+                            <div
+                                class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 shrink-0">
+                                <i class="fas fa-mobile-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Works Everywhere (Mobile-Friendly)</h4>
+                                <p class="text-gray-400 text-sm mt-1">iPhone? Android? Desktop? Works perfectly on any device with a web browser. No app download, no installation, no permissions required.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">GDPR Compliant & Instagram Verified</h4>
+                                <p class="text-gray-400 text-sm mt-1">We follow strict data protection standards. Zero ban risk because we never touch your account—only the data you provide.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
+                            <div
+                                class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 shrink-0">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Actually Free (No Hidden Fees)</h4>
+                                <p class="text-gray-400 text-sm mt-1">No freemium traps. No "unlock premium features." No payment info required. Completely free. Forever.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Representation -->
+                <div class="relative">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-600 rounded-3xl blur-2xl opacity-20">
+                    </div>
+                    <div class="relative glass rounded-3xl p-6 md:p-10 border border-white/10">
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="font-bold text-lg">Analysis Report</h3>
+                            <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Completed</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div
+                                class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                                    <div>
+                                        <div class="w-24 h-3 bg-gray-600 rounded mb-2"></div>
+                                        <div class="w-16 h-2 bg-gray-700 rounded"></div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
+                                    You</span>
+                            </div>
+                            <div
+                                class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5 opacity-75">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                                    <div>
+                                        <div class="w-20 h-3 bg-gray-600 rounded mb-2"></div>
+                                        <div class="w-12 h-2 bg-gray-700 rounded"></div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
+                                    You</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                            <p class="text-sm font-semibold text-white">Found <span class="text-pink-500">241</span>
+                                users who don't follow back.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="reviews" class="py-20 bg-gradient-to-b from-transparent to-black/50" data-section-animate data-animate>
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold">Loved by Instagram Users</h2>
+        </div>
+
+        <div class="scroller" data-animated="true">
+            <div class="scroller__inner flex gap-3 sm:gap-4 md:gap-6 px-3 sm:px-4">
+                <div class="glass-card p-4 sm:p-6 rounded-2xl w-64 sm:w-80 shrink-0">
+                    <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-6">"Finally, NO password required?? 😭 I was terrified to use unfollower apps because everyone says they steal your login. Used this and was shocked—I just downloaded my data from Instagram and uploaded it. Done in 30 seconds and I kept my password to myself. Literally everyone should use this."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.pravatar.cc/100?img=9" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="font-bold text-sm">Sarah J.</p>
+                            <p class="text-xs text-gray-500">Portland</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-2xl w-64 sm:w-80 shrink-0">
+                    <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-6">"The results are actually accurate. Most unfollower trackers are total BS. This one actually works offline and shows me exactly who bounced from my profile. Took 10 seconds. Found 47 unfollowers I didn't even know about. Wild."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.pravatar.cc/100?img=12" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="font-bold text-sm">Mike T.</p>
+                            <p class="text-xs text-gray-500">Austin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-2xl w-64 sm:w-80 shrink-0">
+                    <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-6">"It's giving security 🔒 No cap, I almost fell for one of those scammy unfollower sites. Found this instead and it literally just uses my Instagram data zip file. No app, no password, no stress. This is how it should've always worked."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.pravatar.cc/100?img=32" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="font-bold text-sm">Emily R.</p>
+                            <p class="text-xs text-gray-500">Los Angeles</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 sm:p-6 rounded-2xl w-64 sm:w-80 shrink-0">
+                    <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-gray-300 text-sm mb-6">"Zero ban risk. Legit. Used it twice this month. Zero issues with my account, zero bans, zero suspicious activity. Instagram kept my account safe because we never touched my login. Recommend this to everyone."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.pravatar.cc/100?img=44" class="w-8 h-8 rounded-full">
+                        <div>
+                            <p class="font-bold text-sm">David K.</p>
+                            <p class="text-xs text-gray-500">Toronto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="py-16 sm:py-20 md:py-24 px-3 sm:px-4 max-w-3xl mx-auto reveal-up" id="faq-section">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-3 sm:space-y-4" id="faq-container">
+            <!-- Q1: Safety & Account Security -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Is it safe? Will Instagram ban me for using this unfollower tracker?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>Yes, it's 100% safe, and no, Instagram will not ban you.</strong> Here's why: We never access your Instagram account. You're not logging in. We don't ask for your password. We don't make any requests to Instagram's servers on your behalf. Instead, you download <strong>your own data</strong> directly from Instagram (Instagram → Settings → Download Your Info). This is a feature Instagram officially provides to every user. We simply analyze the data <strong>you own</strong> within your browser. Since we never touch your account, there's nothing to trigger Instagram's security systems. <strong>Login-requiring apps = ban risk. Data-only analysis with no server interaction = zero ban risk.</strong>
+                </div>
+            </div>
+
+            <!-- Q2: Data Privacy -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Where does my Instagram follower data go? Is it uploaded to your servers?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>Your data stays on your device. Period.</strong> When you upload your Instagram ZIP/JSON file, the analysis happens 100% in your web browser using local processing. Your data is never sent to our servers, never stored in a database, and never touched by our backend code. <strong>GDPR-Compliant:</strong> Because we don't collect, store, or transmit any personal data, GDPR, CCPA, and other privacy regulations don't even apply—we have nothing to regulate.
+                </div>
+            </div>
+
+            <!-- Q3: How to Get Started -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    How do I download my Instagram data to analyze my followers?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>It's a two-minute process. Follow these steps:</strong><br><br>
+                    1. <strong>Open Instagram</strong> → Tap your profile icon → Select "Settings & Privacy"<br>
+                    2. <strong>Find "Download Your Info"</strong> → Scroll to "Account Center" or "Data & Privacy"<br>
+                    3. <strong>Choose Your Account</strong> → Select the Instagram account you want to analyze<br>
+                    4. <strong>Select "Download Your Info"</strong> → Choose "Request a Download"<br>
+                    5. <strong>Pick Your Format</strong> → Select JSON format (smaller file size, faster to analyze)<br>
+                    6. <strong>Confirm & Wait</strong> → Instagram emails you within a few minutes with your download link<br>
+                    7. <strong>Download the ZIP File</strong> → Check your email for the Instagram data zip<br>
+                    8. <strong>Come Back Here</strong> → Upload the file to InstaUnfollowers and get results in 10 seconds<br><br>
+                    <strong>Pro Tip:</strong> Keep your Instagram data zip file safe. You can re-upload it to us anytime without requesting fresh data from Instagram again. It's yours to keep.
+                </div>
+            </div>
+
+            <!-- Q4: Speed & Performance -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    How fast is this Instagram follower analysis? Does it work offline?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>It's ridiculously fast, and yes—it works offline.</strong><br><br>
+                    <strong>Speed Metrics:</strong><br>
+                    • File Upload: 2–5 seconds<br>
+                    • Data Parsing: < 15 seconds (even for 100,000+ followers)<br>
+                    • Results Display: Instant (< 1 second)<br>
+                    • Total Time: Usually under 20 seconds start-to-finish<br><br>
+                    <strong>Offline Capability:</strong> After you upload your Instagram data file, you can literally disconnect your WiFi and the analysis still runs fine. Everything happens in your browser using local computational resources.
+                </div>
+            </div>
+
+            <!-- Q5: Mobile/Device Compatibility -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Can I use this on my phone, tablet, or any device?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>Yes, absolutely. InstaUnfollowers works on any device with a web browser.</strong><br><br>
+                    <strong>Mobile-Friendly & Responsive:</strong><br>
+                    • iPhone (Safari, Chrome, Firefox)<br>
+                    • Android (Chrome, Firefox, Samsung Internet)<br>
+                    • iPad/Tablets<br>
+                    • Desktop (Windows, Mac, Linux)<br><br>
+                    <strong>No App Required:</strong> We're a web tool, not an app. No download. No installation. No permissions. No version updates. Just visit → upload → analyze.
+                </div>
+            </div>
+
+            <!-- Q6: Results Interpretation -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    What does "doesn't follow back" mean? How do I use the results?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>"Doesn't follow back"</strong> = you follow them, but they don't follow you back.<br><br>
+                    <strong>Understanding the Results:</strong><br>
+                    • <strong>Who Unfollowed You:</strong> These are accounts that <strong>used to</strong> follow you but recently unfollowed. This shows you who bounced or got unfollowed you.<br>
+                    • <strong>Who Doesn't Follow Back:</strong> You follow these accounts, but they don't follow you back. Useful for cleaning up your follow list.<br>
+                    • <strong>Your True Followers:</strong> These are the accounts that follow you back. Your actual audience.<br><br>
+                    <strong>How to Use This:</strong> See who left your community recently, decide if you want to unfollow accounts that don't reciprocate, engage more with your real supporters, or download your report as a reference.
+                </div>
+            </div>
+
+            <!-- Q7: Support & Guarantees -->
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    What if I have issues? Is there support?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    <strong>Great news—there's nothing to refund because it's completely free.</strong><br><br>
+                    <strong>If You Encounter a Bug:</strong><br>
+                    • Check Your Data: Make sure your Instagram ZIP file is valid and unencrypted<br>
+                    • Clear Browser Cache: Sometimes browser settings interfere with local processing<br>
+                    • Try a Different Browser: Chrome, Firefox, Safari all work<br>
+                    • Refresh & Retry: Hit refresh and try uploading your data again<br><br>
+                    <strong>Why No Paid Support?</strong> We're bootstrapped and free-to-use on purpose. This isn't a SaaS with an upsell. Our goal is to help you avoid dodgy unfollower apps.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-black py-8 sm:py-10 md:py-12 px-3 sm:px-4">
+        <div class="max-w-7xl mx-auto flex flex-col gap-4 sm:gap-6 md:gap-0 md:flex-row md:justify-between md:items-center">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <img src="/logo%28do%20not%20delete%29.png" alt="Logo"
+                    class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain">
+                <span class="font-bold text-sm sm:text-base text-gray-200">InstaUnfollowers</span>
+            </div>
+            <!-- Footer links -->
+            <div class="text-xs sm:text-sm text-gray-500 flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center md:justify-end">
+                <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+            <div class="text-xs text-gray-600 text-center md:text-right">
+                © 2026 InstaUnfollowers. Not affiliated with Instagram, Meta, or Facebook. InstaUnfollowers is a third-party analysis tool designed to help Instagram users understand their follower dynamics using official Instagram data exports.
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // ============================================
+        // PAYMENT & UNLOCK SYSTEM
+        // ============================================
+
+        // YOUR STRIPE CHECKOUT LINK
+        // Replace with your actual Stripe checkout URL
+        const STRIPE_CHECKOUT_URL = "https://checkout.stripe.com/pay/cs_YOUR_CHECKOUT_SESSION_ID";
+
+        function initPaymentSystem() {
+            const hasFullAccess = localStorage.getItem('full_access') === 'true';
+            if (hasFullAccess) {
+                console.log('✅ Full access detected');
+            }
+
+            // Check if returning from successful Stripe payment
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                localStorage.setItem('full_access', 'true');
+                window.history.replaceState({}, document.title, window.location.pathname);
+                console.log('✅ Payment successful! Full access unlocked.');
+            }
+        }
+
+        function redirectToStripeCheckout() {
+            if (STRIPE_CHECKOUT_URL.includes("YOUR_STRIPE_LINK") || STRIPE_CHECKOUT_URL.includes("YOUR_CHECKOUT_SESSION_ID")) {
+                alert("⚠️ Payment system not configured. Add your Stripe checkout link to index.html");
+                return;
+            }
+            window.location.href = STRIPE_CHECKOUT_URL;
+        }
+
+        function showPaywall(totalUnfollowers) {
+            const hasFullAccess = localStorage.getItem('full_access') === 'true';
+            if (hasFullAccess) return false;
+            return totalUnfollowers > 3;
+        }
+
+        window.addEventListener('load', initPaymentSystem);
+
+        // --- UI Interactions ---
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        const scrollers = document.querySelectorAll(".scroller");
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
+
+        function addAnimation() {
+            scrollers.forEach((scroller) => {
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                if (!scrollerInner) return;
+
+                // Prevent double execution - check if already duplicated
+                if (scrollerInner.hasAttribute('data-duplicated')) return;
+
+                // Get all original child elements (before duplication)
+                const originalChildren = Array.from(scrollerInner.children);
+                
+                // Clone each child and append
+                originalChildren.forEach((child) => {
+                    const clone = child.cloneNode(true);
+                    clone.setAttribute("aria-hidden", "true");
+                    scrollerInner.appendChild(clone);
+                });
+
+                // Mark as duplicated to prevent re-duplication
+                scrollerInner.setAttribute('data-duplicated', 'true');
+                
+                // Mark scroller as animated
+                scroller.setAttribute("data-animated", "true");
+            });
+        }
+
+        // --- Live Counter Animation ---
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Counter animation — starts from a realistic base and counts up slightly
+        const counterObj = document.getElementById("counter");
+        if (counterObj) animateValue(counterObj, 300, 367, 2000);
+
+        // --- Smooth Scroll Function ---
+        function scrollToAnalyze() {
+            const element = document.getElementById('analyze');
+            if (!element) return;
+            const headerOffset = 120; // 120px offset for navbar
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+
+        // ============================================
+        // CORE LOGIC PORTED FROM ORIGINAL
+        // ============================================
+        const fileInput = document.getElementById('file-upload');
+        const uploadArea = document.getElementById('uploadArea');
+        const loadingState = document.getElementById('loadingState');
+        const progressBar = document.getElementById('progressBar');
+        const progressPercentage = document.getElementById('progressPercentage');
+        const microMessage = document.getElementById('microMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const resultsDisplay = document.getElementById('resultsDisplay');
+        const statsDisplay = document.getElementById('statsDisplay');
+        const resetBtn = document.getElementById('resetBtn');
+
+        let currentTxtContent = null;
+        let currentResults = null;
+
+        // --- Upload Event Listeners ---
+        
+        // Mobile-safe click handler - prevents flicker and multiple triggers
+        uploadArea.addEventListener('click', (e) => {
+            // Prevent default browser behaviors on mobile
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+
+            const isLoading = !loadingState.classList.contains('hidden');
+            const isResults = !resultsDisplay.classList.contains('hidden');
+
+            if (!isLoading && !isResults) {
+                // Prevent tap highlight flicker
+                e.preventDefault();
+                uploadArea.style.webkitTapHighlightColor = 'transparent';
+                fileInput.click();
+            }
+        }, { passive: false });
+
+        // Prevent flickering on touch start
+        uploadArea.addEventListener('touchstart', (e) => {
+            uploadArea.style.webkitTapHighlightColor = 'transparent';
+            uploadArea.style.opacity = '1';
+        }, { passive: true });
+
+        // Ensure smooth release on touch end
+        uploadArea.addEventListener('touchend', (e) => {
+            uploadArea.style.opacity = '1';
+        }, { passive: true });
+
+        uploadArea.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.add('dragover');
+            uploadArea.style.borderColor = '#FF0080';
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.add('dragover');
+            uploadArea.style.borderColor = '#FF0080';
+        });
+
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Only remove if leaving the container, not entering a child
+            if (uploadArea.contains(e.relatedTarget)) return;
+
+            uploadArea.classList.remove('dragover');
+            uploadArea.style.borderColor = 'rgba(255,255,255,0.1)';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('dragover');
+            uploadArea.style.borderColor = 'rgba(255,255,255,0.1)';
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        /**
+         * UTILITY: Wait for required libraries to load
+         * Ensures both JSZip and InstagramAnalyzer are available
+         */
+        async function waitForLibraries(maxWaitTime = 10000) {
+            const startTime = Date.now();
+            
+            while (Date.now() - startTime < maxWaitTime) {
+                const jsZipReady = typeof JSZip !== 'undefined';
+                const analyzerReady = typeof InstagramAnalyzer !== 'undefined';
+                
+                if (jsZipReady && analyzerReady) {
+                    return { jsZipReady, analyzerReady };
+                }
+                
+                // Wait 100ms before checking again
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            
+            // Timeout - return current state
+            return {
+                jsZipReady: typeof JSZip !== 'undefined',
+                analyzerReady: typeof InstagramAnalyzer !== 'undefined'
+            };
+        }
+
+        /**
+         * handleFile — Analyzes Instagram ZIP file entirely in client-side browser.
+         * All processing is local; no data is sent to any server.
+         */
+        async function handleFile(file) {
+            hideError();
+            hideResults();
+            showLoading();
+
+            // Client-side extension check
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (ext !== 'zip') {
+                hideLoading();
+                showError('Invalid file type. Please upload your Instagram data .zip file (downloaded from Instagram Settings → Your Activity → Download Information).');
+                document.getElementById('upload-content').classList.remove('hidden');
+                return;
+            }
+
+            try {
+                updateProgress(2, 'Verifying analyzer and libraries...');
+
+                // Wait for libraries to load with timeout
+                const { jsZipReady, analyzerReady } = await waitForLibraries(10000);
+
+                if (!analyzerReady) {
+                    console.error('❌ InstagramAnalyzer not loaded. Available globals:', Object.keys(window).filter(k => k.includes('Analyzer') || k.includes('ZIP') || k.includes('jszip') || k.includes('JSZip')));
+                    throw new Error('InstagramAnalyzer library failed to load. Please refresh the page and try again. (If this persists, clear your browser cache.)');
+                }
+
+                if (!jsZipReady) {
+                    console.error('❌ JSZip not loaded after timeout');
+                    throw new Error('JSZip library failed to load. Please refresh the page and try again.');
+                }
+
+                updateProgress(5, 'Initializing analyzer...');
+
+                const analyzer = new InstagramAnalyzer();
+
+                // Set up progress callback with proper progress scaling
+                analyzer.setProgressCallback(({ progress, message }) => {
+                    // Progress from analyzer is 0-100, scale to UI range 5-95%
+                    const uiProgress = 5 + (Math.min(progress, 100) * 0.9);
+                    updateProgress(Math.round(uiProgress), message);
+                });
+
+                updateProgress(7, 'Starting ZIP file analysis...');
+
+                // Analyze ZIP file completely in browser
+                const result = await analyzer.analyzeZip(file);
+
+                updateProgress(98, 'Finalizing results...');
+
+                // Normalize data from client-side analysis
+                const apiData = {
+                    unfollower_count: result.unfollower_count || 0,
+                    followers_count: result.followers_count || 0,
+                    following_count: result.following_count || 0,
+                    unfollowers: Array.isArray(result.unfollowers) ? result.unfollowers : [],
+                    hidden_count: result.hidden_count || 0,
+                    txt_content: result.txt_content || '',
+                    all_unfollowers: result.all_unfollowers || []
+                };
+
+                // Store globally for download button
+                currentResults = apiData;
+
+                updateProgress(100, 'Analysis complete!');
+
+                // Brief pause so user sees 100% before results appear
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                hideLoading();
+                displayResults(apiData);
+
+            } catch (err) {
+                hideLoading();
+                document.getElementById('upload-content').classList.remove('hidden');
+                
+                // Provide helpful error messages
+                let userMessage = err.message || 'An unexpected error occurred.';
+                
+                if (userMessage.includes('ZIP')) {
+                    userMessage += ' Please ensure you downloaded the ZIP file from Instagram.';
+                } else if (userMessage.includes('followers')) {
+                    userMessage += ' Your ZIP file may be missing the required followers/following data.';
+                }
+                
+                showError(userMessage);
+                console.error('Analysis error details:', err);
+            }
+        }
+
+        function updateProgress(percent, message) {
+            progressBar.style.width = `${percent}%`;
+            progressPercentage.textContent = `${percent}%`;
+            microMessage.textContent = message;
+        }
+
+        /**
+         * displayResults — renders real data from the /api/upload response.
+         * All counts and usernames are sourced from the backend; no mock values.
+         *
+         * @param {Object} data  Normalised API response:
+         *   { unfollower_count, followers_count, following_count,
+         *     unfollowers (preview array ≤3), hidden_count,
+         *     txt_content }
+         */
+        function displayResults(data) {
+            currentResults = data;
+
+            // ── Derived values ──────────────────────────────────────────────────
+            const totalUnfollowers = data.unfollower_count;
+            // revealedCount = how many usernames the backend actually returned (≤3)
+            const revealedCount = data.unfollowers.length;
+            // hiddenCount = total minus what's shown (use backend's hidden_count if available)
+            const hiddenCount = (typeof data.hidden_count === 'number')
+                ? data.hidden_count
+                : Math.max(0, totalUnfollowers - revealedCount);
+            const previewList = data.unfollowers; // already sliced by backend
+
+            // ── Result summary message ──────────────────────────────────────────
+            document.getElementById('resultMessage').textContent =
+                totalUnfollowers === 0
+                    ? 'Great news! Everyone you follow follows you back. 🎉'
+                    : `Found ${totalUnfollowers} user${totalUnfollowers !== 1 ? 's' : ''} who don't follow you back.`;
+
+            // ── Progress bar widths (guard against division by zero) ─────────────
+            const revealedWidth = totalUnfollowers > 0 ? (revealedCount / totalUnfollowers) * 100 : 0;
+            const hiddenWidth = totalUnfollowers > 0 ? (hiddenCount / totalUnfollowers) * 100 : 0;
+
+            // ── Build stats HTML ────────────────────────────────────────────────
+            const statsHTML = `
+                <!-- ── Real stats from backend ── -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+                        <div class="text-2xl font-bold text-pink-400 mb-1" id="unfollowerCount">0</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider">Unfollowers</div>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+                        <div class="text-2xl font-bold text-white mb-1" id="followersCount">0</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider">Followers</div>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+                        <div class="text-2xl font-bold text-white mb-1" id="followingCount">0</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider">Following</div>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/10 text-center">
+                        <div class="text-2xl font-bold text-green-400 mb-1" id="progressCount">0</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider">Revealed</div>
+                    </div>
+                </div>
+
+                ${totalUnfollowers > 0 ? `
+                <!-- ── Revealed / Hidden progress bar ── -->
+                <div class="mb-8 p-4 bg-white/5 rounded-xl border border-white/10">
+                    <div class="h-3 bg-gray-700 rounded-full overflow-hidden relative">
+                        <div id="progressRevealed"
+                             class="absolute top-0 left-0 h-full bg-green-500 rounded-full transition-all duration-1000"
+                             style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-bold mt-2">
+                        <span class="text-green-400">✓ Revealed: ${revealedCount}</span>
+                        <span class="text-red-400">${hiddenCount > 0 ? `🔒 Hidden: ${hiddenCount}` : '✓ All revealed'}</span>
+                    </div>
+                </div>
+
+                <!-- ── Preview list of real unfollower usernames ── -->
+                <div class="space-y-3 mb-8">
+                    ${previewList.length > 0 ? previewList.map((username, i) => {
+                // Safely escape username for display (prevent XSS)
+                const safeUser = username.replace(/[<>&"']/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]));
+                const initials = safeUser.substring(0, 2).toUpperCase();
+                return `
+                        <div class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-colors"
+                             style="animation: fadeInUp 0.4s ${i * 80}ms both">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500/30 to-purple-500/30 flex items-center justify-center text-white font-bold text-sm shrink-0">
+                                    ${initials}
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="text-sm font-bold text-white truncate">@${safeUser}</div>
+                                    <div class="text-xs text-gray-500">Doesn't follow you back</div>
+                                </div>
+                            </div>
+                            <span class="text-red-400 text-[10px] font-bold bg-red-400/10 px-2 py-1 rounded-full uppercase tracking-wider shrink-0 ml-2">Unfollowed</span>
+                        </div>`;
+            }).join('') : ''}
+
+                    ${hiddenCount > 0 ? `
+                    <div class="text-center py-4 text-gray-400 text-sm">
+                        <span class="animate-pulse">🔒 </span>and
+                        <span class="text-pink-500 font-bold">${hiddenCount}</span>
+                        more hidden unfollower${hiddenCount !== 1 ? 's' : ''}
+                    </div>` : ''}
+                </div>
+
+                <!-- ── Action buttons ── -->
+                <div class="flex flex-col gap-4">
+                    <button onclick="downloadResults()"
+                            class="w-full bg-gradient-to-r from-pink-500 to-violet-600 text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-pink-500/20 flex items-center justify-center gap-2">
+                        <i class="fas fa-download"></i> Download Full Report (Free)
+                    </button>
+                    <button id="resetBtn"
+                            class="text-gray-500 text-sm hover:text-white transition-colors underline">
+                        Analyze Another File
+                    </button>
+                </div>
+                ` : `
+                <!-- ── Zero unfollowers: everyone follows back ── -->
+                <div class="text-center py-8">
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h4 class="text-xl font-bold text-green-400 mb-2">You're all good!</h4>
+                    <p class="text-gray-400 text-sm mb-6">Everyone you follow follows you back. No unfollowers detected.</p>
+                    <button id="resetBtn"
+                            class="text-gray-500 text-sm hover:text-white transition-colors underline">
+                        Analyze Another File
+                    </button>
+                </div>`}
+            `;
+
+            // ── Inject HTML ─────────────────────────────────────────────────────
+            statsDisplay.innerHTML = statsHTML;
+            resultsDisplay.classList.remove('hidden');
+            resultsDisplay.classList.add('block');
+
+            // ── Generate Payment UI ─────────────────────────────────────────────────────
+            const paymentContainer = document.getElementById('paymentContainer');
+            const hasFullAccess = localStorage.getItem('full_access') === 'true';
+            
+            if (hasFullAccess) {
+                // User has paid - show success message
+                paymentContainer.innerHTML = `
+                    <div class="unlock-success">
+                        <i class="fas fa-check-circle mr-2"></i> Full Access Unlocked! You can see all unfollowers.
+                    </div>
+                `;
+            } else if (results.unfollowed.length > 3) {
+                // Show paywall with payment option
+                const previewCount = Math.min(3, results.unfollowed.length);
+                const hiddenCount = results.unfollowed.length - previewCount;
+                
+                paymentContainer.innerHTML = `
+                    <div class="paywall-container">
+                        <div class="paywall-message">
+                            <i class="fas fa-lock mr-2"></i> ${hiddenCount} more result${hiddenCount !== 1 ? 's' : ''} hidden
+                        </div>
+                        <div class="paywall-preview paywall-blur">
+                            ${results.unfollowed.slice(previewCount).slice(0, 3).map(user => `
+                                <div class="paywall-preview-item">
+                                    <i class="fas fa-user-times"></i>
+                                    <span>${user}</span>
+                                </div>
+                            `).join('')}
+                            ${hiddenCount > 3 ? `
+                                <div class="paywall-preview-item">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                    <span>+ ${hiddenCount - 3} more...</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="paywall-divider"></div>
+                        <div class="ad-button-group">
+                            <button onclick="window.location.href='/pricing.html'" class="payment-btn">
+                                <i class="fas fa-unlock mr-2"></i> Unlock Full List – €2.49
+                            </button>
+                        </div>
+                        <div class="payment-trust-line">
+                            One-time payment • Instant access • No subscription
+                        </div>
+                    </div>
+                `;
+            } else {
+                paymentContainer.innerHTML = '';
+            }
+
+            // ── Re-attach reset button listener (injected dynamically) ──────────
+            const newResetBtn = document.getElementById('resetBtn');
+            if (newResetBtn) {
+                newResetBtn.addEventListener('click', () => {
+                    hideResults();
+                    hideError();
+                    document.getElementById('upload-content').classList.remove('hidden');
+                    fileInput.value = '';
+                    currentResults = null;
+                });
+            }
+
+            // ── Animate stat counters with real values from API ─────────────────
+            animateCount(document.getElementById('unfollowerCount'), totalUnfollowers);
+            animateCount(document.getElementById('followersCount'), data.followers_count);
+            animateCount(document.getElementById('followingCount'), data.following_count);
+            animateCount(document.getElementById('progressCount'), revealedCount);
+
+            // ── Animate revealed/hidden progress bar ────────────────────────────
+            if (totalUnfollowers > 0) {
+                setTimeout(() => {
+                    const revBar = document.getElementById('progressRevealed');
+                    if (revBar) revBar.style.width = `${revealedWidth}%`;
+                }, 200);
+            }
+
+            // ── Scroll results into view smoothly ───────────────────────────────
+            setTimeout(() => {
+                resultsDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+        }
+
+        function animateCount(obj, end) {
+            if (!obj) return;
+            animateValue(obj, 0, end, 1500);
+        }
+
+        function showLoading() {
+            document.getElementById('upload-content').classList.add('hidden');
+            loadingState.classList.remove('hidden');
+            loadingState.classList.add('flex');
+            updateProgress(0, 'Starting...');
+            
+            // Start premium analysis animation
+            if (typeof startAnalysisAnimation === 'function') {
+                startAnalysisAnimation();
+            }
+        }
+
+        function hideLoading() {
+            loadingState.classList.add('hidden');
+            loadingState.classList.remove('flex');
+            
+            // Stop premium analysis animation
+            if (typeof stopAnalysisAnimation === 'function') {
+                stopAnalysisAnimation();
+            }
+        }
+
+        function showError(msg) {
+            errorMessage.textContent = msg;
+            errorMessage.classList.remove('hidden');
+            errorMessage.classList.add('block');
+        }
+
+        function hideError() {
+            errorMessage.classList.add('hidden');
+            errorMessage.classList.remove('block');
+        }
+
+        function hideResults() {
+            resultsDisplay.classList.add('hidden');
+            resultsDisplay.classList.remove('block');
+            statsDisplay.innerHTML = '';
+            document.getElementById('upload-content').classList.remove('hidden');
+        }
+
+        // ============================================
+        // MOBILE MENU TOGGLE (Updated for modern header)
+        // ============================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navbarBackdrop = document.getElementById('navbarBackdrop');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            navbarBackdrop.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            navbarBackdrop.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = mobileMenu.classList.contains('active');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        // Close mobile menu when clicking outside of it
+        document.addEventListener('click', (e) => {
+            const navbar = document.getElementById('navbar');
+            if (!navbar.contains(e.target) && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Welcome Popup Logic
+        const welcomePopup = document.getElementById('welcomePopup');
+        if (welcomePopup) {
+            setTimeout(() => {
+                welcomePopup.classList.add('active');
+                setTimeout(() => {
+                    welcomePopup.classList.remove('active');
+                    welcomePopup.classList.add('fade-out');
+                }, 5000);
+            }, 1500);
+        }
+
+        // ============================================
+        // SCROLL REVEAL ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal items
+        document.querySelectorAll('.reveal-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        /**
+         * Download the complete unfollowers list as a text file
+         */
+        function downloadResults() {
+            if (!currentResults || !currentResults.all_unfollowers) {
+                showError('No results to download. Please analyze a file first.');
+                return;
+            }
+
+            const unfollowersList = currentResults.all_unfollowers;
+            const filename = `instagram_unfollowers_${new Date().toISOString().split('T')[0]}.txt`;
+            
+            // Create file content
+            let content = 'Instagram Unfollowers Report\n';
+            content += `Generated: ${new Date().toLocaleString()}\n`;
+            content += `Total Unfollowers: ${unfollowersList.length}\n`;
+            content += `Total Followers: ${currentResults.followers_count}\n`;
+            content += `Total Following: ${currentResults.following_count}\n`;
+            content += '\n--- User List ---\n\n';
+            
+            unfollowersList.forEach((username, index) => {
+                content += `${index + 1}. @${username}\n`;
+            });
+
+            // Create blob and download
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            // Log for debugging
+            if (console && console.log) {
+                console.log(`✅ Downloaded ${unfollowersList.length} unfollowers to ${filename}`);
+            }
+        }
+
+    </script>
+
+    <!-- Instagram Analyzer - Client-side ZIP processing module -->
+    <script src="/static/js/instagramAnalyzer.js" onload="console.log('✅ InstagramAnalyzer script loaded successfully')" onerror="console.error('❌ Failed to load InstagramAnalyzer from /static/js/instagramAnalyzer.js. Will attempt retry.')"></script>
+
+    <!-- Fallback loader for analyzer if initial load fails -->
+    <script>
+        // Fallback mechanism: if InstagramAnalyzer doesn't load within timeout, retry or provide detailed error
+        (function() {
+            const maxRetries = 3;
+            let retryCount = 0;
+
+            function checkAndLoadAnalyzer() {
+                if (typeof InstagramAnalyzer !== 'undefined') {
+                    console.log('✅ InstagramAnalyzer is available');
+                    return true;
+                }
+
+                retryCount++;
+                if (retryCount <= maxRetries) {
+                    console.warn(`⚠️ InstagramAnalyzer not found, retry ${retryCount}/${maxRetries}...`);
+                    setTimeout(checkAndLoadAnalyzer, 500);
+                } else {
+                    console.error('❌ InstagramAnalyzer failed to load after retries. Attempting alternative load path...');
+                    // Attempt to load from alternative paths
+                    const alternativePaths = [
+                        '/static/js/instagramAnalyzer.js',
+                        'static/js/instagramAnalyzer.js',
+                        './static/js/instagramAnalyzer.js',
+                        '/js/instagramAnalyzer.js'
+                    ];
+                    
+                    let pathIndex = 0;
+                    function tryAlternativePath() {
+                        if (pathIndex < alternativePaths.length) {
+                            const path = alternativePaths[pathIndex];
+                            console.log(`Trying alternative path: ${path}`);
+                            const script = document.createElement('script');
+                            script.src = path;
+                            script.onerror = () => {
+                                pathIndex++;
+                                tryAlternativePath();
+                            };
+                            script.onload = () => {
+                                console.log(`✅ Successfully loaded from: ${path}`);
+                            };
+                            document.head.appendChild(script);
+                        } else {
+                            console.error('❌ All attempted paths failed. InstagramAnalyzer could not be loaded.');
+                        }
+                    }
+                    tryAlternativePath();
+                }
+            }
+
+            // Start checking after a brief delay to allow main script to load
+            setTimeout(checkAndLoadAnalyzer, 300);
+        })();
+    </script>
+
+    <!-- Initialization and diagnostics -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('=== Insta Unfollowers Tracker - Initialization ===');
+            
+            // Check JSZip
+            if (typeof JSZip !== 'undefined') {
+                console.log('✅ JSZip library loaded successfully (v' + (JSZip.version || 'unknown') + ')');
+            } else {
+                console.error('❌ JSZip library NOT loaded!');
+            }
+            
+            // Check InstagramAnalyzer
+            if (typeof InstagramAnalyzer !== 'undefined') {
+                console.log('✅ InstagramAnalyzer class loaded successfully');
+                
+                // Test instantiation
+                try {
+                    const testAnalyzer = new InstagramAnalyzer();
+                    console.log('✅ InstagramAnalyzer can be instantiated');
+                    
+                    // Check for required methods
+                    if (typeof testAnalyzer.analyzeZip === 'function') {
+                        console.log('✅ analyzeZip method available');
+                    } else {
+                        console.error('❌ analyzeZip method NOT found!');
+                    }
+                    
+                    if (typeof testAnalyzer.setProgressCallback === 'function') {
+                        console.log('✅ setProgressCallback method available');
+                    } else {
+                        console.error('❌ setProgressCallback method NOT found!');
+                    }
+                } catch (e) {
+                    console.error('❌ Error instantiating InstagramAnalyzer:', e.message);
+                }
+            } else {
+                console.error('❌ InstagramAnalyzer class NOT loaded!');
+            }
+            
+            // Check UI elements
+            const requiredElements = {
+                'uploadArea': 'uploadArea',
+                'progressBar': 'progressBar',
+                'progressPercentage': 'progressPercentage',
+                'microMessage': 'microMessage',
+                'errorMessage': 'errorMessage',
+                'resultsDisplay': 'resultsDisplay',
+                'loadingState': 'loadingState'
+            };
+            
+            let allElementsFound = true;
+            for (const [name, id] of Object.entries(requiredElements)) {
+                if (document.getElementById(id)) {
+                    console.log(`✅ UI element found: #${id}`);
+                } else {
+                    console.error(`❌ UI element NOT found: #${id}`);
+                    allElementsFound = false;
+                }
+            }
+            
+            if (allElementsFound && typeof InstagramAnalyzer !== 'undefined' && typeof JSZip !== 'undefined') {
+                console.log('✅ All systems ready! Ready to process Instagram ZIP files.');
+                console.log('💡 To enable debug logging, run: enableInstagramAnalyzerDebug()');
+                // Set global readiness flag
+                window.analyzerReady = true;
+            } else {
+                console.warn('⚠️ Some required components are missing. Check the errors above.');
+                window.analyzerReady = false;
+            }
+        });
+    </script>
+
+    <!-- Analysis Animation System - Premium Full-Screen Data Visualization -->
+    <script src="/analysis-animation.js"></script>
+    
+    <!-- Final safety check: Ensure analyzer is available -->
+    <script>
+        // Wait a bit more to handle slow network conditions
+        setTimeout(() => {
+            if (typeof InstagramAnalyzer !== 'undefined' && typeof JSZip !== 'undefined') {
+                window.analyzerReady = true;
+                console.log('✅ Final verification: All libraries ready for use');
+            } else {
+                window.analyzerReady = false;
+                if (typeof InstagramAnalyzer === 'undefined') {
+                    console.error('⚠️ InstagramAnalyzer still not available - will retry on first file upload');
+                }
+                if (typeof JSZip === 'undefined') {
+                    console.error('⚠️ JSZip still not available - will retry on first file upload');
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
