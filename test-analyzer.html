@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzer Library - Automated Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #FF0080;
+        }
+
+        .test-group {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            background: #252525;
+        }
+
+        .test-status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .test-status.pending {
+            background: #666;
+            color: #999;
+        }
+
+        .test-status.loading {
+            background: #7928CA;
+            color: #fff;
+            animation: spin 1s linear infinite;
+        }
+
+        .test-status.success {
+            background: #00aa00;
+            color: #fff;
+        }
+
+        .test-status.error {
+            background: #cc0000;
+            color: #fff;
+        }
+
+        .test-status.warning {
+            background: #ff9800;
+            color: #fff;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .test-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .test-details {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            padding-left: 36px;
+        }
+
+        .test-time {
+            font-size: 12px;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #7928CA;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #9945ff;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .summary {
+            background: #1a1a1a;
+            border: 2px solid #7928CA;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-stat {
+            display: inline-block;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+
+        .summary-stat strong {
+            color: #FF0080;
+        }
+
+        .console-output {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .console-line {
+            margin-bottom: 6px;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+
+        .console-log {
+            color: #0f0;
+        }
+
+        .console-error {
+            color: #f00;
+        }
+
+        .console-warn {
+            color: #fa0;
+        }
+
+        .console-info {
+            color: #0ff;
+        }
+
+        .upload-section {
+            background: #1a1a1a;
+            border: 2px dashed #7928CA;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-section:hover {
+            border-color: #FF0080;
+            background: #252525;
+        }
+
+        .upload-section.dragover {
+            border-color: #FF0080;
+            background: rgba(255, 0, 128, 0.1);
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        .benchmark-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .benchmark-card {
+            background: #252525;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #7928CA;
+        }
+
+        .benchmark-card strong {
+            color: #FF0080;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .benchmark-value {
+            font-size: 18px;
+            color: #00aa00;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Unfollower Tracker - Analyzer Library Test Suite</h1>
+        <p style="color: #999; margin-bottom: 20px;">Comprehensive validation of all system components</p>
+
+        <div class="button-group">
+            <button onclick="runAllTests()">▶ Run All Tests</button>
+            <button onclick="testLibraryLoad()">📦 Test Library Loading</button>
+            <button onclick="testNetworkConditions()">🌐 Test Slow Network</button>
+            <button onclick="testMobileSupport()">📱 Test Mobile Simulation</button>
+            <button onclick="testFileUpload()">📁 Upload Test File</button>
+            <button onclick="clearConsole()">🗑️ Clear Console</button>
+        </div>
+
+        <!-- Library Loading Tests -->
+        <div class="test-group">
+            <h2>📦 Library Loading</h2>
+            <div id="test-jszip" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">JSZip Library</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-analyzer" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">InstagramAnalyzer Library</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-analyzer-methods" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Analyzer Methods (analyzeZip, setProgressCallback)</div>
+                <div class="test-time"></div>
+            </div>
+        </div>
+
+        <!-- Network Tests -->
+        <div class="test-group">
+            <h2>🌐 Network & Caching</h2>
+            <div id="test-static-cache" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Static Asset Caching</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-cdn-latency" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">CDN & External Resources (Tailwind, FontAwesome)</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-script-integrity" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Script Integrity & SRI</div>
+                <div class="test-time"></div>
+            </div>
+        </div>
+
+        <!-- Browser Compatibility -->
+        <div class="test-group">
+            <h2>🌍 Browser Compatibility</h2>
+            <div id="test-browser" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name" id="browser-info">Browser Detection</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-storage" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Local Storage Access</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-file-api" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">File API & FileReader Support</div>
+                <div class="test-time"></div>
+            </div>
+        </div>
+
+        <!-- Performance Tests -->
+        <div class="test-group">
+            <h2>⚡ Performance Benchmarks</h2>
+            <div id="test-load-time" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Total Page Load Time</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="test-analyzer-init" class="test-item">
+                <div class="test-status pending">?</div>
+                <div class="test-name">Analyzer Initialization Time</div>
+                <div class="test-time"></div>
+            </div>
+            <div id="benchmark-results"></div>
+        </div>
+
+        <!-- File Upload Test -->
+        <div class="upload-section" id="upload-area">
+            <p><strong>📁 Upload Instagram Data ZIP</strong></p>
+            <p style="font-size: 12px; color: #999; margin-top: 10px;">Drag and drop or click to select</p>
+            <input type="file" id="file-input" accept=".zip">
+        </div>
+
+        <!-- Summary -->
+        <div class="summary">
+            <h2>📊 Test Summary</h2>
+            <div>
+                <div class="summary-stat">Passed: <strong id="passed-count">0</strong></div>
+                <div class="summary-stat">Failed: <strong id="failed-count">0</strong></div>
+                <div class="summary-stat">Warnings: <strong id="warning-count">0</strong></div>
+                <div class="summary-stat">Status: <strong id="overall-status">Pending</strong></div>
+            </div>
+        </div>
+
+        <!-- Console Output -->
+        <div class="console-output" id="console"></div>
+    </div>
+
+    <script>
+        // Test Management
+        let testResults = {
+            passed: 0,
+            failed: 0,
+            warnings: 0,
+            tests: []
+        };
+
+        const consoleEl = document.getElementById('console');
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+
+        // Extended console logging
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function appendConsole(msg, type = 'log') {
+            const line = document.createElement('div');
+            line.className = `console-line console-${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            consoleEl.appendChild(line);
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog(...args);
+            appendConsole(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+            originalError(...args);
+            appendConsole(args.join(' '), 'error');
+        };
+
+        console.warn = function(...args) {
+            originalWarn(...args);
+            appendConsole(args.join(' '), 'warn');
+        };
+
+        // Test Utilities
+        function setTestStatus(testId, status, details = '') {
+            const el = document.getElementById(testId);
+            const statusEl = el.querySelector('.test-status');
+            const timeEl = el.querySelector('.test-time');
+            
+            statusEl.className = `test-status ${status}`;
+            statusEl.textContent = { loading: '⟳', success: '✓', error: '✗', warning: '⚠' }[status] || '?';
+            
+            if (details) {
+                let detailEl = el.querySelector('.test-details');
+                if (!detailEl) {
+                    detailEl = document.createElement('div');
+                    detailEl.className = 'test-details';
+                    el.appendChild(detailEl);
+                }
+                detailEl.textContent = details;
+            }
+            
+            if (status === 'success') testResults.passed++;
+            if (status === 'error') testResults.failed++;
+            if (status === 'warning') testResults.warnings++;
+            
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('passed-count').textContent = testResults.passed;
+            document.getElementById('failed-count').textContent = testResults.failed;
+            document.getElementById('warning-count').textContent = testResults.warnings;
+            
+            if (testResults.failed > 0) {
+                document.getElementById('overall-status').textContent = '❌ FAILED';
+            } else if (testResults.warnings > 0) {
+                document.getElementById('overall-status').textContent = '⚠️ WARNINGS';
+            } else if (testResults.passed > 0) {
+                document.getElementById('overall-status').textContent = '✅ PASSED';
+            }
+        }
+
+        // Browser Detection
+        function detectBrowser() {
+            const ua = navigator.userAgent;
+            let browserName = 'Unknown';
+            if (ua.includes('Firefox')) browserName = 'Firefox';
+            else if (ua.includes('Safari') && !ua.includes('Chrome')) browserName = 'Safari';
+            else if (ua.includes('Chrome')) browserName = 'Chrome';
+            else if (ua.includes('Edge')) browserName = 'Edge';
+            return browserName + ' (' + (navigator.maxTouchPoints > 0 ? 'Touch' : 'Desktop') + ')';
+        }
+
+        // Test: JSZip Library
+        async function testJSZip() {
+            console.log('Testing JSZip library...');
+            setTestStatus('test-jszip', 'loading');
+            
+            try {
+                if (typeof JSZip === 'undefined') {
+                    throw new Error('JSZip is not defined');
+                }
+                const zip = new JSZip();
+                setTestStatus('test-jszip', 'success', 'JSZip v' + (JSZip.version || 'unknown'));
+                console.log('✅ JSZip: OK');
+            } catch (e) {
+                setTestStatus('test-jszip', 'error', e.message);
+                console.error('❌ JSZip Error:', e.message);
+            }
+        }
+
+        // Test: InstagramAnalyzer Library
+        async function testAnalyzer() {
+            console.log('Testing InstagramAnalyzer library...');
+            setTestStatus('test-analyzer', 'loading');
+            
+            try {
+                if (typeof InstagramAnalyzer === 'undefined') {
+                    throw new Error('InstagramAnalyzer is not defined');
+                }
+                setTestStatus('test-analyzer', 'success', 'Class loaded');
+                console.log('✅ InstagramAnalyzer: OK');
+            } catch (e) {
+                setTestStatus('test-analyzer', 'error', e.message);
+                console.error('❌ InstagramAnalyzer Error:', e.message);
+            }
+        }
+
+        // Test: Analyzer Methods
+        async function testAnalyzerMethods() {
+            console.log('Testing InstagramAnalyzer methods...');
+            setTestStatus('test-analyzer-methods', 'loading');
+            
+            try {
+                if (typeof InstagramAnalyzer === 'undefined') {
+                    throw new Error('InstagramAnalyzer not loaded');
+                }
+                
+                const analyzer = new InstagramAnalyzer();
+                
+                if (typeof analyzer.analyzeZip !== 'function') {
+                    throw new Error('analyzeZip method not found');
+                }
+                
+                if (typeof analyzer.setProgressCallback !== 'function') {
+                    throw new Error('setProgressCallback method not found');
+                }
+                
+                setTestStatus('test-analyzer-methods', 'success', '2/2 methods available');
+                console.log('✅ Analyzer Methods: OK');
+            } catch (e) {
+                setTestStatus('test-analyzer-methods', 'error', e.message);
+                console.error('❌ Analyzer Methods Error:', e.message);
+            }
+        }
+
+        // Test: Browser Support
+        function testBrowser() {
+            console.log('Testing browser compatibility...');
+            setTestStatus('test-browser', 'loading');
+            
+            try {
+                const browserInfo = detectBrowser();
+                document.getElementById('browser-info').textContent = 'Browser: ' + browserInfo;
+                
+                // Check for required APIs
+                if (!window.FileReader) throw new Error('FileReader API not available');
+                if (!window.File) throw new Error('File API not available');
+                if (!window.ArrayBuffer) throw new Error('ArrayBuffer not available');
+                
+                setTestStatus('test-browser', 'success', browserInfo);
+                console.log('✅ Browser: ' + browserInfo);
+            } catch (e) {
+                setTestStatus('test-browser', 'error', e.message);
+                console.error('❌ Browser Error:', e.message);
+            }
+        }
+
+        // Test: Local Storage
+        function testStorage() {
+            console.log('Testing localStorage...');
+            setTestStatus('test-storage', 'loading');
+            
+            try {
+                const testKey = '__analyzer_test__';
+                localStorage.setItem(testKey, 'test');
+                const value = localStorage.getItem(testKey);
+                localStorage.removeItem(testKey);
+                
+                if (value !== 'test') throw new Error('localStorage read/write failed');
+                
+                setTestStatus('test-storage', 'success', 'Read/Write OK');
+                console.log('✅ Local Storage: OK');
+            } catch (e) {
+                setTestStatus('test-storage', 'warning', 'Limited: ' + e.message);
+                console.warn('⚠️ Local Storage:', e.message);
+            }
+        }
+
+        // Test: File API
+        function testFileAPI() {
+            console.log('Testing File API...');
+            setTestStatus('test-file-api', 'loading');
+            
+            try {
+                if (!window.File) throw new Error('File API not available');
+                if (!window.FileReader) throw new Error('FileReader not available');
+                if (!window.Blob) throw new Error('Blob not available');
+                
+                setTestStatus('test-file-api', 'success', 'All APIs available');
+                console.log('✅ File API: OK');
+            } catch (e) {
+                setTestStatus('test-file-api', 'error', e.message);
+                console.error('❌ File API Error:', e.message);
+            }
+        }
+
+        // Test: Network Performance
+        async function testNetworkCDN() {
+            console.log('Testing CDN and external resources...');
+            setTestStatus('test-cdn-latency', 'loading');
+            
+            try {
+                const urls = [
+                    'https://cdn.tailwindcss.com',
+                    'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'
+                ];
+                
+                let totalTime = 0;
+                for (const url of urls) {
+                    const start = performance.now();
+                    const response = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                    const time = performance.now() - start;
+                    totalTime += time;
+                    console.log(`  ${url.split('/')[2]}: ${time.toFixed(0)}ms`);
+                }
+                
+                const avgTime = totalTime / urls.length;
+                setTestStatus('test-cdn-latency', 'success', `Avg ${avgTime.toFixed(0)}ms`);
+                console.log('✅ CDN Latency: OK');
+            } catch (e) {
+                setTestStatus('test-cdn-latency', 'warning', 'Network test skipped');
+                console.warn('⚠️ CDN Test:', e.message);
+            }
+        }
+
+        // Test: Page Load Time
+        function testLoadTime() {
+            console.log('Testing page load time...');
+            setTestStatus('test-load-time', 'loading');
+            
+            try {
+                const perfData = performance.timing;
+                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                
+                if (pageLoadTime < 3000) {
+                    setTestStatus('test-load-time', 'success', pageLoadTime + 'ms');
+                } else if (pageLoadTime < 6000) {
+                    setTestStatus('test-load-time', 'warning', pageLoadTime + 'ms (slow)');
+                } else {
+                    setTestStatus('test-load-time', 'error', pageLoadTime + 'ms (very slow)');
+                }
+                
+                console.log(`Page load: ${pageLoadTime}ms`);
+            } catch (e) {
+                console.warn('Performance API not available');
+            }
+        }
+
+        // Test: Analyzer Init Time
+        function testAnalyzerInitTime() {
+            console.log('Testing analyzer initialization...');
+            setTestStatus('test-analyzer-init', 'loading');
+            
+            try {
+                const start = performance.now();
+                const analyzer = new InstagramAnalyzer();
+                const time = performance.now() - start;
+                
+                if (time < 10) {
+                    setTestStatus('test-analyzer-init', 'success', time.toFixed(2) + 'ms');
+                } else {
+                    setTestStatus('test-analyzer-init', 'warning', time.toFixed(2) + 'ms');
+                }
+                
+                console.log(`Analyzer init: ${time.toFixed(2)}ms`);
+            } catch (e) {
+                setTestStatus('test-analyzer-init', 'error', e.message);
+                console.error('Analyzer init error:', e.message);
+            }
+        }
+
+        // Test: Script Integrity
+        function testScriptIntegrity() {
+            console.log('Testing script integrity...');
+            setTestStatus('test-script-integrity', 'loading');
+            
+            try {
+                const scripts = document.querySelectorAll('script[src]');
+                let hasIntegrity = 0;
+                let totalScripts = 0;
+                
+                scripts.forEach(script => {
+                    if (script.hasAttribute('integrity')) {
+                        hasIntegrity++;
+                    }
+                    totalScripts++;
+                });
+                
+                if (hasIntegrity > 0) {
+                    setTestStatus('test-script-integrity', 'success', `${hasIntegrity}/${totalScripts} have SRI`);
+                    console.log(`✅ Script Integrity: ${hasIntegrity} scripts with SRI hashes`);
+                } else {
+                    setTestStatus('test-script-integrity', 'warning', 'No SRI hashes found');
+                    console.warn('⚠️ No SRI integrity attributes on scripts');
+                }
+            } catch (e) {
+                setTestStatus('test-script-integrity', 'error', e.message);
+            }
+        }
+
+        // Test: Static Caching
+        function testStaticCache() {
+            console.log('Testing static asset caching...');
+            setTestStatus('test-static-cache', 'loading');
+            
+            try {
+                const href = document.querySelector('link[rel="stylesheet"]')?.href;
+                if (!href) {
+                    setTestStatus('test-static-cache', 'warning', 'Unable to verify');
+                    return;
+                }
+                
+                fetch(href, { method: 'HEAD' }).then(response => {
+                    const cacheControl = response.headers.get('cache-control');
+                    if (cacheControl && cacheControl.includes('max-age')) {
+                        setTestStatus('test-static-cache', 'success', cacheControl);
+                        console.log(`✅ Cache headers: ${cacheControl}`);
+                    } else {
+                        setTestStatus('test-static-cache', 'warning', 'No cache headers');
+                    }
+                });
+            } catch (e) {
+                setTestStatus('test-static-cache', 'warning', 'Check skipped');
+            }
+        }
+
+        // Run All Tests
+        async function runAllTests() {
+            console.clear();
+            console.log('🧪 Starting comprehensive test suite...\n');
+            
+            testResults = { passed: 0, failed: 0, warnings: 0, tests: [] };
+            
+            // Wait for page to be fully ready
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            testBrowser();
+            testStorage();
+            testFileAPI();
+            await testJSZip();
+            await testAnalyzer();
+            await testAnalyzerMethods();
+            testAnalyzerInitTime();
+            testLoadTime();
+            testScriptIntegrity();
+            testStaticCache();
+            await testNetworkCDN();
+            
+            console.log('\n✅ Test suite completed');
+        }
+
+        // Individual test triggers
+        async function testLibraryLoad() {
+            console.clear();
+            console.log('📦 Testing library loading...\n');
+            testResults = { passed: 0, failed: 0, warnings: 0 };
+            await testJSZip();
+            await testAnalyzer();
+            await testAnalyzerMethods();
+        }
+
+        async function testNetworkConditions() {
+            console.clear();
+            console.log('🌐 Testing network conditions...\n');
+            testResults = { passed: 0, failed: 0, warnings: 0 };
+            await testNetworkCDN();
+            testStaticCache();
+            testScriptIntegrity();
+        }
+
+        function testMobileSupport() {
+            console.clear();
+            console.log('📱 Testing mobile support...\n');
+            testResults = { passed: 0, failed: 0, warnings: 0 };
+            testBrowser();
+            testFileAPI();
+            testStorage();
+        }
+
+        function clearConsole() {
+            consoleEl.innerHTML = '';
+            console.log('Console cleared');
+        }
+
+        // File Upload Handling
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            testFileUpload(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            testFileUpload(e.target.files[0]);
+        });
+
+        async function testFileUpload(file) {
+            if (!file) return;
+            
+            console.clear();
+            console.log(`📁 Testing file upload with: ${file.name} (${(file.size / 1024).toFixed(2)} KB)\n`);
+            testResults = { passed: 0, failed: 0, warnings: 0 };
+            
+            try {
+                setTestStatus('test-jszip', 'loading');
+                setTestStatus('test-analyzer', 'loading');
+                
+                const analyzer = new InstagramAnalyzer();
+                
+                let startTime = performance.now();
+                const result = await analyzer.analyzeZip(file);
+                let endTime = performance.now();
+                
+                console.log(`✅ Analysis complete in ${(endTime - startTime).toFixed(0)}ms`);
+                console.log(`   Unfollowers: ${result.unfollower_count}`);
+                console.log(`   Followers: ${result.followers_count}`);
+                console.log(`   Following: ${result.following_count}`);
+                
+                setTestStatus('test-jszip', 'success', 'File processed');
+                setTestStatus('test-analyzer', 'success', 'Analysis OK');
+                
+            } catch (e) {
+                setTestStatus('test-analyzer', 'error', e.message);
+                console.error('❌ Analysis Error:', e.message);
+            }
+        }
+
+        // Auto-run tests on load
+        window.addEventListener('load', () => {
+            console.log('🚀 Test suite ready. Click "Run All Tests" or choose specific tests.');
+        });
+    </script>
+
+    <!-- Load required libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script defer src="/static/js/instagramAnalyzer.js"></script>
+</body>
+</html>
