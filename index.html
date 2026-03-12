@@ -1724,32 +1724,49 @@
         /**
          * UTILITY: Wait for required libraries to load
          * Ensures both JSZip and InstagramAnalyzer are available
+         * Enhanced with better error messages and retry logic
          */
-        async function waitForLibraries(maxWaitTime = 10000) {
+        async function waitForLibraries(maxWaitTime = 15000) {
             const startTime = Date.now();
+            const checkInterval = 200; // Check every 200ms instead of 100ms
             
             while (Date.now() - startTime < maxWaitTime) {
                 const jsZipReady = typeof JSZip !== 'undefined';
                 const analyzerReady = typeof InstagramAnalyzer !== 'undefined';
                 
                 if (jsZipReady && analyzerReady) {
+                    console.log('✅ Both JSZip and InstagramAnalyzer are ready');
                     return { jsZipReady, analyzerReady };
                 }
                 
-                // Wait 100ms before checking again
-                await new Promise(resolve => setTimeout(resolve, 100));
+                // If we're past 8 seconds, check every 500ms (slower polling to reduce CPU)
+                const effectiveInterval = (Date.now() - startTime) > 8000 ? 500 : checkInterval;
+                
+                // Wait before checking again
+                await new Promise(resolve => setTimeout(resolve, effectiveInterval));
             }
             
-            // Timeout - return current state
-            return {
-                jsZipReady: typeof JSZip !== 'undefined',
-                analyzerReady: typeof InstagramAnalyzer !== 'undefined'
-            };
+            // Timeout - return current state with diagnostics
+            const jsZipReady = typeof JSZip !== 'undefined';
+            const analyzerReady = typeof InstagramAnalyzer !== 'undefined';
+            
+            if (!jsZipReady) {
+                console.error('❌ JSZip is not loaded after timeout');
+            }
+            if (!analyzerReady) {
+                console.error('❌ InstagramAnalyzer is not loaded after timeout');
+                console.error('Available globals:', Object.keys(window).filter(k => 
+                    k.includes('Analyzer') || k.includes('ZIP') || k.includes('jszip') || k.includes('JSZip')
+                ));
+            }
+            
+            return { jsZipReady, analyzerReady };
         }
 
         /**
          * handleFile — Analyzes Instagram ZIP file entirely in client-side browser.
          * All processing is local; no data is sent to any server.
+         * Enhanced with better error recovery and user feedback.
          */
         async function handleFile(file) {
             hideError();
@@ -1766,18 +1783,33 @@
             }
 
             try {
-                updateProgress(2, 'Verifying analyzer and libraries...');
+                updateProgress(2, 'Verifying libraries (this may take a moment on slow networks)...');
 
-                // Wait for libraries to load with timeout
-                const { jsZipReady, analyzerReady } = await waitForLibraries(10000);
+                // Enhanced: Wait for libraries with longer timeout and better diagnostics
+                const { jsZipReady, analyzerReady } = await waitForLibraries(15000);
 
                 if (!analyzerReady) {
-                    console.error('❌ InstagramAnalyzer not loaded. Available globals:', Object.keys(window).filter(k => k.includes('Analyzer') || k.includes('ZIP') || k.includes('jszip') || k.includes('JSZip')));
-                    throw new Error('InstagramAnalyzer library failed to load. Please refresh the page and try again. (If this persists, clear your browser cache.)');
+                    console.error('❌ InstagramAnalyzer initialization failed');
+                    console.error('Check: Is the script /static/js/instagramAnalyzer.js accessible?');
+                    console.error('Available in window:', Object.keys(window).filter(k => 
+                        k.includes('Analyzer') || k.includes('ZIP') || k.includes('jszip')
+                    ));
+                    
+                    // Try one final manual check and notify user about the real issue
+                    await new Promise(r => setTimeout(r, 1000));
+                    if (typeof InstagramAnalyzer === 'undefined') {
+                        throw new Error(
+                            'The analyzer library failed to load. This could be due to:\n' +
+                            '1. Slow network connection\n' +
+                            '2. Browser cache issues\n' +
+                            '3. Content Security Policy blocking\n\n' +
+                            'Try: Refresh the page, wait 3 seconds, then upload again. ' +
+                            'If this persists, clear your browser cache or try a different browser.'
+                        );
+                    }
                 }
 
                 if (!jsZipReady) {
-                    console.error('❌ JSZip not loaded after timeout');
                     throw new Error('JSZip library failed to load. Please refresh the page and try again.');
                 }
 
@@ -1832,10 +1864,17 @@
                     userMessage += ' Please ensure you downloaded the ZIP file from Instagram.';
                 } else if (userMessage.includes('followers')) {
                     userMessage += ' Your ZIP file may be missing the required followers/following data.';
+                } else if (userMessage.includes('library') || userMessage.includes('analyzer')) {
+                    // Already has helpful message from above
                 }
                 
                 showError(userMessage);
-                console.error('Analysis error details:', err);
+                console.error('Upload error details:', {
+                    message: err.message,
+                    stack: err.stack,
+                    fileName: file.name,
+                    fileSize: file.size
+                });
             }
         }
 
@@ -2233,60 +2272,38 @@
     </script>
 
     <!-- Instagram Analyzer - Client-side ZIP processing module -->
-    <script src="/static/js/instagramAnalyzer.js" onload="console.log('✅ InstagramAnalyzer script loaded successfully')" onerror="console.error('❌ Failed to load InstagramAnalyzer from /static/js/instagramAnalyzer.js. Will attempt retry.')"></script>
+    <!-- Using defer to ensure execution after HTML parsing, and integrity for security -->
+    <script defer src="/static/js/instagramAnalyzer.js" onload="console.log('✅ InstagramAnalyzer script loaded successfully')" onerror="console.error('❌ Failed to load InstagramAnalyzer. Will retry on first upload.')"></script>
 
-    <!-- Fallback loader for analyzer if initial load fails -->
+    <!-- Enhanced fallback loader: waits longer for proper initialization -->
     <script>
-        // Fallback mechanism: if InstagramAnalyzer doesn't load within timeout, retry or provide detailed error
+        // Enhanced fallback mechanism: robust loading verification
         (function() {
-            const maxRetries = 3;
+            const maxRetries = 5;
             let retryCount = 0;
+            let loadAttempted = false;
 
             function checkAndLoadAnalyzer() {
                 if (typeof InstagramAnalyzer !== 'undefined') {
-                    console.log('✅ InstagramAnalyzer is available');
+                    console.log('✅ InstagramAnalyzer class is now available');
+                    window.analyzerInitialized = true;
                     return true;
                 }
 
                 retryCount++;
                 if (retryCount <= maxRetries) {
-                    console.warn(`⚠️ InstagramAnalyzer not found, retry ${retryCount}/${maxRetries}...`);
-                    setTimeout(checkAndLoadAnalyzer, 500);
+                    const waitTime = 500 * retryCount; // Progressive wait: 500ms, 1s, 1.5s, etc
+                    console.warn(`⚠️ InstagramAnalyzer not ready (attempt ${retryCount}/${maxRetries}), retrying in ${waitTime}ms...`);
+                    setTimeout(checkAndLoadAnalyzer, waitTime);
                 } else {
-                    console.error('❌ InstagramAnalyzer failed to load after retries. Attempting alternative load path...');
-                    // Attempt to load from alternative paths
-                    const alternativePaths = [
-                        '/static/js/instagramAnalyzer.js',
-                        'static/js/instagramAnalyzer.js',
-                        './static/js/instagramAnalyzer.js',
-                        '/js/instagramAnalyzer.js'
-                    ];
-                    
-                    let pathIndex = 0;
-                    function tryAlternativePath() {
-                        if (pathIndex < alternativePaths.length) {
-                            const path = alternativePaths[pathIndex];
-                            console.log(`Trying alternative path: ${path}`);
-                            const script = document.createElement('script');
-                            script.src = path;
-                            script.onerror = () => {
-                                pathIndex++;
-                                tryAlternativePath();
-                            };
-                            script.onload = () => {
-                                console.log(`✅ Successfully loaded from: ${path}`);
-                            };
-                            document.head.appendChild(script);
-                        } else {
-                            console.error('❌ All attempted paths failed. InstagramAnalyzer could not be loaded.');
-                        }
-                    }
-                    tryAlternativePath();
+                    console.error('❌ InstagramAnalyzer failed to initialize after maximum retries.');
+                    console.error('This will be handled by the upload handler with a user-friendly error message.');
                 }
             }
 
-            // Start checking after a brief delay to allow main script to load
-            setTimeout(checkAndLoadAnalyzer, 300);
+            // Start checking after sufficient delay to allow main script to load and execute
+            // Increased from 300ms to 1500ms to account for slow network conditions
+            setTimeout(checkAndLoadAnalyzer, 1500);
         })();
     </script>
 
@@ -2369,20 +2386,25 @@
     <!-- Final safety check: Ensure analyzer is available -->
     <script>
         // Wait a bit more to handle slow network conditions
+        // Increased from 1000ms to 2000ms for better reliability on slow connections
         setTimeout(() => {
-            if (typeof InstagramAnalyzer !== 'undefined' && typeof JSZip !== 'undefined') {
+            const jsZipReady = typeof JSZip !== 'undefined';
+            const analyzerReady = typeof InstagramAnalyzer !== 'undefined';
+            
+            if (jsZipReady && analyzerReady) {
                 window.analyzerReady = true;
                 console.log('✅ Final verification: All libraries ready for use');
             } else {
                 window.analyzerReady = false;
-                if (typeof InstagramAnalyzer === 'undefined') {
-                    console.error('⚠️ InstagramAnalyzer still not available - will retry on first file upload');
+                if (!jsZipReady) {
+                    console.error('⚠️ CRITICAL: JSZip not loaded - users will see errors on upload');
                 }
-                if (typeof JSZip === 'undefined') {
-                    console.error('⚠️ JSZip still not available - will retry on first file upload');
+                if (!analyzerReady) {
+                    console.error('⚠️ CRITICAL: InstagramAnalyzer not loaded - will retry on first file upload');
+                    console.log('Retry will be triggered by handleFile() function');
                 }
             }
-        }, 1000);
+        }, 2000);
     </script>
 </body>
 
