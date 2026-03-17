@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Successful — Unfollower Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --brand-gradient: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
+      --pink: #FF0080;
+      --purple: #7928CA;
+      --red: #FF4D4D;
+      --bg: #050505;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.09);
+      --text-muted: #9ca3af;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* ── BLOBS ── */
+    .blob {
+      position: fixed;
+      filter: blur(90px);
+      z-index: 0;
+      opacity: 0.55;
+      pointer-events: none;
+      animation: blobFloat 12s ease-in-out infinite alternate;
+    }
+    .blob-1 { top: -8%; left: -8%; width: 45vw; height: 45vw; background: #7928CA; animation-delay: 0s; }
+    .blob-2 { bottom: -8%; right: -8%; width: 38vw; height: 38vw; background: #FF0080; animation-delay: -6s; }
+    .blob-3 { top: 38%; left: 28%; width: 28vw; height: 28vw; background: #FF4D4D; opacity: 0.25; animation-delay: -3s; }
+    @keyframes blobFloat {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(18px, 36px) scale(1.08); }
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(5,5,5,0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    .navbar-container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; padding: 0 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; cursor: pointer;
+    }
+    .navbar-brand-text {
+      font-size: 19px; font-weight: 700; letter-spacing: -0.4px; color: #fff;
+    }
+    .navbar-brand-text .highlight {
+      background: linear-gradient(135deg,#FF0080 0%,#FF4D4D 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .navbar-back-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #d1d5db; font-family: inherit; font-size: 13px; font-weight: 500;
+      padding: 8px 16px; border-radius: 9999px; cursor: pointer;
+      transition: all 0.3s ease; text-decoration: none;
+    }
+    .navbar-back-btn:hover { background: rgba(255,255,255,0.11); color: #fff; }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      padding: 96px 20px 60px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .inner { width: 100%; max-width: 720px; }
+
+    /* ── SUCCESS HERO ── */
+    .hero-card {
+      text-align: center;
+      padding: 48px 32px 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+      animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+    }
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .checkmark-ring {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,0,128,0.18) 0%, rgba(121,40,202,0.18) 100%);
+      border: 2px solid rgba(255,0,128,0.4);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+    .checkmark-ring::after {
+      content: '';
+      position: absolute; inset: -6px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #FF0080, #7928CA, #FF4D4D, #FF0080);
+      -webkit-mask: radial-gradient(circle, transparent 54%, black 55%);
+      mask: radial-gradient(circle, transparent 54%, black 55%);
+      opacity: 0.6;
+      animation: ringRotate 4s linear infinite;
+    }
+    @keyframes ringRotate { to { transform: rotate(360deg); } }
+
+    .checkmark-icon {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      position: relative; z-index: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .text-gradient {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 16px; color: var(--text-muted); font-weight: 500; line-height: 1.6;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+      margin-bottom: 24px;
+      opacity: 0; animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
+    }
+    .stat-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 100%);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px; padding: 20px 16px; text-align: center;
+      transition: all 0.35s cubic-bezier(0.175,0.885,0.32,1.275);
+    }
+    .stat-box:hover { transform: translateY(-4px); border-color: rgba(255,0,128,0.3); }
+    .stat-value {
+      font-size: clamp(22px, 4vw, 30px); font-weight: 800; letter-spacing: -1px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; margin-bottom: 4px;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; }
+
+    /* ── RESULTS CARD ── */
+    .results-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      opacity: 0; animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
+    }
+    .results-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .results-title { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+    .results-title i { margin-right: 8px; opacity: 0.7; }
+
+    .search-bar {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px; padding: 8px 14px;
+      transition: border-color 0.2s;
+    }
+    .search-bar:focus-within { border-color: rgba(255,0,128,0.4); }
+    .search-bar i { color: var(--text-muted); font-size: 13px; flex-shrink: 0; }
+    .search-bar input {
+      background: transparent; border: none; outline: none;
+      color: #fff; font-family: inherit; font-size: 13px; width: 140px;
+    }
+    .search-bar input::placeholder { color: var(--text-muted); }
+
+    .results-list {
+      max-height: 360px;
+      overflow-y: auto;
+      padding: 12px 0;
+    }
+    /* scrollbar */
+    .results-list::-webkit-scrollbar { width: 4px; }
+    .results-list::-webkit-scrollbar-track { background: transparent; }
+    .results-list::-webkit-scrollbar-thumb { background: rgba(255,0,128,0.35); border-radius: 99px; }
+
+    .username-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 24px; gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s;
+    }
+    .username-row:last-child { border-bottom: none; }
+    .username-row.visible { opacity: 1; transform: translateX(0); }
+    .username-row:hover { background: rgba(255,255,255,0.035); }
+
+    .row-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .avatar-placeholder {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(255,0,128,0.25), rgba(121,40,202,0.25));
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7);
+    }
+    .username-text { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .row-index { font-size: 11px; color: var(--text-muted); font-weight: 500; flex-shrink: 0; }
+
+    .visit-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-muted); font-family: inherit; font-size: 11px; font-weight: 600;
+      padding: 5px 10px; border-radius: 8px; cursor: pointer;
+      text-decoration: none; flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .visit-btn:hover { background: rgba(255,0,128,0.12); border-color: rgba(255,0,128,0.35); color: #fff; }
+
+    .no-results {
+      text-align: center; padding: 40px 24px;
+      color: var(--text-muted); font-size: 14px; font-weight: 500;
+    }
+
+    /* ── ACTIONS ROW ── */
+    .actions-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;
+      opacity: 0; animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+    }
+
+    .btn-primary {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--brand-gradient);
+      color: #fff; font-family: inherit; font-size: 15px; font-weight: 700;
+      padding: 14px 24px; border-radius: 14px; border: none; cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 24px rgba(255,0,128,0.28);
+      text-decoration: none;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,0,128,0.38); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d1d5db; font-family: inherit; font-size: 15px; font-weight: 600;
+      padding: 14px 24px; border-radius: 14px; cursor: pointer;
+      transition: all 0.25s ease; text-decoration: none;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+    /* ── CTA CARD ── */
+    .cta-card {
+      background: linear-gradient(135deg, rgba(255,0,128,0.08) 0%, rgba(121,40,202,0.08) 100%);
+      border: 1px solid rgba(255,0,128,0.2);
+      border-radius: 20px; padding: 28px 28px; text-align: center;
+      opacity: 0; animation: cardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.8s forwards;
+    }
+    .cta-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .cta-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.6; }
+
+    /* ── FALLBACK ── */
+    .fallback-card {
+      background: linear-gradient(135deg, rgba(255,77,77,0.07) 0%, rgba(121,40,202,0.07) 100%);
+      border: 1px solid rgba(255,77,77,0.25);
+      border-radius: 24px; padding: 56px 32px; text-align: center;
+      margin-bottom: 24px;
+    }
+    .fallback-icon { font-size: 42px; margin-bottom: 20px; }
+    .fallback-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .fallback-card p { font-size: 15px; color: var(--text-muted); line-height: 1.65; max-width: 400px; margin: 0 auto; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(60px);
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+      padding: 12px 22px; font-size: 14px; font-weight: 600; color: #fff;
+      z-index: 999; pointer-events: none;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+      opacity: 0;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 540px) {
+      .stats-strip { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .stat-box { padding: 16px 10px; }
+      .results-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .search-bar input { width: 100px; }
+      .actions-row { grid-template-columns: 1fr; }
+      .hero-card { padding: 36px 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="navbar-brand">
+      <span class="navbar-brand-text">Unfollow<span class="highlight">Tracker</span></span>
+    </a>
+    <a href="index.html" class="navbar-back-btn">
+      <i class="fa-solid fa-arrow-left" style="font-size:12px;"></i>
+      Back to Home
+    </a>
+  </div>
+</nav>
+
+<!-- Main content -->
+<div class="page-wrapper">
+  <div class="inner">
+
+    <!-- Success state (shown when data exists) -->
+    <div id="success-view" style="display:none;">
+
+      <!-- Hero card -->
+      <div class="hero-card">
+        <div class="checkmark-ring">
+          <i class="fa-solid fa-check checkmark-icon"></i>
+        </div>
+        <h1 class="hero-title">Payment <span class="text-gradient">Successful</span> 🎉</h1>
+        <p class="hero-sub">You now have full access to your complete unfollower list.<br>See exactly who isn't following you back below.</p>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="stats-strip" id="stats-strip">
+        <div class="stat-box">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Not Following Back</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="stat-pct">0%</span>
+          <span class="stat-label">Of Your Following</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">✓</span>
+          <span class="stat-label">Full Access</span>
+        </div>
+      </div>
+
+      <!-- Results card -->
+      <div class="results-card">
+        <div class="results-header">
+          <span class="results-title">
+            <i class="fa-solid fa-user-slash"></i>
+            Unfollowers List
+          </span>
+          <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="Search username…" autocomplete="off" />
+          </div>
+        </div>
+        <div class="results-list" id="results-list">
+          <!-- Rows injected by JS -->
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="actions-row">
+        <button class="btn-primary" id="download-btn">
+          <i class="fa-solid fa-download"></i>
+          Download as .txt
+        </button>
+        <a href="index.html" class="btn-secondary">
+          <i class="fa-solid fa-rotate-right"></i>
+          New Analysis
+        </a>
+      </div>
+
+      <!-- CTA card -->
+      <div class="cta-card">
+        <h3>Want to keep your account clean? 🧹</h3>
+        <p>Run a new analysis anytime by uploading a fresh Instagram data export. Your results are always processed privately, right here in your browser.</p>
+        <a href="index.html" class="btn-primary" style="display:inline-flex; width:auto; margin:0 auto;">
+          <i class="fa-solid fa-upload"></i>
+          Run Another Analysis
+        </a>
+      </div>
+
+    </div>
+    <!-- end success-view -->
+
+    <!-- Fallback state (no data found) -->
+    <div id="fallback-view" style="display:none;">
+      <div class="fallback-card">
+        <div class="fallback-icon">⚠️</div>
+        <h2>No Analysis Data Found</h2>
+        <p>We couldn't find your unfollower data in this browser. This can happen if you cleared your browser storage, switched devices, or opened this page directly.</p>
+        <br />
+        <a href="index.html" class="btn-primary" style="display:inline-flex; width:auto; margin:0 auto;">
+          <i class="fa-solid fa-upload"></i>
+          Run a New Analysis
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"><i class="fa-solid fa-circle-check" style="color:#4ade80;"></i> <span id="toast-msg">Download started!</span></div>
+
+<script>
+  /* ── DATA ── */
+  const raw = localStorage.getItem('unfollowersData');
+  let unfollowers = [];
+
+  try {
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        unfollowers = parsed;
+      }
+    }
+  } catch(e) {
+    console.warn('Could not parse unfollowersData', e);
+  }
+
+  /* ── VIEW TOGGLE ── */
+  if (unfollowers.length > 0) {
+    document.getElementById('success-view').style.display = 'block';
+    init();
+  } else {
+    document.getElementById('fallback-view').style.display = 'block';
+  }
+
+  /* ── INIT ── */
+  function init() {
+    /* Stats */
+    document.getElementById('stat-total').textContent = unfollowers.length;
+    // Rough estimate: assume user follows ~unfollowers*2 people
+    const pct = Math.min(99, Math.round((unfollowers.length / (unfollowers.length * 1.7)) * 100));
+    document.getElementById('stat-pct').textContent = pct + '%';
+
+    renderList(unfollowers);
+
+    /* Search */
+    document.getElementById('search-input').addEventListener('input', function() {
+      const q = this.value.trim().toLowerCase();
+      const filtered = q ? unfollowers.filter(u => u.toLowerCase().includes(q)) : unfollowers;
+      renderList(filtered);
+    });
+
+    /* Download */
+    document.getElementById('download-btn').addEventListener('click', downloadTxt);
+  }
+
+  /* ── RENDER LIST ── */
+  function renderList(list) {
+    const container = document.getElementById('results-list');
+    container.innerHTML = '';
+
+    if (list.length === 0) {
+      container.innerHTML = '<div class="no-results"><i class="fa-solid fa-magnifying-glass" style="margin-right:8px;opacity:0.5;"></i>No usernames match your search.</div>';
+      return;
+    }
+
+    list.forEach((username, idx) => {
+      const row = document.createElement('div');
+      row.className = 'username-row';
+      row.innerHTML = `
+        <div class="row-left">
+          <div class="avatar-placeholder">${username.charAt(0).toUpperCase()}</div>
+          <span class="username-text">@${username}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="row-index">#${idx + 1}</span>
+          <a href="https://www.instagram.com/${username}/" target="_blank" rel="noopener noreferrer" class="visit-btn">
+            <i class="fa-brands fa-instagram"></i> Visit
+          </a>
+        </div>
+      `;
+      container.appendChild(row);
+
+      /* Staggered entrance */
+      const delay = Math.min(idx * 35, 800);
+      setTimeout(() => row.classList.add('visible'), delay);
+    });
+  }
+
+  /* ── DOWNLOAD ── */
+  function downloadTxt() {
+    let content = 'Instagram Unfollowers List\n';
+    content += '==========================\n\n';
+    unfollowers.forEach(u => { content += u + '\n'; });
+    content += '\n--\nGenerated by UnfollowTracker';
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'instagram-unfollowers.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showToast('✓ Download started!');
+  }
+
+  /* ── TOAST ── */
+  function showToast(msg) {
+    const toast   = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  /* ── NAVBAR scroll effect ── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+</body>
+</html>

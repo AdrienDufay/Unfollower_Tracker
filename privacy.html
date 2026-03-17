@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy – UnfollowerTracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { jakarta: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { pink: '#FF0080', purple: '#7928CA', red: '#FF4D4D' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --pink:   #FF0080;
+      --purple: #7928CA;
+      --red:    #FF4D4D;
+      --glass:  rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #050505;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--red));
+      z-index: 1000;
+      transition: width 0.1s linear;
+    }
+
+    .g-text {
+      background: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(121,40,202,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 100%, rgba(255,0,128,0.09) 0%, transparent 55%);
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px;
+      transition: border-color 0.3s ease;
+    }
+    .glass-card:hover { border-color: rgba(255,0,128,0.18); }
+
+    .sec-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,0,128,0.14), rgba(121,40,202,0.14));
+      border: 1px solid rgba(255,0,128,0.22);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--pink);
+      flex-shrink: 0;
+    }
+
+    .tos-list { list-style: none; padding: 0; margin: 0; }
+    .tos-list li {
+      position: relative;
+      padding-left: 22px;
+      color: #9ca3af;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    .tos-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--pink);
+      font-size: 13px;
+      top: 2px;
+    }
+
+    .alert-pink {
+      background: rgba(255,0,128,0.07);
+      border: 1px solid rgba(255,0,128,0.22);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .alert-red {
+      background: rgba(255,77,77,0.07);
+      border: 1px solid rgba(255,77,77,0.22);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .alert-purple {
+      background: rgba(121,40,202,0.08);
+      border: 1px solid rgba(121,40,202,0.24);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .alert-green {
+      background: rgba(16,185,129,0.07);
+      border: 1px solid rgba(16,185,129,0.22);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .fancy-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,0,128,0.3), rgba(121,40,202,0.3), transparent);
+      border: none;
+      margin: 12px 0;
+    }
+
+    .top-accent::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #FF0080, #7928CA, #FF4D4D);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,0,128,0.3);
+      background: rgba(255,0,128,0.06);
+      color: var(--pink);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .back-btn:hover {
+      background: rgba(255,0,128,0.13);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,0,128,0.15);
+    }
+
+    .grad-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 30px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #FF0080, #7928CA);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(255,0,128,0.25);
+    }
+    .grad-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255,0,128,0.35);
+    }
+
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      color: #9ca3af;
+      font-size: 13.5px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .toc-link:hover {
+      color: var(--pink);
+      background: rgba(255,0,128,0.06);
+      border-color: rgba(255,0,128,0.15);
+    }
+    .toc-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--pink);
+      opacity: 0.7;
+      min-width: 18px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.55s ease both; }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+
+    @media (max-width: 640px) {
+      .glass-card { padding: 24px 20px !important; }
+    }
+  </style>
+</head>
+<body class="font-jakarta text-gray-300">
+
+<div id="progress-bar"></div>
+<div class="bg-mesh"></div>
+
+<div class="relative z-10">
+<div class="max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-24 pb-28">
+
+  <!-- ── Top nav ── -->
+  <div class="flex items-center justify-between mb-14 fade-up">
+    <a href="./index.html" class="back-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Home
+    </a>
+    <span class="text-xs font-semibold text-gray-500 uppercase tracking-widest hidden sm:block">Legal</span>
+  </div>
+
+  <!-- ── Page header ── -->
+  <header class="mb-12 fade-up delay-1">
+    <div class="inline-block text-xs font-bold tracking-widest uppercase text-brand-pink border border-pink-900/40 bg-pink-950/30 rounded-full px-4 py-1.5 mb-5">
+      Legal Document
+    </div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+      <span class="g-text">Privacy Policy</span>
+    </h1>
+    <p class="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-6">
+      Your privacy is our default setting — not an afterthought. This policy explains what data we collect,
+      how your Instagram data is handled, and what rights you have under GDPR, CCPA, and applicable law.
+    </p>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
+      <span class="flex items-center gap-2">
+        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 000 2h1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-3V4h1a1 1 0 000-2H6zm3 4V4h2v2H9z" clip-rule="evenodd"/></svg>
+        <span>Effective: <strong class="text-white font-semibold">March 15, 2026</strong></span>
+      </span>
+      <span class="hidden sm:block text-gray-700">|</span>
+      <span class="flex items-center gap-2">
+        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+        <span>Last updated: <strong class="text-white font-semibold">March 15, 2026</strong></span>
+      </span>
+      <span class="hidden sm:block text-gray-700">|</span>
+      <span class="flex items-center gap-2">
+        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+        <span>Jurisdiction: <strong class="text-white font-semibold">France · GDPR &amp; CCPA compliant</strong></span>
+      </span>
+    </div>
+  </header>
+
+  <!-- ── Intro banner ── -->
+  <div class="glass-card relative top-accent overflow-hidden p-7 mb-10 fade-up delay-2">
+    <div class="alert-green">
+      <p class="text-sm leading-relaxed">
+        <span class="font-bold text-emerald-400 flex items-center gap-2 mb-2">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Privacy-First Architecture
+        </span>
+        <span class="text-gray-300">
+          UnfollowerTracker is designed so that <strong class="text-white">your Instagram data never leaves your device.</strong>
+          All export file processing happens locally in your browser via JavaScript. No file you upload is ever
+          transmitted to, stored on, or accessed by our servers. By using UnfollowerTracker you agree to the
+          practices described in this policy.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Table of Contents ── -->
+  <div class="glass-card p-6 mb-12 fade-up delay-3">
+    <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 px-1">Table of Contents</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+      <a href="#s1"  class="toc-link"><span class="toc-num">01</span> Who We Are &amp; Data Controller</a>
+      <a href="#s2"  class="toc-link"><span class="toc-num">02</span> Your Data Stays on Your Device</a>
+      <a href="#s3"  class="toc-link"><span class="toc-num">03</span> What Information We Collect</a>
+      <a href="#s4"  class="toc-link"><span class="toc-num">04</span> Cookies, Advertising &amp; Third Parties</a>
+      <a href="#s5"  class="toc-link"><span class="toc-num">05</span> Your Rights Under GDPR</a>
+      <a href="#s6"  class="toc-link"><span class="toc-num">06</span> Your Rights Under CCPA</a>
+      <a href="#s7"  class="toc-link"><span class="toc-num">07</span> Data Retention</a>
+      <a href="#s8"  class="toc-link"><span class="toc-num">08</span> Data Security</a>
+      <a href="#s9"  class="toc-link"><span class="toc-num">09</span> Children's Privacy</a>
+      <a href="#s10" class="toc-link"><span class="toc-num">10</span> User Responsibilities &amp; Acceptable Use</a>
+      <a href="#s11" class="toc-link"><span class="toc-num">11</span> Disclaimer of Warranties &amp; Liability</a>
+      <a href="#s12" class="toc-link"><span class="toc-num">12</span> International Data Transfers</a>
+      <a href="#s13" class="toc-link"><span class="toc-num">13</span> Changes to This Privacy Policy</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════ SECTIONS ═══ -->
+  <div class="space-y-5">
+
+    <!-- §1 Who We Are -->
+    <section id="s1" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">01</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Who We Are</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          UnfollowerTracker is an independent web tool operated from
+          <strong class="text-white">France</strong>, designed to help Instagram users analyse their follower
+          and following relationships using their own officially exported data. Our
+          <a href="terms.html" class="text-brand-pink hover:underline font-medium">Terms of Service</a>
+          are incorporated into this policy by reference.
+        </p>
+        <div class="alert-red">
+          <p class="text-sm font-semibold text-red-400 mb-1">Non-Affiliation Disclaimer</p>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            UnfollowerTracker is not affiliated with, endorsed by, or in any way officially connected to
+            Instagram, Meta Platforms, Inc., or any of their subsidiaries or affiliates. The names
+            "Instagram" and "Meta" are trademarks of their respective owners.
+          </p>
+        </div>
+
+        <!-- ── NEW: Data Controller (GDPR) ── -->
+        <p class="text-[15px] font-semibold text-white pt-2">1.1 — Data Controller (GDPR)</p>
+        <div class="alert-purple">
+          <div class="flex items-start gap-3">
+            <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5a1 1 0 112 0v2a1 1 0 11-2 0v-2zm0-4a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="text-sm font-bold text-purple-300 mb-2">GDPR Data Controller Identity</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                For the purposes of the EU General Data Protection Regulation (GDPR, Regulation (EU) 2016/679),
+                the <strong class="text-white">data controller</strong> responsible for any limited personal
+                data processing carried out in connection with this website — including standard server access
+                logs and payment confirmation references — is the operator of UnfollowerTracker,
+                based in <strong class="text-white">France</strong>.
+              </p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                UnfollowerTracker does <strong class="text-white">not</strong> act as a data controller or
+                data processor in respect of the contents of your Instagram export files. Those files are
+                processed exclusively within your own browser and are never transmitted to our servers
+                (see Section 2). No personal data from your Instagram export is ever received by us.
+              </p>
+              <p class="text-gray-400 text-sm">
+                For all data-protection enquiries, please contact the data controller at:
+                <a href="mailto:instaunfollowerstracker@gmail.com"
+                   class="text-brand-pink hover:underline font-semibold ml-1">
+                  instaunfollowerstracker@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §2 Core Principle -->
+    <section id="s2" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">02</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">The Core Principle: Your Data Stays on Your Device</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          UnfollowerTracker processes your Instagram data export entirely
+          <strong class="text-white">inside your web browser</strong>. No file you upload, no username,
+          no follower list, and no result generated by this tool is ever transmitted to, stored on, or
+          accessed by our servers — because we do not operate any data-collection infrastructure for
+          this purpose.
+        </p>
+        <div class="alert-green">
+          <p class="text-sm font-semibold text-emerald-400 mb-2 flex items-center gap-2">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            In Plain English
+          </p>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            When you upload your Instagram ZIP file, it is opened and analysed locally by JavaScript running
+            in your browser tab. The moment you close or refresh the page, that data is gone entirely.
+            We never see it, and it never crosses any network connection to our infrastructure.
+          </p>
+        </div>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          This architecture-first approach to privacy means we cannot, and do not, collect, retain, sell, or
+          share your Instagram data, usernames, or any personally identifiable information derived from your
+          export files. Because we never receive this data, we cannot be compelled to disclose it.
+        </p>
+      </div>
+    </section>
+
+    <!-- §3 What We Collect -->
+    <section id="s3" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">03</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">What Information We Collect and Why</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          We distinguish clearly between three categories of information:
+        </p>
+
+        <p class="text-[15px] font-semibold text-white">3.1 — Information we do NOT collect</p>
+        <ul class="tos-list">
+          <li>Your Instagram credentials, username, or password</li>
+          <li>The contents of your Instagram ZIP file (followers, following lists, usernames)</li>
+          <li>The results of any analysis performed in your browser</li>
+          <li>Any personal profile information from your Instagram account</li>
+        </ul>
+
+        <p class="text-[15px] font-semibold text-white pt-2">3.2 — Information we may collect automatically</p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Like most websites, our hosting infrastructure and third-party services may automatically collect
+          certain technical and non-personal data when you visit the site, including:
+        </p>
+        <ul class="tos-list">
+          <li>IP address (typically anonymised or not stored beyond standard server logs)</li>
+          <li>Browser type and version, operating system</li>
+          <li>Referring URL and pages visited on our site</li>
+          <li>Date and time of access, general geographic region</li>
+        </ul>
+
+        <!-- ── NEW: Explicit GDPR legal basis ── -->
+        <div class="alert-purple">
+          <div class="flex items-start gap-3">
+            <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5a1 1 0 112 0v2a1 1 0 11-2 0v-2zm0-4a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="text-sm font-bold text-purple-300 mb-2">GDPR Legal Basis — Article 6(1)(f): Legitimate Interests</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                The collection and processing of the technical data listed above is based on our
+                <strong class="text-white">legitimate interests</strong> under Article 6(1)(f) of the GDPR,
+                specifically for the following purposes:
+              </p>
+              <ul class="tos-list text-sm">
+                <li>Operating, maintaining, and improving the technical performance of the website</li>
+                <li>Ensuring the security and integrity of the service and its infrastructure</li>
+                <li>Detecting, preventing, and investigating abuse, fraud, or unauthorised access</li>
+                <li>Generating aggregated, anonymised usage analytics (e.g., daily visitor counts)</li>
+              </ul>
+              <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                This data is not linked to any Instagram data you process locally, is not used to build
+                individual user profiles, and is not shared with third parties for their own marketing
+                purposes. You have the right to object to processing on the basis of legitimate interests
+                at any time (see Section 5).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-[15px] font-semibold text-white pt-2">3.3 — Payment information</p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          If you choose to unlock the full results via our one-time payment, payment is processed
+          entirely by our third-party payment provider (e.g., Stripe or equivalent). We do not receive,
+          store, or process your card number, bank details, or billing address. Our payment provider's own
+          privacy policy governs how they handle your payment data. We may receive a transaction
+          confirmation and a non-identifiable order reference solely to verify access entitlement.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          There is no account system. Each purchase grants single-session access to the full results.
+          We do not retain purchase history linked to any personal identifier. The legal basis for
+          processing this transactional data is <strong class="text-white">contractual necessity</strong>
+          (Art. 6(1)(b) GDPR) and, where applicable,
+          <strong class="text-white">compliance with legal obligations</strong> (Art. 6(1)(c) GDPR) such
+          as French accounting and tax law.
+        </p>
+      </div>
+    </section>
+
+    <!-- §4 Cookies & Advertising -->
+    <section id="s4" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">04</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Cookies, Advertising &amp; Third-Party Services</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+
+        <!-- ── IMPROVED: Granular cookie types ── -->
+        <p class="text-[15px] font-semibold text-white">4.1 — Cookies and local storage</p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          We use a limited and clearly defined set of cookies and browser storage mechanisms. We do
+          <strong class="text-white">not</strong> use persistent tracking cookies for behavioural profiling
+          by this service. The categories in use are as follows:
+        </p>
+        <ul class="tos-list">
+          <li>
+            <strong class="text-white">Strictly necessary session cookies:</strong> Short-lived cookies
+            that expire when you close your browser tab. Used solely for core site functionality —
+            for example, maintaining your navigation state during a single visit. These do not track you
+            across sessions or other websites.
+          </li>
+          <li>
+            <strong class="text-white">Session unlock local storage:</strong> Browser local storage may be
+            used to remember that you have completed a payment or watched an ad within the current session,
+            so you are not required to repeat that step while the tab remains open. This data is stored
+            only in your browser, is never transmitted to our servers, and is cleared when the session ends
+            or when you clear your browser data.
+          </li>
+          <li>
+            <strong class="text-white">Third-party advertising cookies:</strong> Cookies set by our
+            advertising network partners for ad delivery, measurement, and personalisation purposes.
+            These are described fully in Section 4.2 below.
+          </li>
+        </ul>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          You may disable non-essential cookies at any time through your browser settings. Note that
+          disabling strictly necessary session cookies may impair certain functionality of the Service.
+        </p>
+
+        <!-- ── NEW: Google AdSense disclosure ── -->
+        <p class="text-[15px] font-semibold text-white pt-2">4.2 — Third-party advertising (Google AdSense)</p>
+        <div class="alert-pink">
+          <p class="text-sm font-semibold text-brand-pink mb-2 flex items-center gap-2">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+            Advertising Disclosure — Google AdSense
+          </p>
+          <p class="text-gray-300 text-sm leading-relaxed mb-3">
+            The free tier of UnfollowerTracker may display advertisements served by third-party ad networks,
+            including <strong class="text-white">Google AdSense</strong>, operated by Google LLC (a
+            subsidiary of Alphabet Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).
+            When ads are shown on our pages, these networks may independently:
+          </p>
+          <ul class="tos-list text-sm mb-3">
+            <li>Set advertising cookies and collect unique device or browser identifiers</li>
+            <li>Collect your IP address, general location, and information about your interaction with ads</li>
+            <li>Use that data to serve personalised advertisements based on your inferred interests and
+                browsing activity across other websites and applications</li>
+            <li>Use that data for ad performance measurement, audience analytics, frequency capping,
+                and fraud prevention</li>
+          </ul>
+          <p class="text-gray-300 text-sm leading-relaxed mb-2">
+            UnfollowerTracker does not control the cookies or data practices of these third-party networks.
+            Their processing is governed by their own privacy policies:
+          </p>
+          <ul class="tos-list text-sm mb-3">
+            <li>
+              Google Privacy Policy:
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener"
+                 class="text-brand-pink hover:underline">policies.google.com/privacy</a>
+            </li>
+            <li>
+              Manage Google ad personalisation settings:
+              <a href="https://adssettings.google.com" target="_blank" rel="noopener"
+                 class="text-brand-pink hover:underline">adssettings.google.com</a>
+            </li>
+          </ul>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            To opt out of interest-based advertising more broadly, you may use
+            <a href="https://aboutads.info" target="_blank" rel="noopener"
+               class="text-brand-pink hover:underline">aboutads.info</a> (US) or
+            <a href="https://youronlinechoices.com" target="_blank" rel="noopener"
+               class="text-brand-pink hover:underline">youronlinechoices.com</a> (EU), or adjust your
+            browser settings to block third-party cookies.
+          </p>
+        </div>
+
+        <p class="text-[15px] font-semibold text-white pt-2">4.3 — Other third-party scripts and CDNs</p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Our site loads assets from trusted content delivery networks (CDNs), including fonts from
+          Google Fonts and JavaScript libraries from public CDNs. These providers may log your IP
+          address as part of standard CDN operation in accordance with their own privacy policies.
+          We do not control those logs and do not receive them directly. We do not sell or rent any
+          personal data to third-party advertisers or data brokers.
+        </p>
+      </div>
+    </section>
+
+    <!-- §5 GDPR -->
+    <section id="s5" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">05</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Your Rights Under GDPR (European Users)</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          As an operator based in France, we comply with the EU General Data Protection Regulation (GDPR)
+          and applicable French data protection law (<em>loi Informatique et Libertés</em>, as amended).
+          To the extent we process personal data as described in Section 3.2, the legal basis is our
+          <strong class="text-white">legitimate interests</strong> under Art. 6(1)(f) GDPR. Payment data
+          is processed on the basis of Art. 6(1)(b) and Art. 6(1)(c) GDPR (see Section 3.3).
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          If you are located in the European Economic Area, you have the following rights:
+        </p>
+        <ul class="tos-list">
+          <li><strong class="text-white">Access</strong> — request a copy of any personal data we hold about you</li>
+          <li><strong class="text-white">Rectification</strong> — request correction of inaccurate data</li>
+          <li><strong class="text-white">Erasure</strong> — request deletion of your personal data ("right to be forgotten")</li>
+          <li><strong class="text-white">Restriction</strong> — request that we limit how we use your data</li>
+          <li><strong class="text-white">Portability</strong> — receive your data in a structured, machine-readable format</li>
+          <li><strong class="text-white">Objection</strong> — object to processing based on legitimate interests at any time, free of charge</li>
+          <li>
+            <strong class="text-white">Complaint</strong> — lodge a complaint with a supervisory authority,
+            including the <strong class="text-white">CNIL</strong> (Commission Nationale de l'Informatique
+            et des Libertés) at
+            <a href="https://www.cnil.fr" target="_blank" rel="noopener"
+               class="text-brand-pink hover:underline">cnil.fr</a>
+          </li>
+        </ul>
+        <div class="alert-pink">
+          <p class="text-sm text-gray-300 leading-relaxed">
+            <strong class="text-brand-pink">Practical note:</strong> Because we do not collect or retain
+            your Instagram data or any identifiable personal data beyond standard short-lived server logs,
+            many of these rights may not be practically exercisable in respect of the core functionality
+            of this service. We will respond to any valid request within
+            <strong class="text-white">30 days</strong> of receipt. Contact us at:
+            <a href="mailto:instaunfollowerstracker@gmail.com"
+               class="text-brand-pink hover:underline font-medium ml-1">instaunfollowerstracker@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- §6 CCPA -->
+    <section id="s6" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">06</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Your Rights Under CCPA (California Users)</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          If you are a California resident, the California Consumer Privacy Act (CCPA) and California
+          Privacy Rights Act (CPRA) may grant you additional rights regarding personal information.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">You have the right to:</p>
+        <ul class="tos-list">
+          <li>Know what personal information is collected, used, shared, or sold</li>
+          <li>Delete personal information we have collected about you (subject to exceptions)</li>
+          <li>Opt out of the sale or sharing of your personal information</li>
+          <li>Non-discrimination for exercising your CCPA rights</li>
+        </ul>
+        <div class="alert-pink">
+          <p class="text-sm text-gray-300 leading-relaxed">
+            <strong class="text-brand-pink">Our position:</strong> We do not sell personal information as
+            defined under the CCPA. The Instagram data you process is handled exclusively on your own device
+            and is never transmitted to us; it therefore does not constitute "personal information" that we
+            collect, hold, or sell. Please note, however, that third-party advertising networks operating
+            on our site (see Section 4.2) may independently collect identifiers under the CCPA — their
+            practices are governed by their own privacy policies.
+          </p>
+        </div>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          For any CCPA-related requests, please contact us at
+          <a href="mailto:instaunfollowerstracker@gmail.com"
+             class="text-brand-pink hover:underline font-medium">instaunfollowerstracker@gmail.com</a>.
+          We will respond within <strong class="text-white">45 days</strong> as required by law.
+        </p>
+      </div>
+    </section>
+
+    <!-- §7 Data Retention -->
+    <section id="s7" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">07</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Data Retention</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Because your Instagram data is processed entirely in-browser,
+          <strong class="text-white">we retain no copy of it whatsoever.</strong>
+          The following retention periods apply to the limited data we do handle:
+        </p>
+        <ul class="tos-list">
+          <li>
+            <strong class="text-white">Server access logs:</strong> If retained by our hosting provider,
+            kept for no longer than <strong class="text-white">90 days</strong>, after which they are
+            deleted or anonymised.
+          </li>
+          <li>
+            <strong class="text-white">Payment confirmation references:</strong> Retained only as long
+            as necessary for legal and accounting obligations — generally up to
+            <strong class="text-white">10 years</strong> under applicable French commercial law
+            (Article L. 123-22 of the French Commercial Code).
+          </li>
+          <li>
+            <strong class="text-white">Session cookies and local storage:</strong> Cleared automatically
+            when your browser session ends or when you clear your browser data. We do not set persistent
+            cookies that survive browser restarts.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- §8 Security -->
+    <section id="s8" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">08</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Data Security</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Our site is served over <strong class="text-white">HTTPS (TLS encryption)</strong> to protect
+          data in transit between your browser and our servers. Since your Instagram data never leaves
+          your device, it is not exposed to network-level risks on our end. We follow reasonable and
+          proportionate security practices for the limited server-side data we do handle, including
+          infrastructure access controls and log access restrictions.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          No system is 100% secure. In the unlikely event of a security incident affecting personal data
+          we hold, we will notify affected users and the relevant supervisory authority (the CNIL) as
+          required by GDPR Articles 33 and 34, within the applicable
+          <strong class="text-white">72-hour notification window</strong> where feasible.
+        </p>
+      </div>
+    </section>
+
+    <!-- §9 Children -->
+    <section id="s9" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">09</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Children's Privacy</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          UnfollowerTracker is not directed at children under the age of
+          <strong class="text-white">13</strong> (or <strong class="text-white">16</strong> in EU Member
+          States where the higher threshold applies under GDPR Art. 8). We do not knowingly collect
+          personal information from children. Instagram itself requires users to be at least 13 years old.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          If you believe a child has used this service in a manner that may have resulted in the collection
+          of their personal data, please contact us at
+          <a href="mailto:instaunfollowerstracker@gmail.com"
+             class="text-brand-pink hover:underline font-medium">instaunfollowerstracker@gmail.com</a>
+          and we will take appropriate remedial steps without undue delay.
+        </p>
+      </div>
+    </section>
+
+    <!-- §10 User Responsibilities -->
+    <section id="s10" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">10</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">User Responsibilities &amp; Acceptable Use</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          By using UnfollowerTracker, you confirm and warrant that:
+        </p>
+        <ul class="tos-list">
+          <li>You are the legitimate owner of the Instagram account whose data export you upload, or you
+              have explicit authorisation from the account holder to do so</li>
+          <li>You are solely responsible for the data export file you upload and for ensuring you have
+              the full legal right to use that data for this purpose</li>
+          <li>You will not use this service to harass, stalk, monitor, or maliciously target other individuals</li>
+          <li>You will not use results generated by this tool for illegal, discriminatory, or abusive purposes</li>
+          <li>You are legally permitted to use social media services in your jurisdiction</li>
+          <li>You are at least 13 years of age (or the minimum age required in your country)</li>
+        </ul>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          We reserve the right to refuse or restrict access to the service for users who violate these
+          conditions. For full details of prohibited conduct and the termination of access clause, please
+          review our
+          <a href="./terms.html" class="text-brand-pink hover:underline font-medium">Terms of Service</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- §11 Disclaimer -->
+    <section id="s11" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">11</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Disclaimer of Warranties &amp; Limitation of Liability</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <div class="alert-red">
+          <p class="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">As-Is Service</p>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            UnfollowerTracker is provided "as is" and "as available" without warranties of any kind,
+            express or implied, including but not limited to warranties of merchantability, fitness for
+            a particular purpose, or uninterrupted operation.
+          </p>
+        </div>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Instagram periodically changes the format of its data exports. While we make every effort to
+          keep our parsing logic up to date,
+          <strong class="text-white">we cannot guarantee that the service will function correctly at all
+          times following such changes</strong>. We will endeavour to release updates promptly, but no
+          specific update timeline is guaranteed.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          To the fullest extent permitted by applicable law, UnfollowerTracker and its operators shall
+          not be liable for any indirect, incidental, special, consequential, or punitive damages arising
+          from your use of — or inability to use — this service, including any reliance on the accuracy
+          of results generated.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Our total aggregate liability, if any, shall not exceed the amount paid by you to access the
+          service (i.e., <strong class="text-white">€2.49 maximum</strong>). Nothing in this section
+          excludes or limits liability in a manner not permitted by applicable mandatory consumer
+          protection law.
+        </p>
+      </div>
+    </section>
+
+    <!-- §12 International Transfers -->
+    <section id="s12" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">12</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">International Data Transfers</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Our service is operated from France and targets an international audience. The limited personal
+          data we process (server logs, payment confirmation references) may be handled by third-party
+          infrastructure providers — including hosting providers, CDNs, and payment processors — whose
+          servers may be located <strong class="text-white">outside the European Union/EEA</strong>,
+          including in the <strong class="text-white">United States</strong>.
+        </p>
+
+        <!-- ── IMPROVED: Explicit transfer safeguards ── -->
+        <div class="alert-purple">
+          <div class="flex items-start gap-3">
+            <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="text-sm font-bold text-purple-300 mb-2">Transfer Safeguards — GDPR Chapter V</p>
+              <p class="text-gray-300 text-sm leading-relaxed mb-2">
+                Where personal data is transferred to third-party providers outside the EU/EEA, we ensure
+                that appropriate safeguards are in place in compliance with GDPR Chapter V. These may include:
+              </p>
+              <ul class="tos-list text-sm mb-2">
+                <li>
+                  <strong class="text-white">Standard Contractual Clauses (SCCs):</strong> The European
+                  Commission's approved model clauses for international data transfers
+                  (Commission Decision 2021/914/EU)
+                </li>
+                <li>
+                  <strong class="text-white">EU Adequacy Decisions:</strong> Where the European Commission
+                  has determined that the destination country ensures an adequate level of data protection
+                </li>
+                <li>
+                  <strong class="text-white">EU-US Data Privacy Framework (DPF):</strong> For US-based
+                  providers certified under the EU-US Data Privacy Framework, where applicable
+                </li>
+              </ul>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Third-party advertising networks (Section 4.2) operate their own transfer frameworks as
+                described in their respective privacy policies. You may contact us at
+                <a href="mailto:instaunfollowerstracker@gmail.com"
+                   class="text-brand-pink hover:underline">instaunfollowerstracker@gmail.com</a>
+                to request information about the specific safeguards applied to any given transfer.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          Your Instagram data is processed entirely in your own browser and is therefore not subject
+          to any international data transfer by us. It does not cross any network boundary to our
+          infrastructure.
+        </p>
+      </div>
+    </section>
+
+    <!-- §13 Changes -->
+    <section id="s13" class="glass-card p-7 sm:p-9 scroll-mt-24">
+      <div class="flex items-center gap-4 mb-5">
+        <div class="sec-num">13</div>
+        <h2 class="text-lg sm:text-xl font-bold text-white">Changes to This Privacy Policy</h2>
+      </div>
+      <hr class="fancy-divider"/>
+      <div class="mt-5 space-y-4">
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          We may update this Privacy Policy from time to time — for example, to reflect changes in
+          applicable law, our operational practices, or the features of our service. When we do, we will
+          update the "Last updated" date at the top of this page. We encourage you to review this policy
+          periodically.
+        </p>
+        <p class="text-gray-400 text-[15px] leading-relaxed">
+          For <strong class="text-white">material changes</strong> — such as new categories of data
+          collection or significant changes to how we use your data — we will display a prominent notice
+          on our website prior to the change taking effect, where reasonably practicable. Continued use
+          of the service after any update constitutes acceptance of the revised policy.
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /sections -->
+
+  <!-- ── Contact card ── -->
+  <div class="glass-card relative top-accent overflow-hidden p-7 mt-10">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+      <div class="flex-1">
+        <p class="text-white font-bold text-base mb-1">Questions about your privacy?</p>
+        <p class="text-gray-500 text-sm leading-relaxed mb-3">
+          We're happy to help. Contact our data controller and we'll respond within 30 days.
+        </p>
+        <a href="mailto:instaunfollowerstracker@gmail.com"
+           class="text-brand-pink font-semibold hover:underline break-all text-sm">
+          instaunfollowerstracker@gmail.com
+        </a>
+        <p class="text-gray-600 text-xs mt-1">Operator based in France · CNIL supervisory authority</p>
+      </div>
+      <a href="mailto:instaunfollowerstracker@gmail.com"
+         class="grad-btn whitespace-nowrap flex-shrink-0 text-sm">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send Email
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Cross-link to ToS ── -->
+  <div class="glass-card p-6 mt-5 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+    <div class="flex-1">
+      <p class="text-white font-bold text-sm mb-1">Also read our Terms of Service</p>
+      <p class="text-gray-500 text-xs leading-relaxed">
+        Covering intellectual property, acceptable use, limitation of liability, and governing law
+        (French law · Courts of Versailles).
+      </p>
+    </div>
+    <a href="./terms.html" class="back-btn whitespace-nowrap flex-shrink-0 text-sm">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+           viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+      Terms of Service →
+    </a>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="mt-14 text-center">
+    <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 mb-3">
+      <a href="/" class="hover:text-gray-400 transition-colors">Home</a>
+      <span>·</span>
+      <a href="./privacy.html" class="text-gray-400">Privacy Policy</a>
+      <span>·</span>
+      <a href="./terms.html" class="hover:text-gray-400 transition-colors">Terms of Service</a>
+      <span>·</span>
+      <a href="mailto:instaunfollowerstracker@gmail.com"
+         class="hover:text-gray-400 transition-colors">Contact</a>
+    </div>
+    <!-- ── FIXED: copyright year now 2026 ── -->
+    <p class="text-xs text-gray-700">
+      © 2026 UnfollowerTracker. All rights reserved.
+      Not affiliated with Instagram® or Meta™.
+    </p>
+  </footer>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════ -->
+<script>
+  /* Reading progress bar */
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY /
+      (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = (isNaN(pct) ? 0 : pct) + '%';
+  }, { passive: true });
+
+  /* Intersection-observer staggered fade-in */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll('section.glass-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition =
+      `opacity 0.55s ease ${i * 0.04}s, transform 0.55s ease ${i * 0.04}s`;
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>

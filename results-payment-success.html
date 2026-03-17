@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Payment Complete - Your Complete Unfollower List - UnfollowerTracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-gradient: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                word-break: break-word;
+                hyphens: auto;
+            }
+        }
+
+        * {
+            max-width: 100vw;
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* ─── Ambient blobs ────────────────────────────────────────────── */
+        .blob {
+            position: fixed;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 10s infinite ease-in-out alternate;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #7928CA;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: #FF0080;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 30vw;
+            height: 30vw;
+            background: #FF4D4D;
+            opacity: 0.3;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(20px, 40px) scale(1.1);
+            }
+        }
+
+        /* ─── Glass card ────────────────────────────────────────────────– */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ─── Reveal animations ────────────────────────────────────────── */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.23, 1, 0.320, 1), transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-item:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .reveal-item:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-item:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 77, 77, 0.5);
+            box-shadow: 0 20px 40px rgba(121, 40, 202, 0.2);
+        }
+
+        .text-gradient {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        /* ─── Custom scrollbar ───────────────────────────────────────── */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 0, 128, 0.4);
+            border-radius: 99px;
+        }
+
+        /* ─── Success hero section ──────────────────────────────────────── */
+        .hero-section {
+            text-align: center;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 24px;
+            margin-bottom: 32px;
+            animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            padding: 10px 18px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #22c55e;
+        }
+
+        .success-badge i {
+            font-size: 16px;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0 0 12px 0;
+        }
+
+        .hero-section p {
+            color: #9ca3af;
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ─── Stats grid ────────────────────────────────────────────────– */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 32px;
+            animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(255, 0, 128, 0.3);
+            background: rgba(255, 0, 128, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 11px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 600;
+        }
+
+        /* ─── Results section ────────────────────────────────────────────– */
+        .results-section {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .results-title {
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 8px 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: rgba(255, 0, 128, 0.4);
+        }
+
+        .search-box i {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            width: 140px;
+        }
+
+        .search-box input::placeholder {
+            color: #9ca3af;
+        }
+
+        .results-list {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .username-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.2s ease;
+            animation: rowIn 0.35s ease both;
+        }
+
+        @keyframes rowIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .username-row:last-child {
+            border-bottom: none;
+        }
+
+        .username-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .row-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.25), rgba(121, 40, 202, 0.25));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            flex-shrink: 0;
+        }
+
+        .username-text {
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .row-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .row-index {
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        .visit-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .visit-link:hover {
+            background: rgba(255, 0, 128, 0.12);
+            border-color: rgba(255, 0, 128, 0.35);
+            color: #fff;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 24px;
+            color: #9ca3af;
+        }
+
+        .no-results i {
+            font-size: 36px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        /* ─── Action buttons ─────────────────────────────────────────────– */
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+            animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+        }
+
+        @media (max-width: 480px) {
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .button-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            background: var(--brand-gradient);
+            color: #fff;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 24px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 24px rgba(255, 0, 128, 0.28);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .button-primary:hover::before {
+            left: 100%;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(255, 0, 128, 0.38);
+        }
+
+        .button-primary:active {
+            transform: translateY(0);
+        }
+
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #d1d5db;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .button-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ─── CTA section ────────────────────────────────────────────────– */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 0, 128, 0.08) 0%, rgba(121, 40, 202, 0.08) 100%);
+            border: 1px solid rgba(255, 0, 128, 0.2);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            animation: cardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+        }
+
+        .cta-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        /* ─── Toast notification ─────────────────────────────────────────– */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 12px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            z-index: 999;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+            opacity: 0;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ─── Responsive ─────────────────────────────────────────────---- */
+        @media (max-width: 640px) {
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-section {
+                padding: 28px 16px;
+            }
+
+            .results-section {
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 13px;
+            }
+
+            .hero-section h1 {
+                font-size: 24px;
+            }
+
+            .stat-value {
+                font-size: 24px;
+            }
+
+            .username-row {
+                padding: 10px 16px;
+            }
+
+            .row-content {
+                gap: 8px;
+            }
+
+            .avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            .results-header {
+                padding: 16px;
+            }
+
+            .cta-section {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Main content -->
+    <main class="min-h-screen pt-24 pb-20 px-4 sm:px-8">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Navbar -->
+            <div class="mb-8 flex items-center justify-between">
+                <a href="./results.html" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors text-sm font-600">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Results
+                </a>
+                <span class="text-xs uppercase tracking-wider text-gray-500 font-bold">Payment Success</span>
+            </div>
+
+            <!-- Success hero -->
+            <div id="successView">
+                <div class="hero-section">
+                    <div class="success-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Payment Confirmed</span>
+                    </div>
+                    <h1>Full Access Unlocked! 🎉</h1>
+                    <p>Here are all the accounts that don't follow you back. Your analysis is 100% private and never uploaded.</p>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value" id="statTotal">0</span>
+                        <span class="stat-label">Unfollowers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="statPercentage">0%</span>
+                        <span class="stat-label">Of Following</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">✓</span>
+                        <span class="stat-label">Full Access</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">🔒</span>
+                        <span class="stat-label">Private</span>
+                    </div>
+                </div>
+
+                <!-- Results card -->
+                <div class="results-section">
+                    <div class="results-header">
+                        <div class="results-title">
+                            <i class="fas fa-user-slash"></i>
+                            <span>Complete Unfollower List</span>
+                        </div>
+                        <div class="search-box">
+                            <i class="fas fa-magnifying-glass"></i>
+                            <input type="text" id="searchInput" placeholder="Search username..." autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="results-list custom-scrollbar" id="resultsList">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="button-group">
+                    <button class="button-primary" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        Download as .txt
+                    </button>
+                    <a href="./index.html" class="button-secondary">
+                        <i class="fas fa-redo"></i>
+                        New Analysis
+                    </a>
+                </div>
+
+                <!-- CTA section -->
+                <div class="cta-section">
+                    <h3>Keep Your Account Clean 🧹</h3>
+                    <p>Run a fresh analysis anytime by uploading a new Instagram data export. All processing happens privately in your browser.</p>
+                    <a href="./index.html" class="button-primary" style="display: inline-flex;">
+                        <i class="fas fa-upload"></i>
+                        Run Another Analysis
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fallback: No data found -->
+            <div id="fallbackView" class="hidden">
+                <div class="hero-section" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%); border-color: rgba(239, 68, 68, 0.2);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">⚠️</div>
+                    <h1 style="color: #ef4444;">No Data Found</h1>
+                    <p>We couldn't find your analysis data. This can happen if you cleared your browser storage or opened this page directly.</p>
+                    <a href="./index.html" class="button-primary" style="display: inline-flex; margin-top: 16px;">
+                        <i class="fas fa-upload"></i>
+                        Start New Analysis
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-circle-check" style="color: #4ade80;"></i>
+        <span id="toastMsg">Copied to clipboard!</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // ═══════════════════════════════════════════════════════════════════
+        // STORAGE CONSTANTS (must match results.html)
+        // ═══════════════════════════════════════════════════════════════════
+        const STORAGE_ANALYSIS = 'analysisData';
+        const STORAGE_PAYMENT = 'unfollower_tracker_payment_unlocked';
+        const DISPLAY_CAP = 75;
+
+        // ═══════════════════════════════════════════════════════════════════
+        // PAGE STATE
+        // ═══════════════════════════════════════════════════════════════════
+        const state = {
+            analysis: null,
+            isPaid: false,
+            allUnfollowers: [],
+        };
+
+        // ═══════════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ═══════════════════════════════════════════════════════════════════
+        function initPage() {
+            // Try to load analysis data from sessionStorage
+            const rawAnalysis = sessionStorage.getItem(STORAGE_ANALYSIS);
+            if (!rawAnalysis) {
+                showFallback('No analysis data found');
+                return;
+            }
+
+            try {
+                state.analysis = JSON.parse(rawAnalysis);
+            } catch (err) {
+                console.error('Failed to parse analysisData:', err);
+                showFallback('Invalid analysis data');
+                return;
+            }
+
+            // Check if returning from Stripe payment attempt
+            // When user clicks "Unlock Full List" on results.html, they're sent to Stripe
+            // After checkout (success or cancel), Stripe redirects back here via return_url
+            // We set the payment flag based on the payment attempt flag
+            const paymentAttempted = sessionStorage.getItem('paymentAttempt') === 'true';
+            if (paymentAttempted) {
+                // Payment flow was initiated. Assume success and set paid flag.
+                // In production, you'd verify this with a server/webhook.
+                sessionStorage.setItem(STORAGE_PAYMENT, 'true');
+                sessionStorage.removeItem('paymentAttempt'); // Clean up the flag
+                state.isPaid = true;
+            } else {
+                // Check if payment flag already exists from previous session
+                state.isPaid = sessionStorage.getItem(STORAGE_PAYMENT) === 'true';
+            }
+
+            if (!state.isPaid) {
+                showFallback('Payment confirmation pending. Please ensure you completed the Stripe checkout and returned to this page. You can also manually confirm payment in the results page.');
+                return;
+            }
+
+            // Extract unfollowers
+            state.allUnfollowers = state.analysis.nonFollowers || [];
+            if (state.allUnfollowers.length === 0) {
+                showFallback('No unfollowers found! Everyone you follow follows you back.');
+                return;
+            }
+
+            // Render success view
+            showSuccessView();
+        }
+
+        function showSuccessView() {
+            document.getElementById('successView').classList.remove('hidden');
+            document.getElementById('fallbackView').classList.add('hidden');
+            renderPage();
+        }
+
+        function showFallback(message) {
+            document.getElementById('successView').classList.add('hidden');
+            document.getElementById('fallbackView').classList.remove('hidden');
+
+            const fallback = document.getElementById('fallbackView');
+            fallback.innerHTML = `
+                <div class="hero-section" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%); border-color: rgba(239, 68, 68, 0.2);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">⚠️</div>
+                    <h1 style="color: #ef4444;">Data Not Available</h1>
+                    <p>${message}</p>
+                    <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        <a href="./results.html" class="button-primary" style="display: inline-flex;">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Results
+                        </a>
+                        <a href="./index.html" class="button-secondary" style="display: inline-flex; color: #d1d5db; border-color: rgba(255,255,255,0.12);">
+                            <i class="fas fa-upload"></i>
+                            New Analysis
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // MAIN RENDERER
+        // ═══════════════════════════════════════════════════════════════════
+        function renderPage() {
+            const { analysis, allUnfollowers } = state;
+            const totalUnfollowers = allUnfollowers.length;
+            const totalFollowing = analysis.following.length;
+            const percentage = totalFollowing > 0 ? Math.round((totalUnfollowers / totalFollowing) * 100) : 0;
+
+            // Update statistics
+            document.getElementById('statTotal').textContent = totalUnfollowers.toLocaleString();
+            document.getElementById('statPercentage').textContent = Math.min(percentage, 99) + '%';
+
+            // Render unfollowers list
+            renderList(allUnfollowers);
+
+            // Setup event listeners
+            setupEventListeners();
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // LIST RENDERING
+        // ═══════════════════════════════════════════════════════════════════
+        function renderList(users, searchQuery = '') {
+            const container = document.getElementById('resultsList');
+            container.innerHTML = '';
+
+            // Filter by search
+            const filtered = searchQuery
+                ? users.filter(u => u.toLowerCase().includes(searchQuery.toLowerCase()))
+                : users;
+
+            // Limit to display cap for performance
+            const displayed = filtered.slice(0, DISPLAY_CAP);
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-magnifying-glass"></i>
+                        <p>No usernames match your search.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            displayed.forEach((username, index) => {
+                const safe = escapeHTML(username);
+                const initials = safe.substring(0, 2).toUpperCase();
+                const delay = Math.min(index * 18, 400);
+
+                const row = document.createElement('div');
+                row.className = 'username-row';
+                row.style.animationDelay = `${delay}ms`;
+                row.innerHTML = `
+                    <div class="row-content">
+                        <div class="avatar">${initials}</div>
+                        <span class="username-text">@${safe}</span>
+                    </div>
+                    <div class="row-actions">
+                        <span class="row-index">#${index + 1}</span>
+                        <a href="https://www.instagram.com/${safe}/" target="_blank" rel="noopener noreferrer" class="visit-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>Visit</span>
+                        </a>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            // Show if more results exist
+            if (filtered.length > DISPLAY_CAP) {
+                const moreRow = document.createElement('div');
+                moreRow.className = 'username-row';
+                moreRow.style.opacity = '0.7';
+                moreRow.innerHTML = `
+                    <div class="row-content">
+                        <span class="username-text">… and ${filtered.length - DISPLAY_CAP} more unfollowers</span>
+                    </div>
+                    <div class="row-actions">
+                        <span class="row-index" style="font-size: 10px;">All included in download</span>
+                    </div>
+                `;
+                container.appendChild(moreRow);
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // EVENT LISTENERS
+        // ═══════════════════════════════════════════════════════════════════
+        function setupEventListeners() {
+            // Search
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput && !searchInput.hasListener) {
+                searchInput.addEventListener('input', (e) => {
+                    renderList(state.allUnfollowers, e.target.value);
+                });
+                searchInput.hasListener = true;
+            }
+
+            // Download
+            const downloadBtn = document.getElementById('downloadBtn');
+            if (downloadBtn && !downloadBtn.hasListener) {
+                downloadBtn.addEventListener('click', downloadAsText);
+                downloadBtn.hasListener = true;
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // DOWNLOAD FUNCTIONALITY
+        // ═══════════════════════════════════════════════════════════════════
+        function downloadAsText() {
+            const { analysis, allUnfollowers } = state;
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+
+            let content = '═══════════════════════════════════════\n';
+            content += '   Instagram Unfollower Tracker Report\n';
+            content += '═══════════════════════════════════════\n\n';
+            content += `Generated      : ${now.toLocaleString()}\n`;
+            content += `Followers      : ${analysis.followers.length.toLocaleString()}\n`;
+            content += `Following      : ${analysis.following.length.toLocaleString()}\n`;
+            content += `Not Following  : ${allUnfollowers.length.toLocaleString()}\n`;
+            content += `Fans           : ${(analysis.fans || []).length.toLocaleString()}\n\n`;
+            content += '───── Complete Unfollower List ─────\n\n';
+
+            allUnfollowers.forEach((username, i) => {
+                content += `${i + 1}. @${username}\n`;
+            });
+
+            content += '\n\n— Generated by UnfollowerTracker (100% client-side, no data stored) —\n';
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `instagram-unfollowers-${dateStr}.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showToast('✓ Download started!');
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // TOAST NOTIFICATION
+        // ═══════════════════════════════════════════════════════════════════
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toastMsg');
+            msg.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // UTILITY HELPERS
+        // ═══════════════════════════════════════════════════════════════════
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ═══════════════════════════════════════════════════════════════════
+        // BOOT
+        // ═══════════════════════════════════════════════════════════════════
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+
+</body>
+
+</html>
