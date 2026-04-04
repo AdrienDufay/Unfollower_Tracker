@@ -1158,13 +1158,13 @@
                 <div class="text-center lg:text-left space-y-4">
                     <h4 class="font-semibold text-xs text-gray-500 uppercase tracking-wider">Connect</h4>
                     <div class="flex justify-center lg:justify-start gap-5">
-                        <a href="mailto:hello@unfollowertracker.com" title="Email"
+                        <a href="https://youtube.com/@unfollower_tracker?si=LEYDzzMbK06xfU9J" target="_blank" rel="noopener noreferrer" title="YouTube"
                             class="text-gray-400 hover:text-[#FF0080] transition-colors duration-200">
-                            <i class="fas fa-envelope text-xl"></i>
+                            <i class="fab fa-youtube text-xl"></i>
                         </a>
-                        <a href="https://github.com/unfollowertracker" target="_blank" rel="noopener noreferrer"
-                            title="GitHub" class="text-gray-400 hover:text-[#FF0080] transition-colors duration-200">
-                            <i class="fab fa-github text-xl"></i>
+                        <a href="https://www.tiktok.com/@unfollowertracker?_r=1&_t=ZN-95GCQyqONc6" target="_blank" rel="noopener noreferrer"
+                            title="TikTok" class="text-gray-400 hover:text-[#FF0080] transition-colors duration-200">
+                            <i class="fab fa-tiktok text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -1232,6 +1232,14 @@
          ══════════════════════════════════════════════════════════════════════ */
         document.addEventListener('DOMContentLoaded', function () {
             'use strict';
+
+            /* ██████████████████████████████████████████████████████████████████
+               ZIP BOMB PROTECTION — Prevent decompression attacks
+               ██████████████████████████████████████████████████████████████████ */
+            const MAX_UNCOMPRESSED_SIZE = 500 * 1024 * 1024;  // 500 MB total
+            const MAX_FILE_SIZE = 50 * 1024 * 1024;           // 50 MB per file
+            const MAX_FILE_COUNT = 100000;                    // Prevent zip bombs with many files
+            const MAX_RECURSION_DEPTH = 100;                  // Prevent stack overflow in JSON parsing
 
             /* ── DOM References ─────────────────────────────────────────────── */
             const uploadArea = document.getElementById('uploadArea');
@@ -1579,9 +1587,15 @@
                     return extractFromHTML(raw);
                 }
 
-                function walk(node) {
+                function walk(node, depth = 0) {
+                    /* ██ RECURSION PROTECTION: Prevent stack overflow in deeply nested JSON */
+                    if (depth > MAX_RECURSION_DEPTH) {
+                        console.warn('⚠️ JSON nesting exceeded depth limit — some data may be skipped.');
+                        return;
+                    }
+
                     if (!node) return;
-                    if (Array.isArray(node)) { node.forEach(walk); return; }
+                    if (Array.isArray(node)) { node.forEach(n => walk(n, depth + 1)); return; }
                     if (typeof node !== 'object') return;
 
                     /* Modern canonical structure */
@@ -1603,7 +1617,7 @@
                     /* Known wrapper keys in older exports */
                     ['relationships_following', 'relationships_followers',
                         'relationships_follow_requests_sent'].forEach(function (k) {
-                            if (node[k]) walk(node[k]);
+                            if (node[k]) walk(node[k], depth + 1);
                         });
                 }
 
@@ -1704,6 +1718,30 @@
                             catch (_) { return new TextDecoder('latin1').decode(bytes); }
                         }
                     });
+
+                    /* ██ ZIP BOMB PROTECTION: Validate file sizes before processing */
+                    let totalUncompressedSize = 0;
+                    const fileCount = Object.keys(zip.files).length;
+                    
+                    if (fileCount > MAX_FILE_COUNT) {
+                        throw new Error(`ZIP contains too many files (${fileCount} > ${MAX_FILE_COUNT}). This may be a zip bomb.`);
+                    }
+
+                    for (const filename in zip.files) {
+                        const fileObj = zip.files[filename];
+                        if (fileObj.dir) continue; // Skip directories
+                        
+                        const uncompressedSize = fileObj.uncompressedSize;
+                        totalUncompressedSize += uncompressedSize;
+
+                        if (uncompressedSize > MAX_FILE_SIZE) {
+                            throw new Error(`File "${filename}" is too large (${(uncompressedSize / 1024 / 1024).toFixed(1)} MB > 50 MB). Upload the official Instagram data export instead.`);
+                        }
+
+                        if (totalUncompressedSize > MAX_UNCOMPRESSED_SIZE) {
+                            throw new Error(`ZIP contents exceed size limit (${(totalUncompressedSize / 1024 / 1024).toFixed(1)} MB > 500 MB). This file is too large to process safely.`);
+                        }
+                    }
 
                     setProgress(18, 'Scanning archive structure…');
                     await tick();
