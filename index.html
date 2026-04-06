@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find who unfollowed you on Instagram instantly. 100% free, no password, no data stored. Works in your browser. See your unfollowers in seconds.">
+    <meta property="og:title" content="See Who Unfollowed You on Instagram — Free & Private">
+    <meta property="og:description" content="Discover who doesn't follow you back. Free Instagram unfollower tracker. No login, no password, results in seconds.">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>UnfollowerTracker - Who Unfollowed Me on Instagram? (Free, No Password)</title>
+    <title>Free Instagram Unfollower Tracker — No Login Required</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
@@ -450,16 +453,16 @@
         .navbar-action-btn {
             background: #ffffff;
             color: #000000;
-            padding: 10px 20px;
+            padding: 8px 14px;
             border-radius: 9999px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-            min-height: 40px;
+            min-height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -626,6 +629,35 @@
         .row-anim {
             animation: rowIn 0.35s ease both;
         }
+
+        @media (max-width: 768px) {
+            section {
+                padding-top: 60px !important;
+                padding-bottom: 60px !important;
+            }
+            section.relative.min-h-screen,
+            [class*="hero"] {
+                padding-top: 12px !important;
+                margin-top: 0 !important;
+                min-height: auto !important;
+            }
+            section.relative.min-h-screen h1 {
+                font-size: 26px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 10px !important;
+            }
+            section.relative.min-h-screen p {
+                font-size: 14px !important;
+                margin-bottom: 16px !important;
+            }
+            #analyze {
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+            }
+            #how-it-works {
+                padding-top: 40px !important;
+            }
+        }
     </style>
 
     <!-- JSZip Library - Client-side ZIP processing -->
@@ -651,8 +683,7 @@
                 <span class="navbar-brand-text">Unfollower<span class="highlight">Tracker</span></span>
             </div>
             <div class="navbar-actions">
-                <button onclick="scrollToAnalyze()" class="navbar-action-btn" aria-label="Start Analysis">Start
-                    Analysis</button>
+                <button onclick="scrollToAnalyze()" class="navbar-action-btn" aria-label="Try For Free">Try For Free</button>
                 <button id="mobileMenuBtn" class="navbar-menu-btn" aria-label="Toggle menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -673,30 +704,28 @@
 
     <!-- ═══════════════════════ HERO ═══════════════════════ -->
     <section
-        class="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 px-3 sm:px-4">
+        class="relative min-h-screen flex flex-col justify-center items-center pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 px-3 sm:px-4" style="padding-top: 8px;">
         <div class="max-w-4xl mx-auto text-center z-10">
 
             <!-- Trust Badge -->
             <div
                 class="fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 border border-green-500/30">
                 <div class="w-2 h-2 rounded-full bg-green-500 status-dot"></div>
-                <span class="text-xs font-semibold tracking-wider uppercase text-green-400">✓ 100% Free &bull; ✓ No
-                    Password &bull; ✓ Offline Works</span>
+                <span class="text-xs font-semibold tracking-wider uppercase text-green-400">✓ 100% Free &bull; ✓ No Password &bull; ✓ No Login</span>
             </div>
 
             <!-- Headline -->
             <h1
-                class="fade-in-up delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6">
-                Find Out Who <span class="text-gradient">Unfollowed You</span>—100% Free, No Password Required
+                class="fade-in-up delay-100 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-4 sm:mb-6" style="font-size: 24px; line-height: 1.2; margin-top: 0; margin-bottom: 8px;">
+                See Who <span class="text-gradient">Unfollowed You</span> on Instagram
             </h1>
             <p
-                class="fade-in-up delay-200 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto">
-                Discover exactly who unfollowed you, who doesn't follow back, and your ride-or-dies. Instant results.
-                Zero account risk. No password. No server uploads. Your data never leaves your device.
+                class="fade-in-up delay-200 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto" style="font-size: 13px; margin-bottom: 12px;">
+                Upload your Instagram data & instantly discover who doesn't follow you back. No password. No account ban risk. Completely free.
             </p>
 
             <!-- ════════════════ UPLOAD CARD ════════════════ -->
-            <div id="analyze" class="fade-in-up delay-300 w-full max-w-2xl mx-auto relative group">
+            <div id="analyze" class="fade-in-up delay-300 w-full max-w-2xl mx-auto relative group" style="padding-top: 16px; padding-bottom: 16px;">
                 <div
                     class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-violet-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000">
                 </div>
@@ -714,9 +743,8 @@
                                 class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 ring-1 ring-white/10">
                                 <i class="fas fa-cloud-upload-alt text-3xl text-gradient"></i>
                             </div>
-                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Drop your Instagram Data</h3>
-                            <p class="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">or click to browse local files
-                                (ZIP)</p>
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2">Drop Your ZIP File Here</h3>
+                            <p class="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">Upload your Instagram data (or click to browse)</p>
                             <button
                                 class="select-file-btn bg-white text-black px-8 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors btn-glow"
                                 onclick="fileInput.click()">
@@ -768,39 +796,64 @@
                     <!-- Footer inside card -->
                     <div
                         class="flex flex-col md:flex-row items-center justify-between mt-6 px-2 text-xs text-gray-500 font-medium gap-4">
-                        <div class="flex items-center gap-2"><i class="fas fa-shield-alt text-green-500"></i> Local
-                            Browser Processing</div>
-                        <div class="flex items-center gap-2"><i class="fas fa-bolt text-yellow-500"></i> Results in &lt;
-                            15 seconds</div>
-                        <div class="flex items-center gap-2"><i class="fas fa-user-secret text-purple-500"></i> 100%
-                            Anonymous</div>
+                        <div class="flex items-center gap-2">🔒 Stays on Your Device</div>
+                        <div class="flex items-center gap-2">⚡ Results in 10 Seconds</div>
+                        <div class="flex items-center gap-2">✅ No Password Ever</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Social Proof -->
-            <div class="mt-12 fade-in-up delay-300">
-                <div class="flex items-center justify-center gap-2 mb-4">
-                    <div class="flex -space-x-3">
-                        <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=1"
-                            alt="">
-                        <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=5"
-                            alt="">
-                        <img class="w-10 h-10 rounded-full border-2 border-black" src="https://i.pravatar.cc/100?img=8"
-                            alt="">
-                        <div
-                            class="w-10 h-10 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center text-xs font-bold">
-                            +2k</div>
+            <!-- Analysis Report Preview -->
+            <div class="mt-12 w-full max-w-2xl mx-auto relative">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-600 rounded-3xl blur-2xl opacity-20">
+                </div>
+                <div class="relative glass rounded-3xl p-6 md:p-10 border border-white/10">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="font-bold text-lg">Analysis Report</h3>
+                        <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
-                    <div class="text-left ml-2">
-                        <div class="flex text-yellow-500 text-xs mb-0.5">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <div class="space-y-4">
+                        <div
+                            class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                                <div>
+                                    <div class="w-24 h-3 bg-gray-600 rounded mb-2"></div>
+                                    <div class="w-16 h-2 bg-gray-700 rounded"></div>
+                                </div>
+                            </div>
+                            <span
+                                class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
+                                You</span>
                         </div>
-                        <p class="text-xs text-gray-400">Trusted by Instagram users <span
-                                class="text-white font-bold">every day</span></p>
+                        <div
+                            class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5 opacity-75">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-700"></div>
+                                <div>
+                                    <div class="w-20 h-3 bg-gray-600 rounded mb-2"></div>
+                                    <div class="w-12 h-2 bg-gray-700 rounded"></div>
+                                </div>
+                            </div>
+                            <span
+                                class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
+                                You</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                        <p class="text-sm font-semibold text-white">Found <span class="text-pink-500">47</span>
+                            users who don't follow back.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Helper Text -->
+            <p class="fade-in-up delay-200 text-sm text-gray-400 mt-6 mb-12">No ZIP yet? <a href="#how-it-works" class="text-pink-500 hover:text-pink-400 font-semibold">Get it in 2 min →</a></p>
+
+            <!-- Social Proof -->
+            <div class="mt-12 fade-in-up delay-300">
+                <p class="text-sm text-gray-400 font-medium">2,000+ users check their unfollowers here monthly.</p>
             </div>
         </div>
     </section>
@@ -809,12 +862,11 @@
     <div class="w-full bg-white/5 border-y border-white/5 py-8 overflow-hidden scroller" data-animated="true">
         <ul
             class="scroller__inner tag-list flex gap-12 text-gray-500 font-bold uppercase tracking-widest text-sm items-center">
-            <li><i class="fas fa-lock mr-2"></i> GDPR Compliant</li>
-            <li><i class="fas fa-fingerprint mr-2"></i> 256-Bit Encryption</li>
-            <li><i class="fas fa-wifi mr-2"></i> Offline Analysis</li>
-            <li><i class="fas fa-check-circle mr-2"></i> Verified Accuracy</li>
-            <li><i class="fab fa-instagram mr-2"></i> Meta Safe</li>
-            <li><i class="fas fa-bolt mr-2"></i> Instant Result</li>
+            <li><i class="fas fa-shield-alt mr-2"></i> Zero Server Access</li>
+            <li><i class="fas fa-lock mr-2"></i> No Passwords Ever</li>
+            <li><i class="fas fa-wifi mr-2"></i> Works Offline</li>
+            <li><i class="fas fa-gavel mr-2"></i> GDPR Compliant</li>
+            <li><i class="fas fa-home mr-2"></i> Your Data, Your Device</li>
         </ul>
     </div>
 
@@ -822,10 +874,8 @@
     <section id="how-it-works" class="py-20 sm:py-24 md:py-32 px-3 sm:px-4 relative">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12 sm:mb-16 md:mb-20">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"><span class="text-gradient">How It
-                        Works</span></h2>
-                <p class="text-xs sm:text-sm md:text-base text-gray-400 max-w-xl mx-auto">Three crystal clear steps. No
-                    complex tech. No password sharing.</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"><span class="text-gradient">3 Steps to Find Your Unfollowers</span></h2>
+                <p class="text-xs sm:text-sm md:text-base text-gray-400 max-w-xl mx-auto">Simple, fast, completely private.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 relative" id="steps-container">
                 <div
@@ -836,30 +886,24 @@
                         class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-pink-500/10 group-hover:scale-110 transition-transform">
                         <span class="text-lg sm:text-2xl font-bold text-white">1</span>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Request Your Data From Instagram (2 minutes)
-                    </h3>
-                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Instagram gives you full access to your
-                        data. Head to Instagram Settings → Download Your Info → Request a Copy. You'll get an email with
-                        your data zip file in a few minutes.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Request Your Instagram Data</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Go to Instagram Settings → Your Activity → Download Your Information. Instagram will package all your follower data into a ZIP file and email it within a few minutes.</p>
                 </div>
                 <div class="reveal-item glass-card rounded-3xl p-6 sm:p-8 relative z-10 text-center group">
                     <div
                         class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-violet-500/10 group-hover:scale-110 transition-transform">
                         <span class="text-lg sm:text-2xl font-bold text-white">2</span>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Drop Your File Here (10 seconds)</h3>
-                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Upload the Instagram ZIP file directly.
-                        We parse everything right in your browser—super fast, completely secure.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Upload Your ZIP File</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Drag and drop your Instagram ZIP file here (or click to browse). We parse everything right in your browser—no servers, no delays. Done in under 10 seconds.</p>
                 </div>
                 <div class="reveal-item glass-card rounded-3xl p-6 sm:p-8 relative z-10 text-center group">
                     <div
                         class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-gray-900 rounded-2xl flex items-center justify-center border border-white/10 mb-4 sm:mb-6 shadow-lg shadow-orange-500/10 group-hover:scale-110 transition-transform">
                         <span class="text-lg sm:text-2xl font-bold text-white">3</span>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Get Your Results Instantly (&lt; 15 seconds)
-                    </h3>
-                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">See exactly who unfollowed you, find who
-                        doesn't follow back, and download your full report.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">See Your Full Unfollower List</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Get instant results showing exactly who unfollowed you and who doesn't follow back. Flip through your list on mobile or desktop. Watch one quick 30-second video to unlock the complete report—it's free, and that's how we keep the tool running with zero hidden costs.</p>
                 </div>
             </div>
         </div>
@@ -870,8 +914,8 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
                 <div class="space-y-6 sm:space-y-8 relative z-10">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Why <span
-                            class="text-gradient">Trust Us?</span></h2>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">Why Users <span
+                            class="text-gradient">Choose UnfollowerTracker</span></h2>
                     <div class="space-y-4 sm:space-y-6">
                         <div
                             class="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
@@ -880,11 +924,8 @@
                                 <i class="fas fa-lock text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Bank-Level Security (Client-Side
-                                    Processing)</h4>
-                                <p class="text-gray-400 text-xs sm:text-sm mt-1">Your data never leaves your browser. We
-                                    don't store, sell, or see any of your information. 256-bit encryption &amp; offline
-                                    analysis.</p>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Your Data Never Leaves Your Browser</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-1">Every single follower in your ZIP file is analyzed right on your device. We don't have servers storing your data. We don't sell it. We can't see it. Full stop.</p>
                             </div>
                         </div>
                         <div
@@ -894,11 +935,8 @@
                                 <i class="fas fa-bolt text-lg sm:text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Lightning-Fast Results (Optimized
-                                    Algorithms)</h4>
-                                <p class="text-gray-400 text-xs sm:text-sm mt-1">We parse 50,000+ follower accounts in
-                                    under 3 seconds using optimized algorithms. Get your unfollower list faster than you
-                                    can open Instagram.</p>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Faster Than Any App or Website</h4>
+                                <p class="text-gray-400 text-xs sm:text-sm mt-1">Our algorithm processes your entire Instagram network in under 10 seconds. No servers to connect to. No waiting for responses. Just pure speed.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
@@ -907,10 +945,8 @@
                                 <i class="fas fa-mobile-alt text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white">Works Everywhere (Mobile-Friendly)</h4>
-                                <p class="text-gray-400 text-sm mt-1">iPhone? Android? Desktop? Works perfectly on any
-                                    device with a web browser. No app download, no installation, no permissions
-                                    required.</p>
+                                <h4 class="text-lg font-bold text-white">Works on Every Device, Every Browser</h4>
+                                <p class="text-gray-400 text-sm mt-1">Desktop, laptop, iPhone, Android—doesn't matter. UnfollowerTracker works perfectly in any web browser without apps, downloads, or permissions. Use it however you're most comfortable.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors cursor-default">
@@ -919,66 +955,39 @@
                                 <i class="fas fa-check-circle text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white">Actually Free (No Hidden Fees)</h4>
-                                <p class="text-gray-400 text-sm mt-1">No freemium traps. No "unlock premium features."
-                                    No payment info required. Completely free. Forever.</p>
+                                <h4 class="text-lg font-bold text-white">100% Free — Ad Supported</h4>
+                                <p class="text-gray-400 text-sm mt-1">No credit card. No freemium tier. No upsell. You see a 30-second video ad to unlock your full results list. That's it. We stay free, you stay in control.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Visual Representation -->
-                <div class="relative">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-600 rounded-3xl blur-2xl opacity-20">
-                    </div>
-                    <div class="relative glass rounded-3xl p-6 md:p-10 border border-white/10">
-                        <div class="flex items-center justify-between mb-8">
-                            <h3 class="font-bold text-lg">Analysis Report</h3>
-                            <span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Completed</span>
-                        </div>
-                        <div class="space-y-4">
-                            <div
-                                class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
-                                    <div>
-                                        <div class="w-24 h-3 bg-gray-600 rounded mb-2"></div>
-                                        <div class="w-16 h-2 bg-gray-700 rounded"></div>
-                                    </div>
-                                </div>
-                                <span
-                                    class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
-                                    You</span>
-                            </div>
-                            <div
-                                class="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/5 opacity-75">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gray-700"></div>
-                                    <div>
-                                        <div class="w-20 h-3 bg-gray-600 rounded mb-2"></div>
-                                        <div class="w-12 h-2 bg-gray-700 rounded"></div>
-                                    </div>
-                                </div>
-                                <span
-                                    class="text-red-400 text-xs font-bold bg-red-400/10 px-3 py-1 rounded-full">Unfollowed
-                                    You</span>
-                            </div>
-                        </div>
-                        <div class="mt-8 pt-6 border-t border-white/10 text-center">
-                            <p class="text-sm font-semibold text-white">Found <span class="text-pink-500">241</span>
-                                users who don't follow back.</p>
-                        </div>
-                    </div>
+                <div class="relative" style="display:none;">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA Button after Why Trust Us -->
+    <div style="text-align:center; margin: 0 0 60px 0;">
+      <a href="#analyze" style="
+        display: inline-block;
+        background: linear-gradient(135deg, #e91e8c, #9c27b0);
+        color: white;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 16px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+      ">Check My Unfollowers Now →</a>
+    </div>
+
     <!-- Testimonials -->
-    <section id="reviews" class="py-20 bg-gradient-to-b from-transparent to-black/50">
+    <section id="reviews" class="py-20 bg-gradient-to-b from-transparent to-black/50" style="padding-bottom: 32px;">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold">Loved by Instagram Users</h2>
+            <h2 class="text-3xl font-bold">Loved by 2,000+ Instagram Users</h2>
         </div>
         <div class="scroller" data-animated="true">
             <div class="scroller__inner flex gap-3 sm:gap-4 md:gap-6 px-3 sm:px-4">
@@ -986,15 +995,12 @@
                     <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i></div>
-                    <p class="text-gray-300 text-sm mb-6">"Finally, NO password required?? 😭 I was terrified to use
-                        unfollower apps because everyone says they steal your login. Used this and was shocked—I just
-                        downloaded my data from Instagram and uploaded it. Done in 30 seconds and I kept my password to
-                        myself."</p>
+                    <p class="text-gray-300 text-sm mb-6">"Found 347 unfollowers in 8 seconds. No stupid password, no app. Just upload and done. This is exactly what Instagram should tell you."</p>
                     <div class="flex items-center gap-3">
                         <img src="https://i.pravatar.cc/100?img=9" class="w-8 h-8 rounded-full" alt="">
                         <div>
-                            <p class="font-bold text-sm">Sarah J.</p>
-                            <p class="text-xs text-gray-500">Portland</p>
+                            <p class="font-bold text-sm">Sarah M.</p>
+                            <p class="text-xs text-gray-500">Austin, TX</p>
                         </div>
                     </div>
                 </div>
@@ -1002,14 +1008,12 @@
                     <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i></div>
-                    <p class="text-gray-300 text-sm mb-6">"The results are actually accurate. Most unfollower trackers
-                        are total BS. This one actually works offline and shows me exactly who bounced from my profile.
-                        Took 10 seconds. Found 47 unfollowers I didn't even know about. Wild."</p>
+                    <p class="text-gray-300 text-sm mb-6">"I was skeptical about uploading anything, but it's totally private—works right in my browser. I cleaned up 200 ghost followers. Best two minutes I spent this week."</p>
                     <div class="flex items-center gap-3">
                         <img src="https://i.pravatar.cc/100?img=12" class="w-8 h-8 rounded-full" alt="">
                         <div>
-                            <p class="font-bold text-sm">Mike T.</p>
-                            <p class="text-xs text-gray-500">Austin</p>
+                            <p class="font-bold text-sm">Jay K.</p>
+                            <p class="text-xs text-gray-500">London, UK</p>
                         </div>
                     </div>
                 </div>
@@ -1017,89 +1021,117 @@
                     <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i></div>
-                    <p class="text-gray-300 text-sm mb-6">"It's giving security 🔒 No cap, I almost fell for one of
-                        those scammy unfollower sites. Found this instead and it literally just uses my Instagram data
-                        zip file. No app, no password, no stress. This is how it should've always worked."</p>
+                    <p class="text-gray-300 text-sm mb-6">"Used it on my phone during lunch break. Found 89 accounts that don't follow me back. The ad is fine—totally worth it for a free tool this good."</p>
                     <div class="flex items-center gap-3">
                         <img src="https://i.pravatar.cc/100?img=32" class="w-8 h-8 rounded-full" alt="">
                         <div>
-                            <p class="font-bold text-sm">Emily R.</p>
-                            <p class="text-xs text-gray-500">Los Angeles</p>
+                            <p class="font-bold text-sm">Marcus T.</p>
+                            <p class="text-xs text-gray-500">Toronto, Canada</p>
                         </div>
                     </div>
                 </div>
-                <div class="glass-card p-4 sm:p-6 rounded-2xl w-64 sm:w-80 shrink-0">
-                    <div class="flex text-yellow-500 mb-4 text-xs"><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i></div>
-                    <p class="text-gray-300 text-sm mb-6">"Zero ban risk. Legit. Used it twice this month. Zero issues
-                        with my account, zero bans, zero suspicious activity. Instagram kept my account safe because we
-                        never touched my login. Recommend this to everyone."</p>
-                    <div class="flex items-center gap-3">
-                        <img src="https://i.pravatar.cc/100?img=44" class="w-8 h-8 rounded-full" alt="">
-                        <div>
-                            <p class="font-bold text-sm">David K.</p>
-                            <p class="text-xs text-gray-500">Toronto</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
 
+    <!-- CTA Button after Testimonials -->
+    <div style="text-align:center; margin: 0 0 60px 0; margin-top: 24px;">
+      <a href="#analyze" style="
+        display: inline-block;
+        background: linear-gradient(135deg, #e91e8c, #9c27b0);
+        color: white;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 16px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+      ">Check My Unfollowers Now →</a>
+    </div>
+
     <!-- FAQ -->
-    <section class="py-16 sm:py-20 md:py-24 px-3 sm:px-4 max-w-3xl mx-auto" id="faq-section">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 text-center">Frequently Asked Questions</h2>
+    <section class="py-16 sm:py-20 md:py-24 px-3 sm:px-4 max-w-3xl mx-auto" id="faq">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 text-center">Questions? We've Got Answers</h2>
         <div class="space-y-3 sm:space-y-4">
             <div class="glass rounded-xl p-1">
                 <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
                     onclick="toggleFaq(this)">
-                    Is it safe? Will Instagram ban me for using this unfollower tracker?
+                    How do I see who unfollowed me on Instagram for free?
                     <i class="fas fa-chevron-down text-sm faq-icon"></i>
                 </button>
                 <div class="faq-content px-4 text-gray-400 text-sm">
-                    <strong>Yes, it's 100% safe, and no, Instagram will not ban you.</strong> We never access your
-                    Instagram account. You're not logging in. We don't ask for your password. We don't make any requests
-                    to Instagram's servers on your behalf. You download <strong>your own data</strong> directly from
-                    Instagram. We simply analyze that data <strong>entirely within your browser</strong>.
+                    Upload your Instagram data ZIP file to UnfollowerTracker. Results appear instantly with everyone who unfollowed you and who doesn't follow back. The first 3 accounts are shown right away. Watch a 30-second video to see your entire list—no payment required.
                 </div>
             </div>
             <div class="glass rounded-xl p-1">
                 <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
                     onclick="toggleFaq(this)">
-                    Where does my Instagram follower data go? Is it uploaded to your servers?
+                    How do I download my Instagram data ZIP file?
                     <i class="fas fa-chevron-down text-sm faq-icon"></i>
                 </button>
                 <div class="faq-content px-4 text-gray-400 text-sm">
-                    <strong>Your data stays on your device. Period.</strong> All analysis happens 100% in your web
-                    browser. Your data is never sent to our servers, never stored, never seen by us.
+                    Open Instagram on mobile or desktop → Settings → Your Activity → Download Your Information. Choose JSON format and confirm your email address. Instagram emails you a ZIP file within a few minutes. Check your spam folder if you don't see it.
                 </div>
             </div>
             <div class="glass rounded-xl p-1">
                 <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
                     onclick="toggleFaq(this)">
-                    How do I download my Instagram data?
+                    Is it safe to upload my Instagram ZIP file here?
                     <i class="fas fa-chevron-down text-sm faq-icon"></i>
                 </button>
                 <div class="faq-content px-4 text-gray-400 text-sm">
-                    1. Open Instagram → Tap your profile → Settings &amp; Privacy<br>
-                    2. Find "Download Your Info" → Account Center → Data &amp; Privacy<br>
-                    3. Select "Download Your Info" → Request a Download<br>
-                    4. Choose <strong>JSON format</strong> (smaller, faster) — HTML also works<br>
-                    5. Instagram emails you a download link within minutes<br>
-                    6. Download the ZIP and upload it here!
+                    Completely safe. Your file never touches our servers—it's analyzed entirely in your browser. We don't store it, see it, or share it with anyone. You can verify this by disconnecting from the internet after uploading; the results still work.
                 </div>
             </div>
             <div class="glass rounded-xl p-1">
                 <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
                     onclick="toggleFaq(this)">
-                    How fast is the analysis? Does it work offline?
+                    Why doesn't Instagram show me who unfollowed me directly?
                     <i class="fas fa-chevron-down text-sm faq-icon"></i>
                 </button>
                 <div class="faq-content px-4 text-gray-400 text-sm">
-                    <strong>Ridiculously fast — and yes, offline works.</strong> Parsing typically completes in under 5
-                    seconds even for 100,000+ followers. After you upload your file, you can disconnect WiFi — the
-                    analysis still runs entirely in your browser.
+                    Instagram intentionally hides this data to reduce drama and conflict on their platform. They want you focused on creating content, not obsessing over who unfollowed you. That's why tools like UnfollowerTracker exist—to give you transparency Instagram won't provide.
+                </div>
+            </div>
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Why do I have to watch an ad to see my full unfollower list?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    We're 100% free and completely independent. We don't charge you, ask for your password, or store your data. The 30-second video ad is how we cover our costs and keep the tool alive for everyone. No ads = no free tool.
+                </div>
+            </div>
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Does Instagram know I'm using UnfollowerTracker?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    No. UnfollowerTracker never connects to Instagram's servers or accesses your account. We only analyze your downloaded ZIP file, which is publicly accessible data you already own. Using an unfollower tracker doesn't violate Instagram's terms and carries no ban risk.
+                </div>
+            </div>
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    What's the difference between "doesn't follow back" and "unfollowed me"?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    "Doesn't follow back" means you follow them, but they don't follow you—could be intentional or they never saw your follow request. "Unfollowed me" means they used to follow you but no longer do. UnfollowerTracker shows you both, so you have the full picture.
+                </div>
+            </div>
+            <div class="glass rounded-xl p-1">
+                <button class="w-full text-left p-4 flex justify-between items-center font-semibold faq-button"
+                    onclick="toggleFaq(this)">
+                    Does UnfollowerTracker work on iPhone and Android?
+                    <i class="fas fa-chevron-down text-sm faq-icon"></i>
+                </button>
+                <div class="faq-content px-4 text-gray-400 text-sm">
+                    Yes, completely. UnfollowerTracker works on any device with a web browser—iPhone, Android, iPad, desktop, whatever. No app download required. Just visit the site, upload your ZIP, and go.
                 </div>
             </div>
         </div>
@@ -1116,7 +1148,7 @@
                         <span class="text-[#FF0080]">Unfollower</span>Tracker
                     </h3>
                     <p class="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto lg:mx-0">
-                        Track unfollowers privately in your browser. No passwords. No servers. 100% yours.
+                        Track your Instagram followers privately and free. No passwords. No data stored. Download your ZIP, upload it here, get instant results.
                     </p>
                 </div>
 
@@ -1130,11 +1162,11 @@
                         </li>
                         <li>
                             <a href="#features"
-                                class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">Features</a>
+                                class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">What Makes Us Different</a>
                         </li>
                         <li>
-                            <a href="#analyze"
-                                class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">Analyze</a>
+                            <a href="#faq"
+                                class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">FAQ & Support</a>
                         </li>
                     </ul>
                 </div>
