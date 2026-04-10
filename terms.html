@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service – UnfollowerTracker</title>
-  <meta name="description" content="Read the Terms of Service for UnfollowerTracker. Understand the rules and conditions for using our free Instagram unfollower checking tool safely." />
+  <meta name="description"
+    content="Read the Terms of Service for UnfollowerTracker. Understand the rules and conditions for using our free Instagram unfollower checking tool safely." />
   <link rel="canonical" href="https://unfollowertracking.com/terms" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,786 +26,894 @@
       }
     }
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4962441927586060"
+    crossorigin="anonymous"></script>
 </head>
 
-  <style>
-    /* ─── Base ─────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
+<style>
+  /* ─── Base ─────────────────────────────────────── */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-    :root {
-      --pink:   #FF0080;
-      --purple: #7928CA;
-      --red:    #FF4D4D;
-      --glass:  rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.07);
+  :root {
+    --pink: #FF0080;
+    --purple: #7928CA;
+    --red: #FF4D4D;
+    --glass: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.07);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050505;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── Reading progress bar ─────────────────────── */
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--red));
+    z-index: 1000;
+    transition: width 0.1s linear;
+  }
+
+  /* ─── Gradient text ────────────────────────────── */
+  .g-text {
+    background: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── Background mesh ──────────────────────────── */
+  .bg-mesh {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 10% 0%, rgba(121, 40, 202, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 90% 100%, rgba(255, 0, 128, 0.09) 0%, transparent 55%);
+  }
+
+  /* ─── Glass card ───────────────────────────────── */
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(255, 0, 128, 0.18);
+  }
+
+  /* ─── Section badge ────────────────────────────── */
+  .sec-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.14), rgba(121, 40, 202, 0.14));
+    border: 1px solid rgba(255, 0, 128, 0.22);
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--pink);
+    flex-shrink: 0;
+  }
+
+  /* ─── Custom list bullets ──────────────────────── */
+  .tos-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tos-list li {
+    position: relative;
+    padding-left: 22px;
+    color: #9ca3af;
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 8px;
+  }
+
+  .tos-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 13px;
+    top: 2px;
+  }
+
+  /* ─── Warning / alert blocks ───────────────────── */
+  .alert-pink {
+    background: rgba(255, 0, 128, 0.07);
+    border: 1px solid rgba(255, 0, 128, 0.22);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .alert-red {
+    background: rgba(255, 77, 77, 0.07);
+    border: 1px solid rgba(255, 77, 77, 0.22);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .alert-purple {
+    background: rgba(121, 40, 202, 0.08);
+    border: 1px solid rgba(121, 40, 202, 0.24);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  /* ─── Divider ───────────────────────────────────── */
+  .fancy-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.3), rgba(121, 40, 202, 0.3), transparent);
+    border: none;
+    margin: 12px 0;
+  }
+
+  /* ─── Top strip accent ──────────────────────────── */
+  .top-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF0080, #7928CA, #FF4D4D);
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* ─── Back button ───────────────────────────────── */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 0, 128, 0.3);
+    background: rgba(255, 0, 128, 0.06);
+    color: var(--pink);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+
+  .back-btn:hover {
+    background: rgba(255, 0, 128, 0.13);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 0, 128, 0.15);
+  }
+
+  /* ─── Gradient button ───────────────────────────── */
+  .grad-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 30px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #FF0080, #7928CA);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(255, 0, 128, 0.25);
+  }
+
+  .grad-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255, 0, 128, 0.35);
+  }
+
+  /* ─── ToC ───────────────────────────────────────── */
+  .toc-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    color: #9ca3af;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .toc-link:hover {
+    color: var(--pink);
+    background: rgba(255, 0, 128, 0.06);
+    border-color: rgba(255, 0, 128, 0.15);
+  }
+
+  .toc-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--pink);
+    opacity: 0.7;
+    min-width: 18px;
+  }
+
+  /* ─── Fade-in animation ────────────────────────── */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: #050505;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
-    /* ─── Reading progress bar ─────────────────────── */
-    #progress-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--pink), var(--purple), var(--red));
-      z-index: 1000;
-      transition: width 0.1s linear;
-    }
+  .fade-up {
+    animation: fadeUp 0.55s ease both;
+  }
 
-    /* ─── Gradient text ────────────────────────────── */
-    .g-text {
-      background: linear-gradient(135deg, #FF0080 0%, #7928CA 50%, #FF4D4D 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+  .delay-1 {
+    animation-delay: 0.08s;
+  }
 
-    /* ─── Background mesh ──────────────────────────── */
-    .bg-mesh {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(121,40,202,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 90% 100%, rgba(255,0,128,0.09) 0%, transparent 55%);
-    }
+  .delay-2 {
+    animation-delay: 0.16s;
+  }
 
-    /* ─── Glass card ───────────────────────────────── */
+  .delay-3 {
+    animation-delay: 0.24s;
+  }
+
+  /* ─── Responsive tweaks ─────────────────────────── */
+  @media (max-width: 640px) {
     .glass-card {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 20px;
-      transition: border-color 0.3s ease, transform 0.3s ease;
+      padding: 24px 20px !important;
     }
-    .glass-card:hover { border-color: rgba(255,0,128,0.18); }
-
-    /* ─── Section badge ────────────────────────────── */
-    .sec-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,0,128,0.14), rgba(121,40,202,0.14));
-      border: 1px solid rgba(255,0,128,0.22);
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--pink);
-      flex-shrink: 0;
-    }
-
-    /* ─── Custom list bullets ──────────────────────── */
-    .tos-list { list-style: none; padding: 0; margin: 0; }
-    .tos-list li {
-      position: relative;
-      padding-left: 22px;
-      color: #9ca3af;
-      font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 8px;
-    }
-    .tos-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--pink);
-      font-size: 13px;
-      top: 2px;
-    }
-
-    /* ─── Warning / alert blocks ───────────────────── */
-    .alert-pink {
-      background: rgba(255,0,128,0.07);
-      border: 1px solid rgba(255,0,128,0.22);
-      border-radius: 12px;
-      padding: 16px 20px;
-    }
-    .alert-red {
-      background: rgba(255,77,77,0.07);
-      border: 1px solid rgba(255,77,77,0.22);
-      border-radius: 12px;
-      padding: 16px 20px;
-    }
-    .alert-purple {
-      background: rgba(121,40,202,0.08);
-      border: 1px solid rgba(121,40,202,0.24);
-      border-radius: 12px;
-      padding: 16px 20px;
-    }
-
-    /* ─── Divider ───────────────────────────────────── */
-    .fancy-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,0,128,0.3), rgba(121,40,202,0.3), transparent);
-      border: none;
-      margin: 12px 0;
-    }
-
-    /* ─── Top strip accent ──────────────────────────── */
-    .top-accent::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #FF0080, #7928CA, #FF4D4D);
-      border-radius: 20px 20px 0 0;
-    }
-
-    /* ─── Back button ───────────────────────────────── */
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 100px;
-      border: 1px solid rgba(255,0,128,0.3);
-      background: rgba(255,0,128,0.06);
-      color: var(--pink);
-      font-size: 14px;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .back-btn:hover {
-      background: rgba(255,0,128,0.13);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255,0,128,0.15);
-    }
-
-    /* ─── Gradient button ───────────────────────────── */
-    .grad-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 30px;
-      border-radius: 100px;
-      background: linear-gradient(135deg, #FF0080, #7928CA);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(255,0,128,0.25);
-    }
-    .grad-btn:hover {
-      opacity: 0.88;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(255,0,128,0.35);
-    }
-
-    /* ─── ToC ───────────────────────────────────────── */
-    .toc-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 14px;
-      border-radius: 10px;
-      color: #9ca3af;
-      font-size: 13.5px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid transparent;
-      transition: all 0.2s;
-    }
-    .toc-link:hover {
-      color: var(--pink);
-      background: rgba(255,0,128,0.06);
-      border-color: rgba(255,0,128,0.15);
-    }
-    .toc-num {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--pink);
-      opacity: 0.7;
-      min-width: 18px;
-    }
-
-    /* ─── Fade-in animation ────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.55s ease both; }
-    .delay-1 { animation-delay: 0.08s; }
-    .delay-2 { animation-delay: 0.16s; }
-    .delay-3 { animation-delay: 0.24s; }
-
-    /* ─── Responsive tweaks ─────────────────────────── */
-    @media (max-width: 640px) {
-      .glass-card { padding: 24px 20px !important; }
-    }
-  </style>
+  }
+</style>
 </head>
+
 <body class="font-jakarta text-gray-300">
 
-<!-- Progress bar -->
-<div id="progress-bar"></div>
+  <!-- Progress bar -->
+  <div id="progress-bar"></div>
 
-<!-- Background -->
-<div class="bg-mesh"></div>
-
-<!-- ════════════════════════════════════════════════════ -->
-<!--  MAIN CONTENT                                        -->
-<!-- ════════════════════════════════════════════════════ -->
-<div class="relative z-10">
-<div class="max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-24 pb-28">
-
-  <!-- ── Top nav ── -->
-  <div class="flex items-center justify-between mb-14 fade-up">
-    <a href="/" class="back-btn">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      Back to Home
-    </a>
-    <span class="text-xs font-semibold text-gray-500 uppercase tracking-widest hidden sm:block">Legal</span>
-  </div>
-
-  <!-- ── Page header ── -->
-  <header class="mb-12 fade-up delay-1">
-    <div class="inline-block text-xs font-bold tracking-widest uppercase text-brand-pink border border-pink-900/40 bg-pink-950/30 rounded-full px-4 py-1.5 mb-5">
-      Legal Document
-    </div>
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-      <span class="g-text">Terms of Service</span>
-    </h1>
-    <p class="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-6">
-      Please read these Terms carefully before using UnfollowerTracker. By accessing or using this service,
-      you agree to be legally bound by the conditions set out below.
-    </p>
-
-    <!-- Meta strip -->
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
-      <span class="flex items-center gap-2">
-        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 000 2h1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-3V4h1a1 1 0 000-2H6zm3 4V4h2v2H9z" clip-rule="evenodd"/></svg>
-        <span>Effective: <strong class="text-white font-semibold">March 15, 2026</strong></span>
-      </span>
-      <span class="hidden sm:block text-gray-700">|</span>
-      <span class="flex items-center gap-2">
-        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
-        <span>Last updated: <strong class="text-white font-semibold">March 15, 2026</strong></span>
-      </span>
-      <span class="hidden sm:block text-gray-700">|</span>
-      <span class="flex items-center gap-2">
-        <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-        <span>Governed by <strong class="text-white font-semibold">French law · Versailles courts</strong></span>
-      </span>
-    </div>
-  </header>
-
-  <!-- ── Intro disclaimer ── -->
-  <div class="glass-card relative top-accent overflow-hidden p-7 mb-10 fade-up delay-2">
-    <div class="alert-pink mb-0">
-      <p class="text-sm leading-relaxed">
-        <span class="font-bold text-brand-pink">Important — Read This First:</span>
-        <span class="ml-1 text-gray-300">
-          UnfollowerTracker is an independent, browser-based analysis tool.
-          <strong class="text-white">It is not affiliated with, endorsed by, or connected to Instagram® or Meta™ in any way.</strong>
-          These Terms constitute a legally binding agreement between you and UnfollowerTracker.
-          If you do not agree, please discontinue use of the service immediately.
-        </span>
-      </p>
-    </div>
-  </div>
-
-  <!-- ── Table of Contents ── -->
-  <div class="glass-card p-6 mb-12 fade-up delay-3">
-    <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 px-1">Table of Contents</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
-      <a href="#s1"  class="toc-link"><span class="toc-num">01</span> Acceptance of Terms &amp; Age Requirement</a>
-      <a href="#s2"  class="toc-link"><span class="toc-num">02</span> Intellectual Property</a>
-      <a href="#s3"  class="toc-link"><span class="toc-num">03</span> Disclaimer of Warranties</a>
-      <a href="#s4"  class="toc-link"><span class="toc-num">04</span> Meta &amp; Instagram Non-Affiliation</a>
-      <a href="#s5"  class="toc-link"><span class="toc-num">05</span> Service Monetisation &amp; Advertising</a>
-      <a href="#s6"  class="toc-link"><span class="toc-num">06</span> Acceptable Use Policy</a>
-      <a href="#s7"  class="toc-link"><span class="toc-num">07</span> Limitation of Liability</a>
-      <a href="#s8"  class="toc-link"><span class="toc-num">08</span> Governing Law &amp; Jurisdiction</a>
-      <a href="#s9"  class="toc-link"><span class="toc-num">09</span> Modifications to the Terms</a>
-      <a href="#s10" class="toc-link"><span class="toc-num">10</span> Contact Information</a>
-    </div>
-  </div>
+  <!-- Background -->
+  <div class="bg-mesh"></div>
 
   <!-- ════════════════════════════════════════════════════ -->
-  <!--  SECTIONS                                            -->
+  <!--  MAIN CONTENT                                        -->
   <!-- ════════════════════════════════════════════════════ -->
-  <div class="space-y-5">
+  <div class="relative z-10">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-24 pb-28">
 
-    <!-- ── §1 Acceptance ── -->
-    <section id="s1" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">01</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Acceptance of Terms &amp; Age Requirement</h2>
+      <!-- ── Top nav ── -->
+      <div class="flex items-center justify-between mb-14 fade-up">
+        <a href="/" class="back-btn">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M19 12H5M12 5l-7 7 7 7" />
+          </svg>
+          Back to Home
+        </a>
+        <span class="text-xs font-semibold text-gray-500 uppercase tracking-widest hidden sm:block">Legal</span>
       </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          By accessing, browsing, or using UnfollowerTracker (the "Service"), whether as a guest or a paying user,
-          you acknowledge that you have read, understood, and agree to be bound by these Terms of Service
-          (the "Terms") and our <a href="./privacy.html" class="text-brand-pink hover:underline font-medium">Privacy Policy</a>,
-          incorporated herein by reference. These Terms apply in their entirety each time you use the Service.
+
+      <!-- ── Page header ── -->
+      <header class="mb-12 fade-up delay-1">
+        <div
+          class="inline-block text-xs font-bold tracking-widest uppercase text-brand-pink border border-pink-900/40 bg-pink-950/30 rounded-full px-4 py-1.5 mb-5">
+          Legal Document
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+          <span class="g-text">Terms of Service</span>
+        </h1>
+        <p class="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-6">
+          Please read these Terms carefully before using UnfollowerTracker. By accessing or using this service,
+          you agree to be legally bound by the conditions set out below.
         </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          If you are accessing the Service on behalf of an organisation, you represent and warrant that you have
-          the authority to bind that organisation to these Terms.
-        </p>
-        <div class="alert-pink mt-5">
-          <p class="text-sm font-semibold text-brand-pink mb-2 flex items-center gap-2">
-            <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-            Age Requirement
-          </p>
-          <p class="text-gray-300 text-sm leading-relaxed">
-            You must be of the minimum legal age required to use social media services in your jurisdiction.
-            This is generally <strong class="text-white">13 years old</strong> under United States law (COPPA),
-            and <strong class="text-white">13–16 years old</strong> depending on applicable EU Member State law (GDPR).
-            Since UnfollowerTracker analyses data from Instagram — which itself requires users to be at least 13 —
-            by using this Service you represent and warrant that you meet the applicable minimum age threshold.
-            We do not knowingly provide services to individuals below these thresholds. If we become aware of
-            underage access, we reserve the right to terminate that user's access immediately.
+
+        <!-- Meta strip -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
+          <span class="flex items-center gap-2">
+            <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M6 2a1 1 0 000 2h1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-3V4h1a1 1 0 000-2H6zm3 4V4h2v2H9z"
+                clip-rule="evenodd" />
+            </svg>
+            <span>Effective: <strong class="text-white font-semibold">March 15, 2026</strong></span>
+          </span>
+          <span class="hidden sm:block text-gray-700">|</span>
+          <span class="flex items-center gap-2">
+            <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                clip-rule="evenodd" />
+            </svg>
+            <span>Last updated: <strong class="text-white font-semibold">March 15, 2026</strong></span>
+          </span>
+          <span class="hidden sm:block text-gray-700">|</span>
+          <span class="flex items-center gap-2">
+            <svg class="text-brand-pink" width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span>Governed by <strong class="text-white font-semibold">French law · Versailles courts</strong></span>
+          </span>
+        </div>
+      </header>
+
+      <!-- ── Intro disclaimer ── -->
+      <div class="glass-card relative top-accent overflow-hidden p-7 mb-10 fade-up delay-2">
+        <div class="alert-pink mb-0">
+          <p class="text-sm leading-relaxed">
+            <span class="font-bold text-brand-pink">Important — Read This First:</span>
+            <span class="ml-1 text-gray-300">
+              UnfollowerTracker is an independent, browser-based analysis tool.
+              <strong class="text-white">It is not affiliated with, endorsed by, or connected to Instagram® or Meta™ in
+                any way.</strong>
+              These Terms constitute a legally binding agreement between you and UnfollowerTracker.
+              If you do not agree, please discontinue use of the service immediately.
+            </span>
           </p>
         </div>
       </div>
-    </section>
 
-    <!-- ── §2 IP ── -->
-    <section id="s2" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">02</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Intellectual Property</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          All content, source code, front-end design, user-interface layouts, animations, visual assets,
-          trade dress, logo, copy, and any other element of UnfollowerTracker (collectively, the "Materials")
-          are the exclusive proprietary property of UnfollowerTracker and are protected under applicable
-          intellectual property laws, including French droit d'auteur, EU copyright directives, and
-          international copyright treaties.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          You are granted a limited, non-exclusive, non-transferable, revocable licence to access and use
-          the Service solely for its intended personal, non-commercial purpose. This licence does not include
-          any right to:
-        </p>
-        <ul class="tos-list mt-1">
-          <li>Copy, reproduce, redistribute, publish, or create derivative works based on the Materials</li>
-          <li>Reverse-engineer, decompile, disassemble, or otherwise attempt to derive the source code of the Service</li>
-          <li>Clone, fork, replicate, or repurpose the UI/UX design, animations, or visual identity of this Service</li>
-          <li>Remove, alter, or obscure any copyright, trademark, or proprietary notice</li>
-          <li>Use the Materials for any commercial purpose without prior written consent</li>
-        </ul>
-        <div class="alert-red mt-4">
-          <p class="text-sm text-gray-300 leading-relaxed">
-            <strong class="text-red-400">Strictly prohibited:</strong> Open-source cloning of the Service's codebase,
-            wholesale reproduction of the UI/UX design system, or the redistribution of any proprietary animation
-            logic (including the canvas-based analysis animation) is expressly and unconditionally forbidden.
-            Violations may result in civil claims for damages and injunctive relief under French and EU intellectual
-            property law, without prejudice to any other remedies available.
-          </p>
-        </div>
-        <p class="text-gray-400 text-[15px] leading-relaxed mt-2">
-          Any feedback, suggestions, or ideas you voluntarily submit regarding the Service may be used by
-          UnfollowerTracker without any obligation of compensation, attribution, or confidentiality.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── §3 Disclaimer ── -->
-    <section id="s3" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">03</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Disclaimer of Warranties ("As-Is")</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <div class="alert-red">
-          <p class="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">No Warranties</p>
-          <p class="text-gray-300 text-sm leading-relaxed">
-            THE SERVICE IS PROVIDED STRICTLY <strong class="text-white">"AS-IS"</strong> AND
-            <strong class="text-white">"AS-AVAILABLE"</strong>, WITHOUT ANY REPRESENTATION, WARRANTY, OR
-            CONDITION OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
-            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED OPERATION.
-          </p>
-        </div>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          Specifically, and without limiting the generality of the foregoing, UnfollowerTracker makes no
-          warranty or representation that:
-        </p>
-        <ul class="tos-list">
-          <li>The Service will meet your requirements or expectations</li>
-          <li>The Service will be available, uninterrupted, timely, secure, or error-free at any time</li>
-          <li>The results generated by the Service — including follower/following lists — will be
-              <strong class="text-white">100% complete or accurate</strong></li>
-          <li>Any errors or defects in the Service will be corrected</li>
-          <li>The Service will remain compatible with all devices, browsers, or operating system versions</li>
-        </ul>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          The accuracy of results depends entirely on the integrity and format of the data export file
-          provided by the user. UnfollowerTracker does not access Instagram directly and cannot verify
-          whether a provided data export is complete, current, or unmodified.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── §4 Non-Affiliation / Volatility ── -->
-    <section id="s4" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">04</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Non-Affiliation with Instagram &amp; Meta · Service Volatility</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <div class="alert-purple">
-          <p class="text-white font-bold text-sm sm:text-base leading-relaxed">
-            UnfollowerTracker is <span class="g-text">NOT affiliated, associated, authorised, endorsed by,
-            or in any way officially connected with Instagram®, Meta™, or any of Meta's subsidiaries or affiliates.</span>
-          </p>
-          <p class="text-gray-400 text-sm mt-2 leading-relaxed">
-            The names "Instagram" and "Meta" are registered trademarks of Meta Platforms, Inc.
-            Their use on this page is solely for descriptive and identification purposes, and does not imply
-            any form of sponsorship, endorsement, or official relationship.
-          </p>
-        </div>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker operates by parsing the data export files that Instagram makes available to its
-          users under its "Download Your Information" feature. This tool does not use Instagram's official API,
-          does not access Instagram accounts, and does not interact with Instagram's servers in any way.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          <strong class="text-white">Service volatility:</strong> Because the Service depends on the format
-          of Instagram's data exports — which are controlled entirely by Meta — the following may occur at any
-          time and without prior notice:
-        </p>
-        <ul class="tos-list">
-          <li>Instagram may change its data export format, causing the Service to produce incorrect, incomplete, or no results</li>
-          <li>The Service may be temporarily suspended while format updates are developed and deployed</li>
-          <li>The Service may be <strong class="text-white">permanently discontinued</strong> at any time,
-              with or without notice, at the sole discretion of the operator</li>
-          <li>Features or functionality may change, be removed, or be replaced without prior notice</li>
-        </ul>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker will make reasonable commercial efforts to update the parsing logic when
-          Instagram changes its export format, but provides no guarantee as to the timeline or success
-          of such updates. No refunds or credits will be issued due to service downtime caused by
-          third-party platform changes.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── §5 Monetisation ── -->
-    <section id="s5" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">05</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Service Monetisation &amp; Third-Party Advertising</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker operates on a <strong class="text-white">freemium model</strong>. Core functionality
-          is available to all users at no cost. The following monetisation methods are in use and you
-          expressly acknowledge them by using the Service:
-        </p>
-        <ul class="tos-list">
-          <li>
-            <strong class="text-white">Free tier:</strong> Users may view a limited preview of their follower
-            analysis results at no charge. The free tier may be subject to the display of third-party
-            advertisements, which may include static banner ads and <strong class="text-white">third-party video advertisements</strong>.
-            Viewing such advertisements may be a condition of unlocking certain free-tier features.
-          </li>
-          <li>
-            <strong class="text-white">Premium unlock:</strong> Full, unabridged results may be unlocked via
-            a one-time payment. This payment grants access to the full results for that single session only.
-            There is no subscription, no recurring charge, and no user account retained between sessions.
-          </li>
-          <li>
-            <strong class="text-white">Third-party ad networks:</strong> Advertisements are served by independent
-            third-party networks (such as Google AdSense or equivalent providers). UnfollowerTracker does not
-            control the content of these advertisements and is not responsible for any products, services,
-            or claims made therein.
-          </li>
-        </ul>
-        <div class="alert-pink mt-2">
-          <p class="text-sm text-gray-300 leading-relaxed">
-            <strong class="text-brand-pink">Payment note:</strong> Payments are processed by a third-party
-            payment provider. By completing a payment, you also agree to that provider's terms and
-            privacy policy. UnfollowerTracker does not store payment card details. Given the instant
-            digital-delivery nature of the Service, you acknowledge that by unlocking the full results
-            you expressly request immediate performance of the service, and <strong class="text-white">waive
-            any statutory right of withdrawal</strong> available under EU consumer law (Directive 2011/83/EU,
-            Art. 16(m)) to the extent permitted by applicable law.
-          </p>
+      <!-- ── Table of Contents ── -->
+      <div class="glass-card p-6 mb-12 fade-up delay-3">
+        <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 px-1">Table of Contents</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+          <a href="#s1" class="toc-link"><span class="toc-num">01</span> Acceptance of Terms &amp; Age Requirement</a>
+          <a href="#s2" class="toc-link"><span class="toc-num">02</span> Intellectual Property</a>
+          <a href="#s3" class="toc-link"><span class="toc-num">03</span> Disclaimer of Warranties</a>
+          <a href="#s4" class="toc-link"><span class="toc-num">04</span> Meta &amp; Instagram Non-Affiliation</a>
+          <a href="#s5" class="toc-link"><span class="toc-num">05</span> Service Monetisation &amp; Advertising</a>
+          <a href="#s6" class="toc-link"><span class="toc-num">06</span> Acceptable Use Policy</a>
+          <a href="#s7" class="toc-link"><span class="toc-num">07</span> Limitation of Liability</a>
+          <a href="#s8" class="toc-link"><span class="toc-num">08</span> Governing Law &amp; Jurisdiction</a>
+          <a href="#s9" class="toc-link"><span class="toc-num">09</span> Modifications to the Terms</a>
+          <a href="#s10" class="toc-link"><span class="toc-num">10</span> Contact Information</a>
         </div>
       </div>
-    </section>
 
-    <!-- ── §6 Acceptable Use ── -->
-    <section id="s6" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">06</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Acceptable Use Policy</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          Your use of UnfollowerTracker must at all times comply with applicable law and the spirit of
-          these Terms. By using the Service, you represent and warrant that:
-        </p>
-        <ul class="tos-list">
-          <li>You are the legitimate owner of the Instagram account whose data export you upload, <em>or</em> you have obtained the express consent of the account holder</li>
-          <li>You will use the Service solely for personal, lawful, non-commercial purposes</li>
-          <li>The results generated will not be used to <strong class="text-white">harass, stalk, intimidate, discriminate against, or maliciously target</strong> any individual or group</li>
-          <li>You will not use any automated tool, script, bot, spider, crawler, scraper, or other programmatic means to access, query, or extract data from the Service</li>
-          <li>You will not attempt to probe, scan, test the vulnerability of, or circumvent any security or access-control feature of the Service</li>
-          <li>You will not interfere with or disrupt the integrity or performance of the Service or its infrastructure</li>
-          <li>You will not use the Service in any manner that could damage UnfollowerTracker's reputation, brand, or relationship with its users or partners</li>
-          <li>You will not impersonate any person or entity or falsely represent your affiliation with any person or entity</li>
-        </ul>
-        <div class="alert-red mt-4">
-          <p class="text-sm text-gray-300 leading-relaxed">
-            <strong class="text-red-400">Enforcement:</strong> Violation of this Acceptable Use Policy may result
-            in immediate termination of your access to the Service, without notice or refund. UnfollowerTracker
-            reserves the right to report illegal activity to the relevant competent authorities.
-          </p>
-        </div>
-      </div>
-    </section>
+      <!-- ════════════════════════════════════════════════════ -->
+      <!--  SECTIONS                                            -->
+      <!-- ════════════════════════════════════════════════════ -->
+      <div class="space-y-5">
 
-    <!-- ── §7 Liability ── -->
-    <section id="s7" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">07</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Limitation of Liability</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <div class="alert-red">
-          <p class="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">Liability Cap</p>
-          <p class="text-gray-300 text-sm leading-relaxed">
-            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, UNFOLLOWERTRACKER AND ITS OPERATORS
-            SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR
-            CONSEQUENTIAL DAMAGES OF ANY KIND, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA,
-            GOODWILL, OR BUSINESS OPPORTUNITIES, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF
-            OR INABILITY TO USE THE SERVICE.
-          </p>
-        </div>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          Specifically, UnfollowerTracker bears <strong class="text-white">zero liability</strong> for:
-        </p>
-        <ul class="tos-list">
-          <li>Any decision you make — social, personal, or professional — based on the data or results generated by the Service</li>
-          <li>Any inaccuracy, incompleteness, or misinterpretation of results due to changes in Instagram's export format</li>
-          <li>Any loss of, or inability to access, the Service — whether temporary or permanent — resulting from platform changes, maintenance, force majeure, or discontinuation</li>
-          <li>Any damage to your device or data resulting from your use of the Service</li>
-          <li>The content, accuracy, or conduct of third-party advertisements displayed within the Service</li>
-          <li>Any consequences arising from your violation of these Terms or applicable law</li>
-        </ul>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          In all cases, our total aggregate liability to you for any claim arising under or in connection
-          with these Terms shall not exceed the amount you have paid to us in the
-          <strong class="text-white">twelve (12) months preceding the claim</strong>, or
-          <strong class="text-white">€10 (ten euros)</strong>, whichever is greater.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          Nothing in these Terms shall be construed to exclude or limit liability in a manner
-          not permissible under applicable mandatory law (including consumer protection laws
-          applicable to residents of EU Member States).
-        </p>
-      </div>
-    </section>
-
-    <!-- ── §8 Governing Law ── -->
-    <section id="s8" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">08</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Governing Law &amp; Jurisdiction</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <div class="alert-purple">
-          <div class="flex items-start gap-3">
-            <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5a1 1 0 112 0v2a1 1 0 11-2 0v-2zm0-4a1 1 0 112 0 1 1 0 01-2 0z" clip-rule="evenodd"/></svg>
-            <div>
-              <p class="text-sm font-bold text-purple-300 mb-1">Governing Law</p>
+        <!-- ── §1 Acceptance ── -->
+        <section id="s1" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">01</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Acceptance of Terms &amp; Age Requirement</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              By accessing, browsing, or using UnfollowerTracker (the "Service"), whether as a guest or a paying user,
+              you acknowledge that you have read, understood, and agree to be bound by these Terms of Service
+              (the "Terms") and our <a href="./privacy.html" class="text-brand-pink hover:underline font-medium">Privacy
+                Policy</a>,
+              incorporated herein by reference. These Terms apply in their entirety each time you use the Service.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              If you are accessing the Service on behalf of an organisation, you represent and warrant that you have
+              the authority to bind that organisation to these Terms.
+            </p>
+            <div class="alert-pink mt-5">
+              <p class="text-sm font-semibold text-brand-pink mb-2 flex items-center gap-2">
+                <svg width="15" height="15" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd" />
+                </svg>
+                Age Requirement
+              </p>
               <p class="text-gray-300 text-sm leading-relaxed">
-                These Terms and any dispute or claim arising out of or in connection with them
-                (including non-contractual disputes or claims) shall be governed by and construed
-                in accordance with the laws of <strong class="text-white">France</strong>, excluding
-                its conflict-of-law provisions.
+                You must be of the minimum legal age required to use social media services in your jurisdiction.
+                This is generally <strong class="text-white">13 years old</strong> under United States law (COPPA),
+                and <strong class="text-white">13–16 years old</strong> depending on applicable EU Member State law
+                (GDPR).
+                Since UnfollowerTracker analyses data from Instagram — which itself requires users to be at least 13 —
+                by using this Service you represent and warrant that you meet the applicable minimum age threshold.
+                We do not knowingly provide services to individuals below these thresholds. If we become aware of
+                underage access, we reserve the right to terminate that user's access immediately.
               </p>
             </div>
           </div>
-        </div>
-        <div class="alert-purple">
-          <div class="flex items-start gap-3">
-            <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z" clip-rule="evenodd"/></svg>
-            <div>
-              <p class="text-sm font-bold text-purple-300 mb-1">Exclusive Jurisdiction</p>
+        </section>
+
+        <!-- ── §2 IP ── -->
+        <section id="s2" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">02</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Intellectual Property</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              All content, source code, front-end design, user-interface layouts, animations, visual assets,
+              trade dress, logo, copy, and any other element of UnfollowerTracker (collectively, the "Materials")
+              are the exclusive proprietary property of UnfollowerTracker and are protected under applicable
+              intellectual property laws, including French droit d'auteur, EU copyright directives, and
+              international copyright treaties.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              You are granted a limited, non-exclusive, non-transferable, revocable licence to access and use
+              the Service solely for its intended personal, non-commercial purpose. This licence does not include
+              any right to:
+            </p>
+            <ul class="tos-list mt-1">
+              <li>Copy, reproduce, redistribute, publish, or create derivative works based on the Materials</li>
+              <li>Reverse-engineer, decompile, disassemble, or otherwise attempt to derive the source code of the
+                Service</li>
+              <li>Clone, fork, replicate, or repurpose the UI/UX design, animations, or visual identity of this Service
+              </li>
+              <li>Remove, alter, or obscure any copyright, trademark, or proprietary notice</li>
+              <li>Use the Materials for any commercial purpose without prior written consent</li>
+            </ul>
+            <div class="alert-red mt-4">
+              <p class="text-sm text-gray-300 leading-relaxed">
+                <strong class="text-red-400">Strictly prohibited:</strong> Open-source cloning of the Service's
+                codebase,
+                wholesale reproduction of the UI/UX design system, or the redistribution of any proprietary animation
+                logic (including the canvas-based analysis animation) is expressly and unconditionally forbidden.
+                Violations may result in civil claims for damages and injunctive relief under French and EU intellectual
+                property law, without prejudice to any other remedies available.
+              </p>
+            </div>
+            <p class="text-gray-400 text-[15px] leading-relaxed mt-2">
+              Any feedback, suggestions, or ideas you voluntarily submit regarding the Service may be used by
+              UnfollowerTracker without any obligation of compensation, attribution, or confidentiality.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §3 Disclaimer ── -->
+        <section id="s3" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">03</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Disclaimer of Warranties ("As-Is")</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <div class="alert-red">
+              <p class="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">No Warranties</p>
               <p class="text-gray-300 text-sm leading-relaxed">
-                Any dispute, controversy, or claim arising from or relating to your use of the Service,
-                the interpretation of these Terms, or their breach, termination, or validity shall be
-                subject to the <strong class="text-white">exclusive jurisdiction of the competent courts
-                of Versailles, France</strong> (Tribunal judiciaire de Versailles).
+                THE SERVICE IS PROVIDED STRICTLY <strong class="text-white">"AS-IS"</strong> AND
+                <strong class="text-white">"AS-AVAILABLE"</strong>, WITHOUT ANY REPRESENTATION, WARRANTY, OR
+                CONDITION OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF
+                MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED OPERATION.
+              </p>
+            </div>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              Specifically, and without limiting the generality of the foregoing, UnfollowerTracker makes no
+              warranty or representation that:
+            </p>
+            <ul class="tos-list">
+              <li>The Service will meet your requirements or expectations</li>
+              <li>The Service will be available, uninterrupted, timely, secure, or error-free at any time</li>
+              <li>The results generated by the Service — including follower/following lists — will be
+                <strong class="text-white">100% complete or accurate</strong>
+              </li>
+              <li>Any errors or defects in the Service will be corrected</li>
+              <li>The Service will remain compatible with all devices, browsers, or operating system versions</li>
+            </ul>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              The accuracy of results depends entirely on the integrity and format of the data export file
+              provided by the user. UnfollowerTracker does not access Instagram directly and cannot verify
+              whether a provided data export is complete, current, or unmodified.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §4 Non-Affiliation / Volatility ── -->
+        <section id="s4" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">04</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Non-Affiliation with Instagram &amp; Meta · Service
+              Volatility</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <div class="alert-purple">
+              <p class="text-white font-bold text-sm sm:text-base leading-relaxed">
+                UnfollowerTracker is <span class="g-text">NOT affiliated, associated, authorised, endorsed by,
+                  or in any way officially connected with Instagram®, Meta™, or any of Meta's subsidiaries or
+                  affiliates.</span>
+              </p>
+              <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                The names "Instagram" and "Meta" are registered trademarks of Meta Platforms, Inc.
+                Their use on this page is solely for descriptive and identification purposes, and does not imply
+                any form of sponsorship, endorsement, or official relationship.
+              </p>
+            </div>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker operates by parsing the data export files that Instagram makes available to its
+              users under its "Download Your Information" feature. This tool does not use Instagram's official API,
+              does not access Instagram accounts, and does not interact with Instagram's servers in any way.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              <strong class="text-white">Service volatility:</strong> Because the Service depends on the format
+              of Instagram's data exports — which are controlled entirely by Meta — the following may occur at any
+              time and without prior notice:
+            </p>
+            <ul class="tos-list">
+              <li>Instagram may change its data export format, causing the Service to produce incorrect, incomplete, or
+                no results</li>
+              <li>The Service may be temporarily suspended while format updates are developed and deployed</li>
+              <li>The Service may be <strong class="text-white">permanently discontinued</strong> at any time,
+                with or without notice, at the sole discretion of the operator</li>
+              <li>Features or functionality may change, be removed, or be replaced without prior notice</li>
+            </ul>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker will make reasonable commercial efforts to update the parsing logic when
+              Instagram changes its export format, but provides no guarantee as to the timeline or success
+              of such updates. No refunds or credits will be issued due to service downtime caused by
+              third-party platform changes.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §5 Monetisation ── -->
+        <section id="s5" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">05</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Service Monetisation &amp; Third-Party Advertising</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker operates on a <strong class="text-white">freemium model</strong>. Core functionality
+              is available to all users at no cost. The following monetisation methods are in use and you
+              expressly acknowledge them by using the Service:
+            </p>
+            <ul class="tos-list">
+              <li>
+                <strong class="text-white">Free tier:</strong> Users may view a limited preview of their follower
+                analysis results at no charge. The free tier may be subject to the display of third-party
+                advertisements, which may include static banner ads and <strong class="text-white">third-party video
+                  advertisements</strong>.
+                Viewing such advertisements may be a condition of unlocking certain free-tier features.
+              </li>
+              <li>
+                <strong class="text-white">Premium unlock:</strong> Full, unabridged results may be unlocked via
+                a one-time payment. This payment grants access to the full results for that single session only.
+                There is no subscription, no recurring charge, and no user account retained between sessions.
+              </li>
+              <li>
+                <strong class="text-white">Third-party ad networks:</strong> Advertisements are served by independent
+                third-party networks (such as Google AdSense or equivalent providers). UnfollowerTracker does not
+                control the content of these advertisements and is not responsible for any products, services,
+                or claims made therein.
+              </li>
+            </ul>
+            <div class="alert-pink mt-2">
+              <p class="text-sm text-gray-300 leading-relaxed">
+                <strong class="text-brand-pink">Payment note:</strong> Payments are processed by a third-party
+                payment provider. By completing a payment, you also agree to that provider's terms and
+                privacy policy. UnfollowerTracker does not store payment card details. Given the instant
+                digital-delivery nature of the Service, you acknowledge that by unlocking the full results
+                you expressly request immediate performance of the service, and <strong class="text-white">waive
+                  any statutory right of withdrawal</strong> available under EU consumer law (Directive 2011/83/EU,
+                Art. 16(m)) to the extent permitted by applicable law.
               </p>
             </div>
           </div>
-        </div>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          <strong class="text-white">EU consumer rights:</strong> If you are a consumer resident in an
-          EU Member State, you may also benefit from any mandatory consumer-protection provisions
-          applicable in your country of habitual residence that cannot be contractually waived.
-          In such cases, those mandatory provisions shall apply alongside — but not replace — the
-          choice of French law and jurisdiction above, to the extent permitted by applicable conflict-of-law rules.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          The European Commission's Online Dispute Resolution (ODR) platform is available at
-          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" class="text-brand-pink hover:underline">ec.europa.eu/consumers/odr</a>
-          as an alternative dispute-resolution mechanism for consumers based in the EU.
-        </p>
-      </div>
-    </section>
+        </section>
 
-    <!-- ── §9 Modifications ── -->
-    <section id="s9" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">09</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Modifications to the Terms</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker reserves the right to modify, revise, or replace these Terms at any time
-          at its sole discretion. When we make material changes, we will update the "Last updated" date
-          at the top of this page and, where appropriate, display a notice on the Service.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          Your continued use of the Service following the posting of revised Terms constitutes your
-          irrevocable acceptance of those changes. If you do not agree with the updated Terms, you must
-          cease using the Service immediately. We encourage you to review this page periodically.
-        </p>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker also reserves the right at any time to:
-        </p>
-        <ul class="tos-list">
-          <li>Modify, suspend, or permanently discontinue the Service or any feature thereof</li>
-          <li>Impose limits on certain features or restrict access to parts of the Service</li>
-          <li>Change or introduce fees for features that were previously free</li>
-        </ul>
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          UnfollowerTracker will not be liable to you or to any third party for any such modification,
-          suspension, or discontinuation of the Service.
-        </p>
-      </div>
-    </section>
+        <!-- ── §6 Acceptable Use ── -->
+        <section id="s6" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">06</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Acceptable Use Policy</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              Your use of UnfollowerTracker must at all times comply with applicable law and the spirit of
+              these Terms. By using the Service, you represent and warrant that:
+            </p>
+            <ul class="tos-list">
+              <li>You are the legitimate owner of the Instagram account whose data export you upload, <em>or</em> you
+                have obtained the express consent of the account holder</li>
+              <li>You will use the Service solely for personal, lawful, non-commercial purposes</li>
+              <li>The results generated will not be used to <strong class="text-white">harass, stalk, intimidate,
+                  discriminate against, or maliciously target</strong> any individual or group</li>
+              <li>You will not use any automated tool, script, bot, spider, crawler, scraper, or other programmatic
+                means to access, query, or extract data from the Service</li>
+              <li>You will not attempt to probe, scan, test the vulnerability of, or circumvent any security or
+                access-control feature of the Service</li>
+              <li>You will not interfere with or disrupt the integrity or performance of the Service or its
+                infrastructure</li>
+              <li>You will not use the Service in any manner that could damage UnfollowerTracker's reputation, brand, or
+                relationship with its users or partners</li>
+              <li>You will not impersonate any person or entity or falsely represent your affiliation with any person or
+                entity</li>
+            </ul>
+            <div class="alert-red mt-4">
+              <p class="text-sm text-gray-300 leading-relaxed">
+                <strong class="text-red-400">Enforcement:</strong> Violation of this Acceptable Use Policy may result
+                in immediate termination of your access to the Service, without notice or refund. UnfollowerTracker
+                reserves the right to report illegal activity to the relevant competent authorities.
+              </p>
+            </div>
+          </div>
+        </section>
 
-    <!-- ── §10 Contact ── -->
-    <section id="s10" class="glass-card p-7 sm:p-9 scroll-mt-24">
-      <div class="flex items-center gap-4 mb-5">
-        <div class="sec-num">10</div>
-        <h2 class="text-lg sm:text-xl font-bold text-white">Contact Information</h2>
-      </div>
-      <hr class="fancy-divider"/>
-      <div class="mt-5 space-y-4">
-        <p class="text-gray-400 text-[15px] leading-relaxed">
-          If you have any questions, concerns, or requests relating to these Terms of Service, please
-          contact us. We aim to respond to all enquiries within <strong class="text-white">30 days</strong>.
-        </p>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2 p-5 rounded-xl"
-             style="background:rgba(255,0,128,0.05); border:1px solid rgba(255,0,128,0.18)">
+        <!-- ── §7 Liability ── -->
+        <section id="s7" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">07</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Limitation of Liability</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <div class="alert-red">
+              <p class="text-sm font-bold text-red-400 uppercase tracking-wide mb-2">Liability Cap</p>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, UNFOLLOWERTRACKER AND ITS OPERATORS
+                SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR
+                CONSEQUENTIAL DAMAGES OF ANY KIND, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA,
+                GOODWILL, OR BUSINESS OPPORTUNITIES, ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF
+                OR INABILITY TO USE THE SERVICE.
+              </p>
+            </div>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              Specifically, UnfollowerTracker bears <strong class="text-white">zero liability</strong> for:
+            </p>
+            <ul class="tos-list">
+              <li>Any decision you make — social, personal, or professional — based on the data or results generated by
+                the Service</li>
+              <li>Any inaccuracy, incompleteness, or misinterpretation of results due to changes in Instagram's export
+                format</li>
+              <li>Any loss of, or inability to access, the Service — whether temporary or permanent — resulting from
+                platform changes, maintenance, force majeure, or discontinuation</li>
+              <li>Any damage to your device or data resulting from your use of the Service</li>
+              <li>The content, accuracy, or conduct of third-party advertisements displayed within the Service</li>
+              <li>Any consequences arising from your violation of these Terms or applicable law</li>
+            </ul>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              In all cases, our total aggregate liability to you for any claim arising under or in connection
+              with these Terms shall not exceed the amount you have paid to us in the
+              <strong class="text-white">twelve (12) months preceding the claim</strong>, or
+              <strong class="text-white">€10 (ten euros)</strong>, whichever is greater.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              Nothing in these Terms shall be construed to exclude or limit liability in a manner
+              not permissible under applicable mandatory law (including consumer protection laws
+              applicable to residents of EU Member States).
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §8 Governing Law ── -->
+        <section id="s8" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">08</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Governing Law &amp; Jurisdiction</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <div class="alert-purple">
+              <div class="flex items-start gap-3">
+                <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 110-12 6 6 0 010 12zm-1-5a1 1 0 112 0v2a1 1 0 11-2 0v-2zm0-4a1 1 0 112 0 1 1 0 01-2 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                <div>
+                  <p class="text-sm font-bold text-purple-300 mb-1">Governing Law</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">
+                    These Terms and any dispute or claim arising out of or in connection with them
+                    (including non-contractual disputes or claims) shall be governed by and construed
+                    in accordance with the laws of <strong class="text-white">France</strong>, excluding
+                    its conflict-of-law provisions.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="alert-purple">
+              <div class="flex items-start gap-3">
+                <svg class="text-purple-400 flex-shrink-0 mt-0.5" width="18" height="18" fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z"
+                    clip-rule="evenodd" />
+                </svg>
+                <div>
+                  <p class="text-sm font-bold text-purple-300 mb-1">Exclusive Jurisdiction</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">
+                    Any dispute, controversy, or claim arising from or relating to your use of the Service,
+                    the interpretation of these Terms, or their breach, termination, or validity shall be
+                    subject to the <strong class="text-white">exclusive jurisdiction of the competent courts
+                      of Versailles, France</strong> (Tribunal judiciaire de Versailles).
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              <strong class="text-white">EU consumer rights:</strong> If you are a consumer resident in an
+              EU Member State, you may also benefit from any mandatory consumer-protection provisions
+              applicable in your country of habitual residence that cannot be contractually waived.
+              In such cases, those mandatory provisions shall apply alongside — but not replace — the
+              choice of French law and jurisdiction above, to the extent permitted by applicable conflict-of-law rules.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              The European Commission's Online Dispute Resolution (ODR) platform is available at
+              <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener"
+                class="text-brand-pink hover:underline">ec.europa.eu/consumers/odr</a>
+              as an alternative dispute-resolution mechanism for consumers based in the EU.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §9 Modifications ── -->
+        <section id="s9" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">09</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Modifications to the Terms</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker reserves the right to modify, revise, or replace these Terms at any time
+              at its sole discretion. When we make material changes, we will update the "Last updated" date
+              at the top of this page and, where appropriate, display a notice on the Service.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              Your continued use of the Service following the posting of revised Terms constitutes your
+              irrevocable acceptance of those changes. If you do not agree with the updated Terms, you must
+              cease using the Service immediately. We encourage you to review this page periodically.
+            </p>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker also reserves the right at any time to:
+            </p>
+            <ul class="tos-list">
+              <li>Modify, suspend, or permanently discontinue the Service or any feature thereof</li>
+              <li>Impose limits on certain features or restrict access to parts of the Service</li>
+              <li>Change or introduce fees for features that were previously free</li>
+            </ul>
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              UnfollowerTracker will not be liable to you or to any third party for any such modification,
+              suspension, or discontinuation of the Service.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── §10 Contact ── -->
+        <section id="s10" class="glass-card p-7 sm:p-9 scroll-mt-24">
+          <div class="flex items-center gap-4 mb-5">
+            <div class="sec-num">10</div>
+            <h2 class="text-lg sm:text-xl font-bold text-white">Contact Information</h2>
+          </div>
+          <hr class="fancy-divider" />
+          <div class="mt-5 space-y-4">
+            <p class="text-gray-400 text-[15px] leading-relaxed">
+              If you have any questions, concerns, or requests relating to these Terms of Service, please
+              contact us. We aim to respond to all enquiries within <strong class="text-white">30 days</strong>.
+            </p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2 p-5 rounded-xl"
+              style="background:rgba(255,0,128,0.05); border:1px solid rgba(255,0,128,0.18)">
+              <div class="flex-1">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Legal &amp; Privacy Inquiries
+                </p>
+                <a href="mailto:instaunfollowerstracker@gmail.com"
+                  class="text-brand-pink font-semibold text-base hover:underline break-all">
+                  instaunfollowerstracker@gmail.com
+                </a>
+                <p class="text-gray-500 text-sm mt-1">Operator based in France · Response within 30 days</p>
+              </div>
+              <a href="mailto:instaunfollowerstracker@gmail.com" class="grad-btn text-sm whitespace-nowrap">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                Send Email
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /sections -->
+
+      <!-- ── Final acceptance notice ── -->
+      <div class="glass-card relative top-accent overflow-hidden p-7 mt-10">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <div class="flex-1">
-            <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">Legal &amp; Privacy Inquiries</p>
-            <a href="mailto:instaunfollowerstracker@gmail.com"
-               class="text-brand-pink font-semibold text-base hover:underline break-all">
-              instaunfollowerstracker@gmail.com
-            </a>
-            <p class="text-gray-500 text-sm mt-1">Operator based in France · Response within 30 days</p>
+            <p class="text-white font-bold text-base mb-1">By using UnfollowerTracker, you accept these Terms.</p>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Effective March 15, 2026 · Governed by French law · Courts of Versailles · v2.0
+            </p>
           </div>
-          <a href="mailto:instaunfollowerstracker@gmail.com" class="grad-btn text-sm whitespace-nowrap">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Send Email
+          <a href="/" class="grad-btn whitespace-nowrap flex-shrink-0">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <polyline points="9,22 9,12 15,12 15,22" />
+            </svg>
+            Back to Home
           </a>
         </div>
       </div>
-    </section>
 
-  </div><!-- /sections -->
-
-  <!-- ── Final acceptance notice ── -->
-  <div class="glass-card relative top-accent overflow-hidden p-7 mt-10">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-      <div class="flex-1">
-        <p class="text-white font-bold text-base mb-1">By using UnfollowerTracker, you accept these Terms.</p>
-        <p class="text-gray-500 text-sm leading-relaxed">
-          Effective March 15, 2026 · Governed by French law · Courts of Versailles · v2.0
+      <!-- ── Footer ── -->
+      <footer class="mt-14 text-center">
+        <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 mb-3">
+          <a href="/" class="hover:text-gray-400 transition-colors">Home</a>
+          <span>·</span>
+          <a href="./privacy.html" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+          <span>·</span>
+          <a href="./terms.html" class="text-gray-400">Terms of Service</a>
+          <span>·</span>
+          <a href="mailto:instaunfollowerstracker@gmail.com" class="hover:text-gray-400 transition-colors">Contact</a>
+        </div>
+        <p class="text-xs text-gray-700">
+          © 2026 UnfollowerTracker. All rights reserved.
+          Not affiliated with Instagram® or Meta™.
         </p>
-      </div>
-      <a href="/" class="grad-btn whitespace-nowrap flex-shrink-0">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-        Back to Home
-      </a>
-    </div>
-  </div>
+      </footer>
 
-  <!-- ── Footer ── -->
-  <footer class="mt-14 text-center">
-    <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 mb-3">
-      <a href="/" class="hover:text-gray-400 transition-colors">Home</a>
-      <span>·</span>
-      <a href="./privacy.html" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
-      <span>·</span>
-      <a href="./terms.html" class="text-gray-400">Terms of Service</a>
-      <span>·</span>
-      <a href="mailto:instaunfollowerstracker@gmail.com" class="hover:text-gray-400 transition-colors">Contact</a>
-    </div>
-    <p class="text-xs text-gray-700">
-      © 2026 UnfollowerTracker. All rights reserved.
-      Not affiliated with Instagram® or Meta™.
-    </p>
-  </footer>
+    </div><!-- /max-w-4xl -->
+  </div><!-- /z-10 -->
 
-</div><!-- /max-w-4xl -->
-</div><!-- /z-10 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SCRIPTS                                               -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <script>
+    /* ── Reading progress bar ── */
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }, { passive: true });
 
-<!-- ═══════════════════════════════════════════════════════ -->
-<!--  SCRIPTS                                               -->
-<!-- ═══════════════════════════════════════════════════════ -->
-<script>
-  /* ── Reading progress bar ── */
-  const bar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    bar.style.width = pct + '%';
-  }, { passive: true });
+    /* ── Intersection-observer fade-in for sections ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
 
-  /* ── Intersection-observer fade-in for sections ── */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
+    document.querySelectorAll('section.glass-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.55s ease ${i * 0.04}s, transform 0.55s ease ${i * 0.04}s`;
+      observer.observe(el);
     });
-  }, { threshold: 0.06 });
-
-  document.querySelectorAll('section.glass-card').forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(28px)';
-    el.style.transition = `opacity 0.55s ease ${i * 0.04}s, transform 0.55s ease ${i * 0.04}s`;
-    observer.observe(el);
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
