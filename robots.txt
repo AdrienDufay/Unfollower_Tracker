@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /analysis-results
+Disallow: /results
+Disallow: /payment-success
+Disallow: /results-payment-success
+
+Sitemap: https://unfollowertracking.com/sitemap.xml
