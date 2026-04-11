@@ -1,9 +1,7 @@
 export default {
-  content: [
-    "./*.html",
-    "./index.html",
-    "./**/*.html",
-    "./**/*.js"
+  content: ["./index.html"], // volontairement simple
+  safelist: [
+    { pattern: /.*/ }, // ⚠️ garde TOUT
   ],
   theme: {
     extend: {},
