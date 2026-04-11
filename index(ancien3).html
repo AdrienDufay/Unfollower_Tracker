@@ -37,30 +37,6 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-    <!-- ═══ CRITICAL CSS — above-the-fold uniquement, évite le FOUC avant Tailwind ═══ -->
-    <style>
-        /* Rendu immédiat du fond et du texte — avant tout CSS externe */
-        *,::before,::after{box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{margin:0;background-color:#050505;color:#fff;font-family:'Plus Jakarta Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
-        /* Navbar critique */
-        #navbar{position:fixed;width:100%;top:0;z-index:50;background:rgba(5,5,5,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
-        .navbar-container{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 16px;margin:0 auto;width:100%;max-width:100%}
-        .navbar-brand-text{font-size:18px;font-weight:700;color:#fff;white-space:nowrap;text-decoration:none}
-        .highlight{background:linear-gradient(135deg,#FF0080 0%,#FF4D4D 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        /* Hero critique */
-        .hero-section{padding-top:8px}
-        .hero-h1{font-size:24px;line-height:1.2;margin-top:0;margin-bottom:8px;font-weight:800}
-        .hero-sub{font-size:13px;margin-bottom:12px}
-        .text-gradient{background:linear-gradient(135deg,#FF0080 0%,#7928CA 50%,#FF4D4D 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        /* Upload zone critique */
-        .analyze-card{padding-top:16px;padding-bottom:16px}
-        /* Blobs background */
-        .blob{position:absolute;filter:blur(80px);z-index:-1;opacity:.6;pointer-events:none}
-        .blob-1{top:-10%;left:-10%;width:50vw;height:50vw;background:#7928CA}
-        .blob-2{bottom:-10%;right:-10%;width:40vw;height:40vw;background:#FF0080}
-        .blob-3{top:40%;left:30%;width:30vw;height:30vw;background:#FF4D4D;opacity:.3}
-    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome — chargé de manière asynchrone pour ne pas bloquer le rendu -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1587,8 +1563,10 @@
         function scrollToAnalyze() {
             const el = document.getElementById('analyze');
             if (!el) return;
-            /* scrollIntoView ne force pas de recalcul de layout (évite le forced reflow) */
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({
+                top: el.getBoundingClientRect().top + window.pageYOffset - 120,
+                behavior: 'smooth'
+            });
         }
 
         /* Used by FAQ accordion buttons */
@@ -2798,10 +2776,9 @@
                 if (e.key === 'Escape') window.closeMobileMenu();
             });
 
-            /* ── Navbar scroll effect — référence cachée pour éviter getElementById à chaque scroll ── */
-            const navbarEl = document.getElementById('navbar');
+            /* ── Navbar scroll effect ── */
             window.addEventListener('scroll', function () {
-                navbarEl.classList.toggle('scrolled', window.scrollY > 50);
+                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
             }, { passive: true });
 
             /* ── Scroll-reveal ── */
@@ -2821,14 +2798,11 @@
                 document.querySelectorAll('.scroller').forEach(function (scroller) {
                     const inner = scroller.querySelector('.scroller__inner');
                     if (!inner || inner.hasAttribute('data-duplicated')) return;
-                    /* DocumentFragment : toutes les insertions sont batchées en 1 seul reflow */
-                    const fragment = document.createDocumentFragment();
                     Array.from(inner.children).forEach(function (child) {
                         const clone = child.cloneNode(true);
                         clone.setAttribute('aria-hidden', 'true');
-                        fragment.appendChild(clone);
+                        inner.appendChild(clone);
                     });
-                    inner.appendChild(fragment);
                     inner.setAttribute('data-duplicated', 'true');
                     scroller.setAttribute('data-animated', 'true');
                 });
