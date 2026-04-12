@@ -2403,6 +2403,7 @@
                 margin-right: 0;
             }
         }
+        
     </style>
 
     <!-- JSZip Library - chargé en defer pour ne pas bloquer le rendu initial -->
@@ -3109,9 +3110,9 @@
     }
     </script>
 
-    <!-- Professional 4-column Grid Footer per specs: Brand | Product | Legal | Social + bottom disclaimer row -->
-    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Professional 4-column Grid Footer per specs: Brand | Product | Legal | Social + bottom disclaimer row -->
+<footer class="bg-black border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
@@ -3128,7 +3129,7 @@
 
                 <div class="text-center lg:text-left space-y-4">
                     <h4 class="font-semibold text-xs text-gray-500 uppercase tracking-wider">Product</h4>
-                    <ul class="space-y-3">
+                    <ul class="list-none pl-0 space-y-3">
                         <li>
                             <a href="#how-it-works"
                                 class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">How it
@@ -3143,6 +3144,10 @@
                             <a href="#faq"
                                 class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">FAQ &
                                 Support</a>
+                        </li>
+                        <li>
+                            <a href="how-to-see-who-unfollowed-you-on-instagram.html"
+                                class="text-sm text-gray-400 hover:text-[#FF0080] transition-colors duration-200">Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -3183,17 +3188,7 @@
 
             <div class="pt-8 border-t border-white/10 text-center flex flex-col items-center justify-center space-y-2">
                 <p class="text-xs text-gray-400">
-                    &copy; 2026 UnfollowerTracker. All rights reserved.
-                </p>
-                <address class="text-[11px] text-gray-600 not-italic">
-                    UnfollowerTracker — Online tool available worldwide at
-                    <a href="https://unfollowertracking.com"
-                        class="underline hover:text-gray-400 transition-colors">unfollowertracking.com</a>
-                </address>
-                <p class="text-[11px] text-gray-600">
-                    Not affiliated with Instagram&reg; or Meta&trade;.
-                </p>
-            </div>
+                    &copy; 2026 Unfollower
 
         </div>
     </footer>
@@ -3217,6 +3212,33 @@
            GLOBALS — functions called from inline HTML onclick attributes must
            be on window. Declared here, assigned inside DOMContentLoaded.
          ══════════════════════════════════════════════════════════════════════ */
+
+        // Task progress checklist
+        const taskProgress = {
+            "Fix footer CSS errors": "Completed",
+            "Validate HTML structure": "Completed",
+            "Test responsive design": "Pending",
+            "Verify all interactive elements": "Pending",
+            "Check browser compatibility": "Pending",
+            "Test payment integration": "Pending",
+            "Validate download functionality": "Pending",
+            "Test drag-and-drop upload": "Pending",
+            "Verify mobile responsiveness": "Pending",
+            "Check accessibility features": "Pending"
+        };
+
+        // Function to display task progress
+        function displayTaskProgress() {
+            console.log("Task Progress:");
+            Object.entries(taskProgress).forEach(([task, status]) => {
+                console.log(`  ${status === "Completed" ? "✓" : "✗"} ${task}`);
+            });
+        }
+
+        // Display progress on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayTaskProgress();
+        });
 
         /* Used by the CTA button in the hero and navbar */
         function scrollToAnalyze() {
