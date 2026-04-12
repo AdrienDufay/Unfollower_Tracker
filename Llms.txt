@@ -1,0 +1,32 @@
+# Unfollower Tracking
+
+> Find out who doesn’t follow you back on Instagram — fast, free, and privacy-friendly.
+
+Unfollower Tracking is a free web tool that lets Instagram users identify accounts they follow that don’t follow them back. Users simply upload a ZIP file exported from the official Instagram app, and the tool instantly returns their follower count, following count, and a list of non-followers.
+
+No login required. No Instagram credentials are ever collected. All processing is done client-side.
+
+## Key Information
+
+- **Tool**: Instagram unfollower checker
+- **Input**: ZIP file from Instagram’s official data export (Settings > Your activity > Download your information)
+- **Output**: Number of followers, number of following, list of accounts not following back
+- **Price**: Free
+- **Target audience**: Instagram users aged 18–30 looking to optimize their follower/following ratio
+- **Languages**: English
+
+## Pages
+
+- [Home](https://unfollowertracking.com): Upload your Instagram ZIP file and get your unfollower list instantly.
+- [How it works](https://unfollowertracking.com/how-it-works): Step-by-step guide explaining how to export your Instagram data and use the tool.
+
+## How to use
+
+1. Go to Instagram > Settings > Your activity > Download your information
+1. Request a ZIP export of your data (JSON format)
+1. Upload the ZIP file on unfollowertracking.com
+1. Instantly see who doesn’t follow you back
+
+## Privacy
+
+The tool does not require any Instagram login or password. The uploaded ZIP file is processed directly in the browser and never stored on any server.
