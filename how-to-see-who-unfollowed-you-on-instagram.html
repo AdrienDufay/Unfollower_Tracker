@@ -1,387 +1,466 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to See Who Unfollowed You on Instagram (2026 Guide)</title>
-  <meta name="description" content="Learn how to see who unfollowed you on Instagram safely. No apps, no password — just a simple method using your own data.">
+
+  <!-- ═══════════════════════════════════════════════
+       SEO META
+  ════════════════════════════════════════════════ -->
+  <title>Who Unfollowed Me on Instagram — Free Checker, No Login Required</title>
+  <meta name="description" content="Find out who unfollowed you on Instagram in seconds. Upload your Instagram data export — no login, no password, 100% private. Works instantly in your browser.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Who Unfollowed Me on Instagram — Free, Private, Instant">
+  <meta property="og:description" content="Upload your Instagram ZIP file and see exactly who doesn't follow you back. No password. No third-party access. Free.">
+  <meta property="og:type" content="website">
+
+  <!-- Canonical (update to real URL) -->
+  <!-- <link rel="canonical" href="https://yourdomain.com/who-unfollowed-me-on-instagram"> -->
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-86K6XHWR3X"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet" />
 
-  gtag('config', 'G-86K6XHWR3X');
-</script>
+  <!-- Analytics (keep existing GA) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-86K6XHWR3X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-86K6XHWR3X');
+  </script>
 
+  <!-- ═══════════════════════════════════════════════
+       STYLES
+  ════════════════════════════════════════════════ -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #FAFAFA;
-      --surface: #FFFFFF;
-      --text-primary: #111111;
-      --text-secondary: #555555;
-      --text-muted: #888888;
-      --accent: #1a73e8;
-      --accent-hover: #1558b0;
-      --border: #E8E8E8;
-      --divider: #F0F0F0;
-      --tag-bg: #F0F4FF;
-      --tag-text: #3a5fc9;
-      --font-serif: 'Lora', Georgia, serif;
-      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --bg:             #F8F9FB;
+      --surface:        #FFFFFF;
+      --surface-2:      #F3F5F9;
+      --text-primary:   #0F1117;
+      --text-secondary: #4A5068;
+      --text-muted:     #8A91A8;
+      --accent:         #4F46E5;
+      --accent-light:   #EEF2FF;
+      --accent-hover:   #4338CA;
+      --green:          #059669;
+      --green-light:    #ECFDF5;
+      --orange:         #D97706;
+      --orange-light:   #FFFBEB;
+      --red:            #DC2626;
+      --red-light:      #FEF2F2;
+      --border:         #E5E8EF;
+      --radius-sm:      8px;
+      --radius-md:      12px;
+      --radius-lg:      18px;
+      --shadow-sm:      0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md:      0 4px 12px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.05);
+      --font:           'Inter', system-ui, sans-serif;
+      --font-serif:     'Lora', Georgia, serif;
+      --max-w:          720px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text-primary);
-      font-family: var(--font-sans);
-      font-size: 17px;
+      font-family: var(--font);
+      font-size: 16px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── Utility ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; letter-spacing: .05em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+    }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-orange { background: var(--orange-light); color: var(--orange); }
+    .tag-red   { background: var(--red-light);    color: var(--red); }
+    .tag-blue  { background: var(--accent-light);  color: var(--accent); }
+    .tag-gray  { background: var(--surface-2);     color: var(--text-secondary); }
+
     /* ── NAV ── */
     .nav {
-      border-bottom: 1px solid var(--border);
       background: var(--surface);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 50;
     }
-    .nav-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 24px;
+    .nav .container {
       height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .nav-brand {
-      font-family: var(--font-serif);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-decoration: none;
-      letter-spacing: -0.01em;
+      font-weight: 700; font-size: 15px;
+      color: var(--text-primary); text-decoration: none;
     }
     .nav-cta {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
+      font-size: 13px; font-weight: 600;
+      background: var(--accent); color: #fff;
+      padding: 7px 16px; border-radius: var(--radius-sm);
       text-decoration: none;
-      padding: 6px 14px;
-      border: 1.5px solid var(--accent);
-      border-radius: 6px;
-      transition: background 0.15s, color 0.15s;
+      transition: background .15s;
     }
-    .nav-cta:hover { background: var(--accent); color: #fff; }
+    .nav-cta:hover { background: var(--accent-hover); }
 
-    /* ── HERO / ARTICLE HEADER ── */
-    .article-header {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 64px 24px 40px;
+    /* ── HERO ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 0 56px;
     }
-    .article-tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--tag-text);
-      background: var(--tag-bg);
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-bottom: 24px;
+    .hero-inner { text-align: center; }
+    .hero-eyebrow {
+      display: inline-flex; gap: 8px; align-items: center;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 20px;
     }
-    .article-header h1 {
+    .hero-eyebrow span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); display: inline-block;
+    }
+    .hero h1 {
       font-family: var(--font-serif);
-      font-size: clamp(28px, 5vw, 40px);
+      font-size: clamp(30px, 5.5vw, 46px);
       font-weight: 600;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
+      line-height: 1.15;
+      letter-spacing: -.025em;
       color: var(--text-primary);
       margin-bottom: 18px;
+      max-width: 600px;
+      margin-left: auto; margin-right: auto;
     }
-    .article-subtitle {
+    .hero-sub {
       font-size: 18px;
       color: var(--text-secondary);
       font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto 32px;
       line-height: 1.6;
-      margin-bottom: 32px;
-    }
-    .article-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-      padding-top: 24px;
-      border-top: 1px solid var(--divider);
-    }
-    .article-meta-dot { color: var(--border); }
-
-    /* ── ARTICLE BODY ── */
-    .article-body {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
     }
 
-    .article-body p {
+    /* Hero CTA button */
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: #fff;
+      font-size: 16px; font-weight: 600;
+      padding: 15px 32px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(79,70,229,.3);
+      transition: background .15s, transform .1s, box-shadow .15s;
+      margin-bottom: 20px;
+    }
+    .hero-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79,70,229,.35);
+    }
+    .hero-cta-arrow { font-size: 18px; }
+
+    /* Trust badges row */
+    .trust-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px 20px; margin-top: 8px;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-secondary); font-weight: 400;
+    }
+    .trust-badge-icon { font-size: 15px; }
+
+    /* ── CONTENT BODY ── */
+    .content { padding: 56px 0 80px; }
+
+    /* Section spacing */
+    .section { margin-bottom: 56px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 14px; display: block;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(21px, 3.5vw, 26px);
+      font-weight: 600;
+      letter-spacing: -.018em;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    p {
       color: var(--text-secondary);
-      margin-bottom: 22px;
-      font-size: 17px;
+      margin-bottom: 18px;
+      font-size: 16px;
       line-height: 1.8;
     }
+    p:last-child { margin-bottom: 0; }
 
-    .article-body h2 {
+    hr.divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 52px 0;
+    }
+
+    /* ── INLINE TOOL CTA (prominent) ── */
+    .tool-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .tool-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .tool-hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.9);
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .tool-hero h3 {
       font-family: var(--font-serif);
       font-size: clamp(20px, 3.5vw, 26px);
       font-weight: 600;
-      letter-spacing: -0.015em;
-      color: var(--text-primary);
-      margin: 52px 0 16px;
-      line-height: 1.3;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -.018em;
     }
+    .tool-hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 28px;
+    }
+    .tool-cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: #312e81;
+      font-size: 15px; font-weight: 700;
+      padding: 13px 28px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: transform .1s, box-shadow .15s;
+    }
+    .tool-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+    .tool-cta-note {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+      margin-top: 14px;
+    }
+    /* Mini trust row inside tool block */
+    .tool-trust-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px;
+      margin: 20px 0 0;
+    }
+    .tool-trust-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12.5px; color: rgba(255,255,255,.55); font-weight: 400;
+    }
+    .tool-trust-item .icon { font-size: 13px; }
 
-    .article-body h3 {
-      font-family: var(--font-sans);
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin: 28px 0 10px;
-      letter-spacing: -0.01em;
+    /* ── COMPARISON TABLE ── */
+    .comparison-table {
+      width: 100%; border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 14.5px;
     }
+    .comparison-table thead th {
+      background: var(--surface-2);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--border);
+    }
+    .comparison-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .comparison-table thead th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+    .comparison-table tbody tr { border-bottom: 1px solid var(--border); }
+    .comparison-table tbody tr:last-child { border-bottom: none; }
+    .comparison-table tbody tr.highlight { background: var(--accent-light); }
+    .comparison-table tbody tr.highlight td { color: var(--text-primary); }
+    .comparison-table td { padding: 14px 16px; color: var(--text-secondary); vertical-align: top; }
+    .comparison-table td:first-child { font-weight: 600; color: var(--text-primary); }
+    .comparison-table .check { color: var(--green); font-size: 16px; }
+    .comparison-table .cross { color: var(--red); font-size: 16px; }
+    .comparison-table .neutral { color: var(--orange); font-size: 16px; }
 
-    /* Divider between sections */
-    .section-rule {
-      border: none;
-      border-top: 1px solid var(--divider);
-      margin: 48px 0 0;
+    /* ── TRUST / SAFETY BLOCK ── */
+    .safety-block {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin: 24px 0 32px;
     }
+    .safety-header {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 24px;
+    }
+    .safety-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--green-light);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .safety-title { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; }
+    .safety-subtitle { font-size: 14px; color: var(--text-secondary); }
+    .safety-items { display: flex; flex-direction: column; gap: 12px; }
+    .safety-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+    }
+    .safety-item-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .safety-item-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+    .safety-item-text span { font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; }
 
-    /* Callout box */
-    .callout {
-      background: #F5F8FF;
-      border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 20px 24px;
-      margin: 32px 0;
+    /* ── WARNING BLOCK ── */
+    .warning-block {
+      background: var(--red-light);
+      border: 1px solid #FCA5A5;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex; gap: 12px; align-items: flex-start;
+      margin: 24px 0;
     }
-    .callout p {
-      font-size: 15.5px;
-      color: #333;
-      margin: 0;
-      line-height: 1.7;
+    .warning-block-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .warning-block p {
+      font-size: 14.5px; color: #991B1B; margin: 0; line-height: 1.65;
     }
+    .warning-block strong { color: #7F1D1D; }
 
-    /* Numbered list */
+    /* ── STEPS ── */
     .step-list {
       list-style: none;
-      margin: 24px 0 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
+      display: flex; flex-direction: column; gap: 0;
+      margin: 20px 0 32px;
+      counter-reset: steps;
     }
-    .step-list li {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+    .step-item {
+      display: flex; gap: 0;
+      position: relative;
+    }
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px; top: 40px;
+      width: 2px; bottom: 0;
+      background: var(--border);
     }
     .step-num {
       flex-shrink: 0;
-      width: 28px;
-      height: 28px;
+      width: 40px; height: 40px;
       border-radius: 50%;
-      background: var(--text-primary);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
+      background: var(--accent); color: #fff;
+      font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 18px; margin-top: 2px;
+      z-index: 1;
+      box-shadow: 0 0 0 4px var(--accent-light);
     }
-    .step-content strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 3px;
-    }
-    .step-content span {
-      font-size: 14.5px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* Method cards */
-    .method-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin: 24px 0 32px;
-    }
-    .method-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 22px;
-    }
-    .method-card h3 {
-      margin: 0 0 6px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .method-card p {
-      font-size: 14.5px;
-      color: var(--text-secondary);
-      margin: 0;
-      line-height: 1.65;
-    }
-    .method-card .method-tag {
+    .step-content { padding-bottom: 28px; flex: 1; }
+    .step-item:last-child .step-content { padding-bottom: 0; }
+    .step-content strong { display: block; font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; }
+    .step-content span { font-size: 14px; color: var(--text-secondary); line-height: 1.65; display: block; }
+    .step-tip {
       display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 10px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: 12px; font-weight: 500;
+      padding: 4px 10px; border-radius: 6px;
+      margin-top: 8px;
     }
-    .tag-caution { background: #FFF4EC; color: #C46000; }
-    .tag-limited { background: #F5F5F5; color: #666; }
-    .tag-recommended { background: #EDFAF3; color: #1A7A47; }
 
-    /* FAQ */
+    /* ── FAQ ── */
     .faq-list {
-      margin: 24px 0 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      display: flex; flex-direction: column; gap: 0;
+      margin: 20px 0 32px;
     }
     .faq-item {
-      border-bottom: 1px solid var(--divider);
+      border-bottom: 1px solid var(--border);
       padding: 22px 0;
     }
-    .faq-item:first-child { border-top: 1px solid var(--divider); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
     .faq-q {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-weight: 500;
+      font-size: 16px; font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 10px; line-height: 1.4;
     }
     .faq-a {
-      font-size: 15.5px;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    /* CTA blocks */
-    .cta-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px 32px;
-      text-align: center;
-      margin: 40px 0;
-    }
-    .cta-block h3 {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-    .cta-block p {
       font-size: 15px;
       color: var(--text-secondary);
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--text-primary);
-      color: #fff;
-      font-family: var(--font-sans);
-      font-size: 14.5px;
-      font-weight: 500;
-      padding: 12px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: background 0.15s, transform 0.1s;
-    }
-    .cta-btn:hover { background: #333; transform: translateY(-1px); }
-    .cta-note {
-      display: block;
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-top: 14px;
-      margin-bottom: 0 !important;
+      line-height: 1.75; margin: 0;
     }
 
-    .cta-btn-secondary {
-      display: inline-block;
-      background: transparent;
-      color: var(--accent);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      font-weight: 500;
-      padding: 12px 28px;
-      border-radius: 8px;
-      border: 1.5px solid var(--accent);
-      text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-    }
-    .cta-btn-secondary:hover { background: var(--accent); color: #fff; }
-
-    /* Final CTA */
+    /* ── FINAL CTA ── */
     .final-cta {
       background: var(--text-primary);
-      border-radius: 16px;
-      padding: 48px 32px;
+      border-radius: var(--radius-lg);
+      padding: 52px 36px;
       text-align: center;
-      margin: 48px 0 0;
+      margin-top: 52px;
+      position: relative; overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(79,70,229,.25) 0%, transparent 60%);
+      pointer-events: none;
     }
     .final-cta h2 {
       font-family: var(--font-serif);
       font-size: clamp(22px, 4vw, 30px);
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
+      color: #fff; margin-bottom: 12px;
+      letter-spacing: -.02em;
     }
-    .final-cta p {
+    .final-cta > p {
       font-size: 15px;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,.6);
       margin-bottom: 28px;
-      line-height: 1.6;
     }
-    .final-cta .cta-btn {
-      background: #fff;
-      color: var(--text-primary);
+    .final-cta .hero-cta {
+      background: #fff; color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0,0,0,.3);
     }
-    .final-cta .cta-btn:hover { background: #f0f0f0; transform: translateY(-1px); }
-    .final-cta .cta-note { color: rgba(255,255,255,0.4); }
+    .final-cta .hero-cta:hover { background: #f0f0f0; }
+    .final-cta .cta-note {
+      display: block; font-size: 12px;
+      color: rgba(255,255,255,.35); margin-top: 16px;
+    }
 
-    /* Footer */
+    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       background: var(--surface);
@@ -390,226 +469,585 @@
       font-size: 13px;
       color: var(--text-muted);
     }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--text-primary); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .article-header { padding: 40px 20px 28px; }
-      .article-body { padding: 0 20px 60px; }
-      .cta-block { padding: 28px 20px; }
+      .hero { padding: 44px 0 40px; }
+      .tool-hero { padding: 32px 20px; }
+      .safety-block { padding: 24px 20px; }
       .final-cta { padding: 36px 20px; }
+      .comparison-table { font-size: 13px; }
+      .comparison-table td, .comparison-table th { padding: 10px 12px; }
+      .trust-badges { gap: 8px 14px; }
     }
   </style>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who unfollowed me on Instagram?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instagram does not show you who unfollowed you. The safest way to find out is to download your Instagram data export (ZIP file) and upload it to an analysis tool that compares your followers and following lists. No password or login is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I see who unfollowed me on Instagram?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Download your Instagram data export from Settings → Accounts Center → Your information and permissions → Download your information. Then upload the ZIP file to our tool. It shows you immediately who does not follow you back — with no login required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Instagram notify you when someone unfollows you?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Instagram does not send any notification when someone unfollows you. The only visible sign is a silent drop in your follower count."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it safe to use third-party unfollower apps?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most third-party unfollower apps require your Instagram login credentials, which violates Instagram's Terms of Service and puts your account at risk. Using your own data export is the safe alternative — no credentials are shared."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track Instagram unfollowers without an app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Download your Instagram data export and upload the ZIP file to a browser-based tool. The analysis happens locally on your device — no app installation required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a free way to check Instagram unfollowers without an app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You don't need to install anything. Download your Instagram data export, upload the ZIP file to this browser-based tool, and you'll see your full Instagram unfollower breakdown instantly — for free, with no login required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did my Instagram follower count drop but I can't see who unfollowed me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instagram doesn't record or expose individual unfollow events — it only updates the total count. So when someone unfollows you, the number changes but no record is kept of who did it or when. Comparing your current data export against a previous one is the only way to identify the gap between who you follow and who follows you back."
+        }
+      }
+    ]
+  }
+  </script>
 
 </head>
 <body>
 
-<!-- Navigation -->
-
+<!-- ══════════════════════════════════
+     NAV
+════════════════════════════════════ -->
 <nav class="nav" role="navigation" aria-label="Site navigation">
-  <div class="nav-inner">
+  <div class="container">
     <a href="index.html" class="nav-brand">Unfollower Tracking</a>
-    <a href="index.html" class="nav-cta">View your analysis</a>
+    <a href="index.html" class="nav-cta">Try the free tool →</a>
   </div>
 </nav>
 
-<!-- Article Header -->
+<!-- ══════════════════════════════════
+     HERO — ABOVE THE FOLD
+════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="container hero-inner">
 
-<header class="article-header">
-  <span class="article-tag">Instagram Guide</span>
-  <h1>Who unfollowed me on Instagram?</h1>
-  <p class="article-subtitle">A simple explanation of how to understand Instagram follower changes — without handing over your password.</p>
-  <div class="article-meta">
-    <span>5 min read</span>
-    <span class="article-meta-dot">·</span>
-    <span>Updated April 2026</span>
-    <span class="article-meta-dot">·</span>
-    <span>Instagram</span>
-  </div>
-</header>
+    <p class="hero-eyebrow"><span></span>Free Instagram Tool</p>
 
-<!-- Article Body -->
+    <h1 id="hero-h1">Who unfollowed me on Instagram?</h1>
 
-<main class="article-body">
-
-  <!-- INTRODUCTION -->
-
-  <p>
-    If you've ever noticed your follower count quietly drop overnight and wondered <em>who unfollowed me on Instagram</em>, you're not alone. <strong>Millions of users ask the same question every day</strong> — and the answer isn't as straightforward as you might hope.
-  </p>
-  <p>
-    Unlike some social platforms, <strong>Instagram doesn't send you a notification when someone stops following you.</strong> There's no "unfollower" tab, no activity log, and no built-in way to answer <em>how do I see who unfollowed me on Instagram</em> from inside the app itself. The count just changes, and you're left guessing.
-  </p>
-  <p>
-    This guide explains <strong>why that limitation exists</strong>, what methods people typically try, and how you can get a clearer picture of your follower changes in a way that's <strong>safe and privacy-friendly</strong>.
-  </p>
-
-  <hr class="section-rule" />
-
-  <!-- WHY INSTAGRAM DOESN'T SHOW -->
-
-  <h2>Why Instagram doesn't show who unfollowed you</h2>
-  <p>
-    <strong>Instagram's design is built around engagement</strong> — what you see, what you interact with, and what keeps you on the app. Tracking who unfollowed you falls outside that model. The platform has made a deliberate choice not to surface this kind of information, and there are a few reasons why.
-  </p>
-  <p>
-    First, <strong>privacy.</strong> When someone follows or unfollows an account, Instagram treats that as their own action to make freely and quietly. Notifying the person being unfollowed would create friction and potentially discourage people from pruning accounts they no longer want to see.
-  </p>
-  <p>
-    Second, <strong>it's not in Instagram's interest.</strong> Anxiety about unfollowers doesn't necessarily drive the kind of positive engagement Instagram wants to encourage. The platform would rather you focus on creating content than monitoring who left.
-  </p>
-  <p>
-    As a result, <strong>there's no official way to <em>find out who unfollowed me on Instagram</em> directly through the app.</strong> But that hasn't stopped users from looking for workarounds — some more reliable (and safer) than others.
-  </p>
-
-  <hr class="section-rule" />
-
-  <!-- COMMON METHODS -->
-
-  <h2>Common ways people try to check unfollowers</h2>
-  <p>When users go searching for answers, they usually land on one of three approaches. Each has its tradeoffs.</p>
-
-  <div class="method-grid">
-    <div class="method-card">
-      <span class="method-tag tag-limited">Limited</span>
-      <h3>Manual comparison</h3>
-      <p>Some people scroll through their follower list and cross-reference it with accounts they follow back. This works fine if you have 50 followers — but becomes completely unmanageable at any meaningful scale. It's also easy to miss someone.</p>
+    <!-- DIRECT ANSWER BLOCK -->
+    <div style="
+      display:inline-block;
+      background:#fff;
+      border:1.5px solid #E5E8EF;
+      border-left:4px solid #4F46E5;
+      border-radius:10px;
+      padding:16px 20px;
+      margin:0 auto 28px;
+      max-width:540px;
+      text-align:left;
+      box-shadow:0 1px 4px rgba(0,0,0,.05);
+    " role="note" aria-label="Direct answer">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#4F46E5;margin-bottom:6px;">Quick answer</p>
+      <p style="font-size:15px;color:#0F1117;line-height:1.65;margin:0;">
+        <strong>No — Instagram does not show you who unfollowed you.</strong>
+        There is no built-in notification, tab, or activity log for this.
+        The only reliable method is to compare your followers and following lists
+        using your own Instagram data export — no password needed.
+      </p>
     </div>
-    <div class="method-card">
-      <span class="method-tag tag-caution">Use caution</span>
-      <h3>Third-party apps</h3>
-      <p>A large number of apps and websites promise to answer <em>who has unfollowed me on Instagram</em> in real time. Most require you to log in with your Instagram account. This means handing over your credentials to an unauthorized service — which is against Instagram's Terms of Service and can put your account at risk of suspension or hacking.</p>
+
+    <p class="hero-sub">
+      Upload your Instagram data export and see exactly who doesn't follow you back — in seconds.
+    </p>
+
+    <a href="index.html" class="hero-cta">
+      Upload your Instagram ZIP file
+      <span class="hero-cta-arrow">→</span>
+    </a>
+
+    <div class="trust-badges" role="list">
+      <span class="trust-badge" role="listitem"><span class="trust-badge-icon">🔒</span> 100% private</span>
+      <span class="trust-badge" role="listitem"><span class="trust-badge-icon">🚫</span> No login required</span>
+      <span class="trust-badge" role="listitem"><span class="trust-badge-icon">⚡</span> Instant results</span>
+      <span class="trust-badge" role="listitem"><span class="trust-badge-icon">🆓</span> Free</span>
+      <span class="trust-badge" role="listitem"><span class="trust-badge-icon">🖥️</span> Works in your browser</span>
     </div>
-    <div class="method-card">
-      <span class="method-tag tag-recommended">Safer approach</span>
-      <h3>Instagram data export analysis</h3>
-      <p>Instagram lets you download a copy of your own data directly from the app. This export includes your followers and following lists, which can be compared over time to understand changes — without sharing your login with anyone.</p>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════ -->
+<main class="content">
+<div class="container">
+
+  <!-- ── QUICK ANSWER SECTION ── -->
+  <section class="section" aria-labelledby="quickanswer-h2" style="margin-bottom:40px;">
+    <span class="section-label">The short version</span>
+    <h2 id="quickanswer-h2">How to see who unfollowed you on Instagram</h2>
+    <ol style="list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0;">
+      <li style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#4F46E5;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;">1</span>
+        <span style="font-size:15px;color:#4A5068;line-height:1.6;">
+          <strong style="color:#0F1117;">Download your Instagram data</strong> — go to
+          Settings → Accounts Center → Your information and permissions → Download your information.
+        </span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#4F46E5;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;">2</span>
+        <span style="font-size:15px;color:#4A5068;line-height:1.6;">
+          <strong style="color:#0F1117;">Save the ZIP file</strong> Instagram emails you — no need to unzip it.
+        </span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#4F46E5;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;">3</span>
+        <span style="font-size:15px;color:#4A5068;line-height:1.6;">
+          <strong style="color:#0F1117;">Upload it to the tool below</strong> — your followers
+          and following lists are compared instantly in your browser.
+        </span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#4F46E5;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;">4</span>
+        <span style="font-size:15px;color:#4A5068;line-height:1.6;">
+          <strong style="color:#0F1117;">See exactly who doesn't follow you back</strong> — no login,
+          no password, results in seconds.
+        </span>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="divider" style="margin-top:0;">
+
+  <!-- ── PROMINENT TOOL BLOCK ── -->
+  <div class="section">
+    <div class="tool-hero" id="tool">
+      <span class="tool-hero-badge">✦ Free Instagram Unfollower Checker</span>
+      <h3>See who doesn't follow you back</h3>
+      <p>
+        Upload your Instagram ZIP file. No password. No third-party access.<br>
+        Your data never leaves your device.
+      </p>
+      <a href="index.html" class="tool-cta-btn">
+        <span>⬆</span> Upload Instagram ZIP file
+      </a>
+      <div class="tool-trust-row">
+        <span class="tool-trust-item"><span class="icon">🔒</span> Data stays on your device</span>
+        <span class="tool-trust-item"><span class="icon">🚫</span> No Instagram login</span>
+        <span class="tool-trust-item"><span class="icon">⚡</span> Results in seconds</span>
+      </div>
+      <span class="tool-cta-note">Works with the ZIP file from Instagram's "Download Your Information" feature</span>
     </div>
   </div>
 
-  <div class="callout">
-    <p><strong>Worth knowing:</strong> In 2024, Meta tightened restrictions on third-party apps accessing Instagram data. Many of the popular "unfollower tracker" apps now rely on workarounds that can trigger account flags. The safest route is always to work with your own data export.</p>
-  </div>
+  <hr class="divider">
 
-  <hr class="section-rule" />
+  <!-- ── WHY INSTAGRAM DOESN'T SHOW ── -->
+  <section class="section" aria-labelledby="why-h2">
+    <span class="section-label">The problem</span>
+    <h2 id="why-h2">Why Instagram doesn't tell you who unfollowed you</h2>
 
-  <!-- BETTER WAY -->
+    <p>
+      If you've noticed your follower count quietly drop and wondered
+      <em>who unfollowed me on Instagram</em>, you're looking for something Instagram
+      deliberately doesn't provide. That quiet frustration — watching a number go down
+      with no explanation — is one of the most common complaints among regular Instagram users.
+      The good news: there is a clean, account-safe way to get the answer.
+    </p>
 
-  <h2>A better way to understand follower changes</h2>
-  <p>
-    <strong>The cleanest way to track your Instagram follower changes is to use Instagram's own data export feature.</strong> Instagram lets every user download a file containing their account data — including a full list of their current followers and following.
-  </p>
-  <p>
-    By uploading that file to an analysis tool, you can <strong>compare your followers against your following list</strong>, see who doesn't follow you back, and understand the shape of your audience — all without entering your password anywhere outside of Instagram itself.
-  </p>
+    <p>
+      Two reasons drive this design choice. First, <strong>privacy:</strong> people should be able to quietly unfollow accounts without creating friction. Second, it doesn't serve Instagram's core goal of keeping you engaged with content — tracking unfollowers pushes users toward anxiety, not engagement.
+    </p>
 
-  <!-- Inline CTA -->
+    <p>
+      The result: your follower count drops silently, and the platform gives you no official way to find out who left. That's why users look for workarounds — and why the method you choose matters a lot.
+    </p>
 
-  <div class="cta-block" id="tool">
-    <h3>See how your followers changed over time</h3>
-    <p>Upload your Instagram data export and get a clear breakdown of your follower changes — no login required.</p>
-    <a href="index.html" class="cta-btn">View your analysis</a>
-    <span class="cta-note">Works with your Instagram ZIP export. No password needed.</span>
-  </div>
+    <!-- Internal link placeholder 1 -->
+    <!-- <a href="#internal-link-1">Learn how Instagram's algorithm works →</a> -->
+  </section>
 
-  <hr class="section-rule" />
+  <hr class="divider">
 
-  <!-- STEP BY STEP -->
+  <!-- ── MICRO INSIGHT ── -->
+  <section class="section" aria-labelledby="insight-h2">
+    <span class="section-label">Worth knowing</span>
+    <h2 id="insight-h2">Why most advice about Instagram unfollowers is misleading</h2>
 
-  <h2>How it works, step by step</h2>
-  <p>If you've never downloaded your Instagram data before, <strong>the process takes about five minutes.</strong> Here's how to do it.</p>
+    <p>
+      Search for <em>"who unfollowed me on Instagram"</em> and you'll quickly run into one of two kinds of results:
+      articles recommending third-party apps that require your login, or vague guides that tell you
+      to "check manually." Neither is a great answer.
+    </p>
+    <p>
+      The app recommendations are the bigger problem. Most of these tools existed in a grey area
+      before Meta tightened API access restrictions. They relied on unofficial access methods that
+      Instagram has since closed off — meaning many no longer work as advertised, and some may
+      silently fail or, worse, misuse the access you've granted them.
+    </p>
+    <p>
+      The confusion usually comes from one simple misconception:
+      <strong>people assume Instagram tracks this data somewhere and is just hiding it.</strong>
+      In reality, Instagram simply does not record unfollow events in a retrievable log.
+      The only complete picture of your follower relationships exists in a snapshot —
+      which is exactly what your data export provides.
+    </p>
+  </section>
 
-  <ol class="step-list">
-    <li>
-      <span class="step-num">1</span>
-      <div class="step-content">
-        <strong>Download your Instagram data</strong>
-        <span>Go to Instagram → Settings → Accounts Center → Your information and permissions → Download your information. Select "Followers and following" and request the download. Instagram will email you a link within a few minutes to a few hours.</span>
+  <hr class="divider">
+
+  <!-- ── COMPARISON TABLE ── -->
+  <section class="section" aria-labelledby="methods-h2">
+    <span class="section-label">Your options</span>
+    <h2 id="methods-h2">3 ways to check who unfollowed you — compared</h2>
+
+    <p>Not all methods are equal. Here's a clear breakdown of what each approach actually offers.</p>
+
+    <table class="comparison-table" role="table" aria-label="Unfollower checking methods comparison">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Works at scale</th>
+          <th>Account-safe</th>
+          <th>No login needed</th>
+          <th>Free</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Manual comparison</td>
+          <td><span class="cross" aria-label="No">✗</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Third-party apps</td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="cross" aria-label="No">✗</span></td>
+          <td><span class="cross" aria-label="No">✗</span></td>
+          <td><span class="neutral" aria-label="Sometimes">~</span></td>
+        </tr>
+        <tr class="highlight">
+          <td>Instagram data export <span class="tag tag-blue" style="margin-left:6px;font-size:10px">Recommended</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+          <td><span class="check" aria-label="Yes">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Manual comparison</h3>
+    <p>
+      Scrolling through your follower list and cross-referencing it with people you follow works — but only if you have very few followers. At any meaningful scale, it becomes impractical and easy to miss people.
+    </p>
+
+    <h3>Third-party apps</h3>
+    <p>
+      Many apps promise real-time tracking of who unfollowed you on Instagram. Almost all of them require your Instagram login. This means giving your credentials to an unauthorized service, which violates Instagram's Terms of Service and can get your account flagged, restricted, or compromised.
+    </p>
+
+    <h3>Instagram data export (recommended)</h3>
+    <p>
+      Instagram lets you download a full copy of your own data — including your complete followers and following lists. An analysis tool can compare these locally in your browser, showing you who doesn't follow you back, without any credentials being shared. This is the approach this tool uses.
+    </p>
+
+    <!-- Internal link placeholder 2 -->
+    <!-- <a href="#internal-link-2">How to download your Instagram data →</a> -->
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── REAL-LIFE USE CASE ── -->
+  <section class="section" aria-labelledby="example-h2">
+    <span class="section-label">A realistic example</span>
+    <h2 id="example-h2">What this looks like in practice</h2>
+
+    <div style="background:#F3F5F9;border-radius:14px;padding:28px 28px 24px;border:1px solid #E5E8EF;">
+      <p style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A91A8;margin-bottom:16px;">
+        Example scenario
+      </p>
+      <p style="color:#4A5068;font-size:15px;line-height:1.75;margin-bottom:14px;">
+        Say you follow <strong style="color:#0F1117;">420 accounts</strong> on Instagram.
+        You notice your follower count has dropped from 380 to 361 over the past few weeks,
+        but you have no idea who left or when.
+      </p>
+      <p style="color:#4A5068;font-size:15px;line-height:1.75;margin-bottom:14px;">
+        You download your Instagram data export — it takes a few minutes to arrive by email.
+        You upload the ZIP file to the tool. Within seconds, you see a clear breakdown:
+      </p>
+      <ul style="list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:10px;">
+        <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#0F1117;">
+          <span style="font-size:16px;">👥</span>
+          <span><strong>361 accounts</strong> currently follow you</span>
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#0F1117;">
+          <span style="font-size:16px;">↩️</span>
+          <span><strong>187 accounts</strong> you follow don't follow you back</span>
+        </li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#0F1117;">
+          <span style="font-size:16px;">✅</span>
+          <span><strong>233 accounts</strong> are mutual — they follow you and you follow them</span>
+        </li>
+      </ul>
+      <p style="color:#4A5068;font-size:14.5px;line-height:1.7;margin:0;">
+        No password entered. No app installed. No account risk.
+        The whole process took under five minutes.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── TRUST & SAFETY BLOCK ── -->
+  <section class="section" aria-labelledby="safety-h2">
+    <span class="section-label">Your security</span>
+    <h2 id="safety-h2">Why this tool is safe to use</h2>
+
+    <p>
+      Concerns about account safety are valid. Here's exactly how this tool works — and why it's designed to protect your account.
+    </p>
+
+    <div class="warning-block" role="alert" aria-label="Risk warning">
+      <span class="warning-block-icon">⚠️</span>
+      <p>
+        <strong>A real risk to know about:</strong> Most unfollower apps on the market require your Instagram password. This gives a third-party service direct access to your account. Instagram actively detects and bans accounts using unauthorized tools — and your password could be stored or misused.
+      </p>
+    </div>
+
+    <div class="safety-block">
+      <div class="safety-header">
+        <div class="safety-icon">🛡️</div>
+        <div>
+          <p class="safety-title">How this tool protects you</p>
+          <p class="safety-subtitle">Built around your data, not your credentials.</p>
+        </div>
       </div>
-    </li>
-    <li>
-      <span class="step-num">2</span>
-      <div class="step-content">
-        <strong>Save the ZIP file</strong>
-        <span>When the email arrives, download the ZIP file Instagram sends you. Keep it on your device — you don't need to extract anything.</span>
+
+      <div class="safety-items">
+        <div class="safety-item">
+          <span class="safety-item-icon">🔒</span>
+          <div class="safety-item-text">
+            <strong>Your data never leaves your device</strong>
+            <span>The ZIP file is processed entirely in your browser. Nothing is uploaded to any server.</span>
+          </div>
+        </div>
+        <div class="safety-item">
+          <span class="safety-item-icon">🚫</span>
+          <div class="safety-item-text">
+            <strong>No Instagram credentials required</strong>
+            <span>The tool only reads your data export file. It never asks for your password or connects to your Instagram account.</span>
+          </div>
+        </div>
+        <div class="safety-item">
+          <span class="safety-item-icon">📂</span>
+          <div class="safety-item-text">
+            <strong>Uses Instagram's official data export</strong>
+            <span>You download your data directly from Instagram. This is a feature Instagram explicitly provides for users, with no Terms of Service violations involved.</span>
+          </div>
+        </div>
+        <div class="safety-item">
+          <span class="safety-item-icon">🗑️</span>
+          <div class="safety-item-text">
+            <strong>No data stored or retained</strong>
+            <span>Once you close or refresh the page, all results are gone. Nothing is saved.</span>
+          </div>
+        </div>
       </div>
-    </li>
-    <li>
-      <span class="step-num">3</span>
-      <div class="step-content">
-        <strong>Upload the file to the analysis tool</strong>
-        <span>Drop your ZIP file into the tool below. It reads your followers and following lists locally and shows you a breakdown of who follows you back, who doesn't, and how your numbers compare.</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── STEP BY STEP ── -->
+  <section class="section" aria-labelledby="howto-h2">
+    <span class="section-label">Step-by-step</span>
+    <h2 id="howto-h2">How to check who unfollowed you in 4 steps</h2>
+
+    <p>The whole process takes about 5 minutes. Here's exactly what to do.</p>
+
+    <ol class="step-list" aria-label="Steps to check Instagram unfollowers">
+      <li class="step-item">
+        <div class="step-num" aria-hidden="true">1</div>
+        <div class="step-content">
+          <strong>Request your Instagram data export</strong>
+          <span>Open Instagram → Settings → Accounts Center → Your information and permissions → Download your information. Select "Followers and following" and request the file. Instagram will email you a download link — usually within a few minutes.</span>
+          <span class="step-tip">💡 Choose JSON format if asked</span>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num" aria-hidden="true">2</div>
+        <div class="step-content">
+          <strong>Download the ZIP file</strong>
+          <span>Open the email from Instagram and download the ZIP file to your device. You don't need to unzip or open it — keep it as-is.</span>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num" aria-hidden="true">3</div>
+        <div class="step-content">
+          <strong>Upload the ZIP file to the tool</strong>
+          <span>Click the button below, select your ZIP file, and drop it into the uploader. The tool reads your followers and following lists directly in your browser — no server involved.</span>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num" aria-hidden="true">4</div>
+        <div class="step-content">
+          <strong>See your results instantly</strong>
+          <span>You'll see a full breakdown: who follows you, who you follow but doesn't follow back, and mutual connections. No Instagram login. No password. Just your data.</span>
+        </div>
+      </li>
+    </ol>
+
+    <!-- Inline mid-page CTA -->
+    <div style="text-align:center; margin: 8px 0 0;">
+      <a href="index.html" class="hero-cta" style="font-size:15px; padding:13px 28px;">
+        Upload my ZIP file →
+      </a>
+      <p style="font-size:12.5px; color:var(--text-muted); margin-top:12px;">No account access needed. Works offline once loaded.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── FAQ ── -->
+  <section class="section" aria-labelledby="faq-h2">
+    <span class="section-label">Common questions</span>
+    <h2 id="faq-h2">Frequently asked questions</h2>
+
+    <!-- Internal link placeholder 3 -->
+    <!-- <a href="#internal-link-3">See full Instagram guide →</a> -->
+
+    <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage" role="list">
+
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Who unfollowed me on Instagram — how do I find out?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Instagram doesn't tell you who unfollowed you. The most reliable and safest way is to download your Instagram data export (ZIP file) and upload it to an analysis tool. It compares your followers and following lists and shows you who isn't following you back — no password needed.</p>
+        </div>
       </div>
-    </li>
-    <li>
-      <span class="step-num">4</span>
-      <div class="step-content">
-        <strong>Review your results</strong>
-        <span>You'll see a clear summary: mutual followers, accounts you follow who don't follow back, and accounts that follow you but that you haven't followed. No Instagram login required at any point.</span>
+
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Does Instagram notify you when someone unfollows you?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">No. Instagram sends no notification when someone unfollows you. The only sign is a quiet drop in your follower count — which you'd need to notice yourself.</p>
+        </div>
       </div>
-    </li>
-  </ol>
 
-  <hr class="section-rule" />
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Can I track Instagram unfollowers without giving my password?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Yes. Download your Instagram data export and upload the ZIP file to a browser-based tool. The entire analysis happens locally on your device — no Instagram credentials are involved at any point.</p>
+        </div>
+      </div>
 
-  <!-- FAQ -->
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Is it safe to use third-party unfollower apps?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Most third-party unfollower apps require your Instagram login, which violates Instagram's Terms of Service. Instagram actively flags accounts using unauthorized tools, which can lead to restrictions or suspension. The data export method avoids all of these risks.</p>
+        </div>
+      </div>
 
-  <h2>Frequently asked questions</h2>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Why doesn't Instagram have a built-in unfollower feature?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Instagram's design focuses on content engagement, not social tracking. The platform treats unfollowing as a private action — intentionally not notifying the person being unfollowed to reduce friction and anxiety.</p>
+        </div>
+      </div>
 
-  <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">How long does it take to get my Instagram data export?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Instagram typically sends the download link via email within a few minutes to a couple of hours, depending on account size. Once you have the ZIP file, the analysis takes only a few seconds.</p>
+        </div>
+      </div>
 
-```
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-  <p class="faq-q" itemprop="name">Can I see who unfollowed me on Instagram?</p>
-  <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-    <p class="faq-a" itemprop="text">Not directly through the Instagram app. Instagram does not provide a built-in feature to see who unfollowed you. The only reliable method is to compare your followers list over time — either manually or by using your Instagram data export.</p>
-  </div>
-</div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Can I see who unfollowed me recently vs. a long time ago?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">To track changes over time, download your data export periodically and compare the results. The current tool shows your follower state at the time of the export — comparing two exports lets you see who unfollowed you between the two dates.</p>
+        </div>
+      </div>
 
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-  <p class="faq-q" itemprop="name">Why doesn't Instagram show unfollowers?</p>
-  <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-    <p class="faq-a" itemprop="text">Instagram has chosen not to notify users when they lose a follower. This is partly a privacy decision — the person unfollowing should be able to do so quietly — and partly because Instagram's design focuses on content engagement rather than follower tracking.</p>
-  </div>
-</div>
+      <!-- NEW FAQ ITEMS -->
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Is there a free way to check Instagram unfollowers without an app?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Yes. You don't need to install anything. Download your Instagram data export, upload the ZIP file to this browser-based tool, and you'll see your full Instagram unfollower breakdown instantly — for free, with no login required.</p>
+        </div>
+      </div>
 
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-  <p class="faq-q" itemprop="name">Is it safe to use third-party apps to track unfollowers?</p>
-  <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-    <p class="faq-a" itemprop="text">Most third-party unfollower apps require you to log in with your Instagram credentials. This violates Instagram's Terms of Service and can put your account at risk of being flagged, restricted, or compromised. It's much safer to use your data export instead.</p>
-  </div>
-</div>
+      <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" role="listitem">
+        <p class="faq-q" itemprop="name">Why did my Instagram follower count drop but I can't see who unfollowed me?</p>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p class="faq-a" itemprop="text">Instagram doesn't record or expose individual unfollow events — it only updates the total count. So when someone unfollows you, the number changes but no record is kept of who did it or when. Comparing your current data export against a previous one is the only way to identify the gap between who you follow and who follows you back.</p>
+        </div>
+      </div>
 
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-  <p class="faq-q" itemprop="name">How can I track follower changes over time?</p>
-  <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-    <p class="faq-a" itemprop="text">The best approach is to periodically download your Instagram data export and compare your followers list across different exports. Some tools can automate this comparison for you using your ZIP files, showing you changes without requiring account access.</p>
-  </div>
-</div>
+    </div>
+  </section>
 
-<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-  <p class="faq-q" itemprop="name">Does Instagram notify you when someone unfollows you?</p>
-  <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-    <p class="faq-a" itemprop="text">No. Instagram sends no notification when someone unfollows you. The only visible sign is a drop in your follower count, which you'd need to notice yourself.</p>
-  </div>
-</div>
-```
-
-  </div>
-
-  <hr class="section-rule" />
-
-  <!-- FINAL CTA -->
-
+  <!-- ── FINAL CTA ── -->
   <div class="final-cta" id="analyze">
-    <h2>Understand your Instagram follower changes</h2>
-    <p>Upload your Instagram data export and see a clear breakdown in seconds. No login. No password. Just your own data.</p>
-    <a href="index.html" class="cta-btn">View your analysis →</a>
-    <span class="cta-note">No login required. Works with your Instagram data export.</span>
+    <h2>Ready to see who unfollowed you?</h2>
+    <p>Upload your Instagram ZIP file. Results in seconds. No login. No password. 100% private.</p>
+    <a href="index.html" class="hero-cta">
+      Upload your Instagram data →
+    </a>
+    <span class="cta-note">Works with your Instagram data export · Free · No account access required</span>
   </div>
 
+</div>
 </main>
 
+<!-- ══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
 <footer>
-  <p>© 2026 Unfollower Tracking · <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy</a> · <a href="#" style="color: var(--text-muted); text-decoration: none;">How it works</a></p>
+  <p>
+    © 2026 Unfollower Tracking ·
+    <a href="privacy.html">Privacy policy</a> ·
+    <a href="index.html">How it works</a>
+  </p>
 </footer>
 
 </body>

@@ -2,5 +2,3 @@ git add .
 git commit -m "add new blog page"
 git branch -M main
 git push -u origin main
-
-instaunfollowertracker-hiy9oo1wh-adriendufays-projects.vercel.app
