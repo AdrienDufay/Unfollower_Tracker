@@ -397,17 +397,59 @@
       margin-bottom: 10px;
       margin-top: 0;              /* override global h2 margin */
     }
-    .article-cta p { font-size: 15px; color: var(--text-secondary); margin-bottom: 22px; }
-    .article-cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #fff;
-      font-size: 15px; font-weight: 600;
-      padding: 12px 26px; border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: background .15s, transform .1s;
-    }
-    .article-cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .article-cta-note { display: block; font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+.article-cta p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+
+/* CTA BUTTON FIX CLEAN */
+.article-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: var(--accent);
+  color: #ffffff !important;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+
+  text-decoration: none;
+  line-height: 1;
+
+  transition: background .15s ease, transform .1s ease;
+  white-space: nowrap;
+}
+
+/* force override global link styles */
+.article-body a.article-cta-btn {
+  color: #ffffff !important;
+}
+
+/* hover state */
+.article-cta-btn:hover {
+  background: var(--accent-hover);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* optional active state (fix flicker) */
+.article-cta-btn:active {
+  transform: translateY(0px);
+}
+
+/* note under CTA */
+.article-cta-note {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 12px;
+}
 
     /* FOOTER */
     footer {

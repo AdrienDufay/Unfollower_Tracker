@@ -1,4 +1,4 @@
 git add .
-git commit -m "modified the blog page for indexation"
+git commit -m "modified the blog page cta"
 git branch -M main
 git push -u origin main
